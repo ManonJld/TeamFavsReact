@@ -7,12 +7,22 @@ import './index.css';
 import App from './App';
 import {BrowserRouter} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from "react-redux";
+import {applyMiddleware, createStore} from "redux";
+import {composeWithDevTools} from "redux-devtools-extension";
+import reducer from "./reducers/reducer";
+import thunk from "redux-thunk";
 //bien importer le css après bootstrap pour pouvoir overwriter les classes bootstrap
+
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
+
 ReactDOM.render(
   <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <Provider store={store}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+      </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
