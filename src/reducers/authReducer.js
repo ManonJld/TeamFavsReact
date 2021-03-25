@@ -10,10 +10,13 @@ import {
     REGISTER_FAIL,
     CHANGE_INPUT_LOGIN_EMAIL,
     CHANGE_INPUT_LOGIN_PASSWORD,
+    SETUP_PENDING,
+    SETUP_SUCCESS,
+    SETUP_FAILURE
 } from "../action/types"
 
 const initialState = {
-    token: localStorage.getItem('token'),
+    authToken: localStorage.getItem('authToken'),
     isAuthenticated: null,
     isLoading: false,
     user: null,
@@ -21,7 +24,7 @@ const initialState = {
     loginInfo:{
         username:"",
         password:""
-    }
+    },
 };
 
 function authReducer(state = initialState, action){
@@ -48,7 +51,7 @@ function authReducer(state = initialState, action){
         }
         case LOGIN_SUCCESS:
         case REGISTER_SUCCESS:
-            localStorage.setItem('token', action.payload.token)
+            localStorage.setItem('authToken', action.payload.token)
             return{
                 ...state,
                 //will contain the user and the token
@@ -61,13 +64,13 @@ function authReducer(state = initialState, action){
         case REGISTER_FAIL:
         case LOGOUT_SUCCESS:
         case AUTH_ERROR:
-            localStorage.removeItem('token');
+            localStorage.removeItem('authToken');
             return{
                 ...state,
-                token: null,
+                authToken: null,
                 user: null,
                 isAuthenticated: false,
-                isLoading: false
+                isLoading: false,
             }
         case CHANGE_INPUT_LOGIN_PASSWORD:
             return {
@@ -79,6 +82,24 @@ function authReducer(state = initialState, action){
                 ...state,
                 loginInfo: {...state.loginInfo, username: action.payload}
             };
+        case SETUP_PENDING:
+            return{
+                ...state,
+                isAuthenticated: true,
+                isLoading: true,
+            };
+        case SETUP_SUCCESS:
+            return{
+                ...state,
+                isAuthenticated: true,
+                isLoading: false,
+            }
+        case SETUP_FAILURE:
+            return{
+                ...state,
+                isAuthenticated: false,
+                isLoading: false,
+            }
         default:
             return state
     }

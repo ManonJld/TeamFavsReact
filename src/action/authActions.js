@@ -1,5 +1,6 @@
 import axios from "axios";
 import {returnErrors} from "./errorActions";
+import jwtDecode from "jwt-decode";
 
 import {
     USER_LOADING,
@@ -8,11 +9,14 @@ import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    // LOGOUT_SUCCESS,
+    LOGOUT_SUCCESS,
     // REGISTER_SUCCESS,
     // REGISTER_FAIL,
     CHANGE_INPUT_LOGIN_PASSWORD,
     CHANGE_INPUT_LOGIN_EMAIL,
+    SETUP_PENDING,
+    SETUP_SUCCESS,
+    SETUP_FAILURE
 } from "../action/types"
 
 // //check token and load user
@@ -59,20 +63,53 @@ export function loginRequest(){
         dispatch({type: LOGIN_REQUEST});
         axios
             .post(process.env.REACT_APP_API_URL + "/login_check", loginInfo)
-            .then(response => response.data.token)
-            .then(token => {//je stocke mon token dans le local storage
-                window.localStorage.setItem("authToken", token);
+            .then(response => response.data)
+            .then(data => {//je stocke mon token dans le local storage
+                dispatch({type: LOGIN_SUCCESS, payload: data})
                 //On previent axios qu'on a maintenant un header par défaut sur toutes nos futures requetes http
-                setAxiosToken(token)})
-        console.log(window.localStorage)
-    }
+                setAxiosToken(data.token)})
+            .catch(err => {
+                dispatch(returnErrors(err.response.data, err.response.status));
+                dispatch({
+                    type: LOGIN_FAIL
+                });
 
+            });
+        }
+}
+
+export function setup(){
+    return (dispatch) => {
+        const token = window.localStorage.getItem("authToken")
+        // dispatch({type: SETUP_PENDING});
+        if (token === undefined){
+            console.log("token undefined")
+            dispatch({type: SETUP_FAILURE})
+        } else if (token){
+            const jwtData = jwtDecode(token)
+            if(jwtData.exp*1000 > new Date().getTime()){
+                console.log("OK")
+                dispatch({type: SETUP_SUCCESS})
+            }
+
+        }
+
+    }
 }
 
 function setAxiosToken(token)
 {
     axios.defaults.headers['Authorization'] = "Bearer " + token;
 }
+
+export function logout()
+{
+    window.localStorage.removeItem("authToken");
+    delete axios.defaults.headers["Authorization"];
+    return{type: LOGOUT_SUCCESS}
+}
+
+
 
 export function changeInputLoginEmail(value){
     return {type: CHANGE_INPUT_LOGIN_EMAIL, payload: value};

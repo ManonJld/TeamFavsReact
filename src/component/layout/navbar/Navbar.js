@@ -5,16 +5,15 @@ import logo from '../../../assets/logosmallh200.png'
 // import authApi from "../../../services/authApi";
 // import AuthContext from "../../../context/AuthContext";
 
-function Navbar({history})
+function Navbar(props)
 {
 
     // const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
     //
-    // const handleLogout = () =>{
-    //     authApi.logout();
-    //     setIsAuthenticated(false);
-    //     history.push("/login");
-    // }
+    const handleLogout = () =>{
+        props.logout();
+        props.history.push("/login");
+    }
 
     return(
         <nav className="navbar navbar-expand-lg navbar-beige">
@@ -48,9 +47,9 @@ function Navbar({history})
                                 <li className="nav-item mx-3">
                                     <NavLink exact to='' className='nav-link btn btn-myBlue'>Créer une Team</NavLink>
                                 </li>
-                                {/*<li className="nav-item mx-3">*/}
-                                {/*    <button onClick={handleLogout} className='nav-link btn btn-myBlue'>Déconnexion</button>*/}
-                                {/*</li>*/}
+                                <li className="nav-item mx-3">
+                                    <button onClick={handleLogout} className='nav-link btn btn-myBlue'>Déconnexion</button>
+                                </li>
                         {/*    </>*/}
                         {/*)}*/}
                     </ul>

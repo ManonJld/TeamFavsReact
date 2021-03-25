@@ -7,7 +7,12 @@ function Login(props) {
         message,
         change,
         changeInputEmail,
-        username
+        errorMsg,
+        username,
+        isAuthenticated
+        // error
+
+
 
         // loadUser
 
@@ -16,16 +21,25 @@ function Login(props) {
 
     // const changeInputLoginEmail = props.changeInputLoginEmail;
 
+    const handleSubmit = event => {
+        event.preventDefault();
+        try {
+            props.loginRequest()
+            props.history.replace("/mon-compte")
+
+
+        } catch (error) {
+            props.returnErrors()
+        }
+        // console.log("error" + {error})
+        console.log(errorMsg)
+    }
     console.log(window.localStorage)
 
     return (
         <div className='container'>
             <h1 className='roboto'>Welcome!!!{email}</h1>
-            <form
-                onSubmit={(event) => {
-                props.loginRequest();
-                event.preventDefault();
-            }}>
+            <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="username">Adresse email</label>
                     <input
@@ -37,11 +51,11 @@ function Login(props) {
                         name="username"
                         id="username"
                         type="email"
-                        // className={"form-control" + (error && " is-invalid")}
+                        // className={"form-control" + (errorMsg && " is-invalid")}
                         className="form-control"
                         placeholder="Adresse email de connexion"
                     />
-                    {/*{error && <p className="invalid-feedback">{error}</p> }*/}
+                    {/*{errorMsg && <p className="invalid-feedback">errorMsg</p> }*/}
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Mot de passe</label>

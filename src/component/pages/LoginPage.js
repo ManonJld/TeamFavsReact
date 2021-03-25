@@ -3,13 +3,13 @@ import LoginContainer from "../login/LoginContainer";
 import Login from "../login/Login";
 
 // function LoginPage({history})
-function LoginPage(props) {
+function LoginPage({history}) {
 
     console.log(window.localStorage)
     return(
         <React.Fragment>
             <h1>Page de connexion</h1>
-            <LoginContainer/>
+            <LoginContainer history={history}/>
         </React.Fragment>
 
     )

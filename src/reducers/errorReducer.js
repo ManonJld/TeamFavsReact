@@ -13,7 +13,7 @@ export default function errorReducer (state = initialState, action){
     switch(action.type){
         case GET_ERRORS:
             return {
-                message: action.payload.msg,
+                message: action.payload.message,
                 status: action.payload.status,
                 id: action.payload.id
             };
