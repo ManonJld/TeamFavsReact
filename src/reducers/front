@@ -3,7 +3,9 @@ import {
     LOGIN_USER_SUCCESS,
     LOGIN_USER_FAILURE,
     CHANGE_INPUT_LOGIN_EMAIL,
-    CHANGE_INPUT_LOGIN_PASSWORD
+    CHANGE_INPUT_LOGIN_PASSWORD,
+    setAuthHeader,
+    isAuthenticated
 } from "../action/action";
 
 const initialState = {
@@ -17,6 +19,8 @@ const initialState = {
         email: "",
         password: "",
     },
+    token:"",
+    loggedIn: false
 }
 
 function front(state = initialState, action){
@@ -31,6 +35,7 @@ function front(state = initialState, action){
             return {
                 ...state,
                 loginUser: initialState.loginUser,
+                token: window.localStorage.getItem("authToken"),
                 loading: {...state.loading, loginUser: false}
             };
         case LOGIN_USER_FAILURE:
@@ -43,6 +48,12 @@ function front(state = initialState, action){
             return {...state, loginUser: {...state.loginUser, email: action.payload}};
         case CHANGE_INPUT_LOGIN_PASSWORD:
             return {...state, loginUser: {...state.loginUser, password: action.payload}};
+        case setAuthHeader:
+            return{
+                ...state,
+
+
+            }
         default:
             return state;
     }

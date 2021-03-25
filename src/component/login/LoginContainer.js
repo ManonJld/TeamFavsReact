@@ -1,26 +1,34 @@
-import { connect } from 'react-redux';
+import {connect} from 'react-redux'
 import Login from './Login';
 import{
-    loginUser,
+    // loadUser,
     changeInputLoginEmail,
-    changeInputLoginPassword
-} from "../../action/action";
+    changeInputLoginPassword,
+    loginRequest
+} from "../../action/authActions";
 
 //envoyer des données dans les props
+//authReducer and errorReducer comes from the file reducer.js
 const mapStateToProps = state => ({
-    email: state.front.loginUser.email,
-    password: state.front.loginUser.password
+    isAuthenticated: state.authReducer.isAuthenticated,
+    error: state.errorReducer.error,
+    username: state.authReducer.loginInfo.username,
+    password: state.authReducer.loginInfo.password
 })
 
 //envoyer des fonctions dans les props
 const mapDispatchToProps = dispatch => ({
-    loginUser: () => dispatch(loginUser()),
-    changeInputLoginPassword: password => dispatch(changeInputLoginPassword(password)),
-    changeInputLoginEmail: email => dispatch(changeInputLoginEmail(email))
-
+    // loadUser: () => dispatch(loadUser()),
+    loginRequest: () => dispatch(loginRequest()),
+    changeInputLoginPassword: password => (
+        dispatch(changeInputLoginPassword(password))
+    ),
+    changeInputEmail: username => {
+        dispatch(changeInputLoginEmail(username))
+    }
 })
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Login)
+)(Login);

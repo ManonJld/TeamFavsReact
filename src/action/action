@@ -1,9 +1,12 @@
+import jwtDecode from "jwt-decode"
+
 export function loginUser(){
     return (dispatch, getState) => {
-        console.log(loginUser)
+        console.log("loginUser")
         const state = getState();
         const email = state.front.loginUser.email;
         const password = state.front.loginUser.password;
+        // const credentials = state.front.loginUser;
         dispatch(loginUserPending());
         fetch(process.env.REACT_APP_API_URL + "/login_check", {
             method: 'POST',
@@ -12,6 +15,7 @@ export function loginUser(){
         })
             .then(response => response.json())
             .then(data => dispatch(loginUserSuccess(data)))
+            .then(data => window.localStorage.setItem("authToken", data.token), setAuthHeader())
             .catch(err => {
                 console.log(err)
                 return dispatch(loginUserFailure(err))
@@ -34,6 +38,31 @@ function loginUserFailure(error){
     return {type: LOGIN_USER_FAILURE, payload: error}
 }
 
+export function setAuthHeader(){
+    let user = JSON.parse(localStorage.getItem('user'))
+    if (user && user.token) {
+        return { 'Authorization': 'Bearer ' + user.token };
+    } else {
+        return {};
+    }
+}
+
+//Permet de savoir si on est authentifié ou pas
+export function isAuthenticated(){
+    //voir si on a un token
+    const token = window.localStorage.getItem("authToken");
+    //voir si le token est encore valide
+    if (token){
+        const jwtData = jwtDecode(token)
+        //calcul par rapport à l'info d'expiration dans le token
+        if(jwtData.exp*1000 > new Date().getTime()){
+            //si oui, donner le token à axios
+            return true
+        }
+        return false;
+    }
+    return false;
+}
 //form login actions
 
 export const CHANGE_INPUT_LOGIN_EMAIL = 'CHANGE_INPUT_LOGIN_EMAIL';

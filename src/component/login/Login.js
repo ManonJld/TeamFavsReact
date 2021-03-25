@@ -1,27 +1,39 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 function Login(props) {
     const {
         email,
         password,
-        changeInputLoginPassword,
-        changeInputLoginEmail,
+        message,
+        change,
+        changeInputEmail,
+        username
+
+        // loadUser
 
 
     } = props;
 
+    // const changeInputLoginEmail = props.changeInputLoginEmail;
+
+    console.log(window.localStorage)
+
     return (
         <div className='container'>
-            <h1 className='roboto'>Welcome!!!</h1>
-            <form onSubmit={(event) => {
-                props.loginUser();
+            <h1 className='roboto'>Welcome!!!{email}</h1>
+            <form
+                onSubmit={(event) => {
+                props.loginRequest();
                 event.preventDefault();
             }}>
                 <div className="form-group">
                     <label htmlFor="username">Adresse email</label>
                     <input
-                        value={email}
-                        onChange={event => changeInputLoginEmail(event.target.value)}
+                        onChange={event =>
+                            changeInputEmail(event.target.value)
+
+                        }
+                        value={username}
                         name="username"
                         id="username"
                         type="email"
@@ -35,7 +47,7 @@ function Login(props) {
                     <label htmlFor="password">Mot de passe</label>
                     <input
                         value={password}
-                        onChange={event => changeInputLoginPassword(event.target.value)}
+                        onChange={event => props.changeInputLoginPassword(event.target.value)}
                         name="password"
                         id="password"
                         type="password"

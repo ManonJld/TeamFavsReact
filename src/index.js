@@ -12,9 +12,11 @@ import {applyMiddleware, createStore} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
 import reducer from "./reducers/reducer";
 import thunk from "redux-thunk";
+import {store} from "./_helpers/store";
 //bien importer le css après bootstrap pour pouvoir overwriter les classes bootstrap
 
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
+// const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
+
 
 ReactDOM.render(
   <React.StrictMode>
