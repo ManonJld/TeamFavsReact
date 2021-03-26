@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import MyAccount from "./MyAccount";
-import {clearTeams, getTeams, getCategories, setTeamName} from "../../action/appActions";
+import {clearTeams, getTeams, getCategories, setTeamName, setTeamId} from "../../action/appActions";
 
 
 //envoyer des données dans les props
@@ -8,7 +8,8 @@ import {clearTeams, getTeams, getCategories, setTeamName} from "../../action/app
 const mapStateToProps = state => ({
     token: state.authReducer.authToken,
     teams: state.appReducer.teams,
-    isLoadingTeams: state.appReducer.isLoading.teams
+    isLoadingTeams: state.appReducer.isLoading.teams,
+    teamId: state.appReducer.teamId
 })
 
 //envoyer des fonctions dans les props
@@ -16,7 +17,8 @@ const mapDispatchToProps = dispatch => ({
     getTeams: () => dispatch(getTeams()),
     clearTeams: () => dispatch(clearTeams()),
     getCategories: (id) => dispatch(getCategories(id)),
-    setTeamName: (name) => dispatch(setTeamName(name))
+    setTeamName: (name) => dispatch(setTeamName(name)),
+    setTeamId: (id) => dispatch(setTeamId(id))
 })
 
 export default connect(

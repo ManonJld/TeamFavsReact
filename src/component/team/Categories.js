@@ -1,18 +1,31 @@
-import React, {useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
+import React, {useEffect} from 'react';
 
 function Categories(props){
     const {
         categories,
-        isLoadingCate
+        isLoadingCate,
+        getCategories,
+        teamId,
+        setCategoryId,
+        getBookmarks
     } = props;
 
-    console.log(categories)
 
+    useEffect( () => {
+        getCategories(teamId)
+        // return () => clearCategories();
+    }, [getCategories, teamId])
 
     if(isLoadingCate){
         return <div>Chargement en cours</div>
     }
+
+    const handleEvent = (id) => {
+        getBookmarks(id)
+        setCategoryId(id)
+    }
+
+
 
 
     return (
@@ -21,7 +34,7 @@ function Categories(props){
                 {categories.length > 0 ? (
                     categories.map((cate, key )=> (
 
-                        <li key={key}>{cate.name} </li>
+                        <li key={key} onClick={() => {handleEvent(cate.id)}}>{cate.name}</li>
 
                     ))
                 ) : null
@@ -31,4 +44,4 @@ function Categories(props){
     )
 }
 
-export default Categories
+export default Categories;

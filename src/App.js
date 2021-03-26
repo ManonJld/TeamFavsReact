@@ -31,7 +31,7 @@ function App(props) {
                       {/*<PrivateRoute path='/mon-compte' component={MyAccountPage}/>*/}
                       {/*<PrivateRoute path='/team' component={TeamPage}/>          */}
                       <Route path='/mon-compte' component={MyAccountPage}/>
-                      <Route path='/team' component={TeamPage}/>
+                      <Route path='/team/:teamId' component={TeamPage}/>
                   </Switch>
           </React.Fragment>
       );

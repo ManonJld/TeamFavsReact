@@ -6,8 +6,15 @@ import {
     GET_CATEGORIES_PENDING,
     GET_CATEGORIES_SUCCESS,
     GET_CATEGORIES_FAILURE,
+    SET_CATEGORY_ID,
     SET_TEAM_NAME,
-    CLEAR_TEAM_NAME
+    CLEAR_TEAM_NAME,
+    GET_BOOKMARKS_PENDING,
+    GET_BOOKMARKS_SUCCESS,
+    GET_BOOKMARKS_FAILURE,
+    CLEAR_BOOKMARKS,
+    CLEAR_CATEGORIES,
+    SET_TEAM_ID
 
 } from "../action/types"
 
@@ -16,9 +23,13 @@ const initialState = {
     categories:[],
     isLoading:{
         teams: false,
-        categories: false
+        categories: false,
+        bookmarks: false
     },
-    teamName:""
+    teamName:"",
+    bookmarks: [],
+    teamId:"",
+    categoryId:""
 }
 
 function appReducer(state = initialState, action){
@@ -69,6 +80,49 @@ function appReducer(state = initialState, action){
             return {
                 ...state,
                 teamName: ""
+            }
+        }
+        case SET_TEAM_ID:{
+            return {
+                ...state,
+                teamId: action.payload
+            }
+        }
+        case GET_BOOKMARKS_PENDING:{
+            return{
+                ...state,
+                isLoading: {...state.isLoading, bookmarks: true}
+            }
+        }
+        case GET_BOOKMARKS_SUCCESS: {
+            return {
+                ...state,
+                isLoading: {...state.isLoading, bookmarks: false},
+                bookmarks: action.payload
+            }
+        }
+        case GET_BOOKMARKS_FAILURE: {
+            return {
+                ...state,
+                isLoading: {...state.isLoading, bookmarks: false},
+            }
+        }
+        case CLEAR_BOOKMARKS:{
+            return {
+                ...state,
+                bookmarks: []
+            }
+        }
+        case CLEAR_CATEGORIES:{
+            return {
+                ...state,
+                categories: []
+            }
+        }
+        case SET_CATEGORY_ID:{
+            return {
+                ...state,
+                categoryId: action.payload
             }
         }
         default:

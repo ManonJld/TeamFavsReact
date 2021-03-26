@@ -6,7 +6,7 @@ const TeamPage = (props) => {
 
     return(
         <div className="container">
-            <TeamContainer/>
+            <TeamContainer teamId={props.match.params.teamId}/>
         </div>
     )
 }

@@ -5,7 +5,8 @@ import BookmarksContainer from "./BookmarksContainer";
 function Team(props){
     const {
         teamName,
-        clearTeamName
+        clearTeamName,
+        teamId
     } = props;
 
     useEffect(() =>{
@@ -15,8 +16,9 @@ function Team(props){
     return (
         <React.Fragment>
             <h1>{teamName}</h1>
-            <CategoriesContainer/>
+            <CategoriesContainer teamId={teamId}/>
             <BookmarksContainer/>
+            {/*<BookmarksContainer cateId={props.match.params.cateId}/>*/}
         </React.Fragment>
     )
 }

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import Team from "./Team";
-import {clearTeams, clearTeamName} from "../../action/appActions";
+import {clearTeamName} from "../../action/appActions";
 
 
 //envoyer des données dans les props

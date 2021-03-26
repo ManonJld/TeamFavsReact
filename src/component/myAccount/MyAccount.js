@@ -12,7 +12,9 @@ function MyAccount(props) {
         getTeams,
         clearTeams,
         getCategories,
-        setTeamName
+        setTeamName,
+        setTeamId,
+        teamId
     } = props;
 
     let [tokenData, setTokenData] = useState("");
@@ -33,8 +35,10 @@ function MyAccount(props) {
     }
 
     const handleEvent = (id, name) => {
-        getCategories(id);
+        // getCategories(id);
+        // setTeamId(id)
         setTeamName(name)
+        console.log(teamId)
     }
 
     return(
@@ -50,7 +54,7 @@ function MyAccount(props) {
                     {teams.length > 0 ? (
                         teams.map((team, key )=> (
 
-                            <li key={key}>{team.name} <Link to={"/team/" + team.name} onClick={() => handleEvent(team.id, team.name)}> Voir, id: {team.id}</Link></li>
+                            <li key={key} onClick={() => handleEvent(team.id, team.name)}>{team.name} <Link to={"/team/" + team.id}> Voir, id: {team.id}</Link></li>
 
                         ))
                     ) : null
