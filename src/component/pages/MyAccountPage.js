@@ -5,10 +5,10 @@ import MyAccountContainer from "../myAccount/MyAccountContainer";
 function MyAccountPage(props) {
 
     return(
-        <React.Fragment>
+        <div className="container">
             <h1>Mon Compte</h1>
             <MyAccountContainer/>
-        </React.Fragment>
+        </div>
 
     )
 }

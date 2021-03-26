@@ -1,10 +1,13 @@
 import React from 'react';
+import TeamContainer from "../team/TeamContainer";
 
 
 const TeamPage = (props) => {
 
     return(
-        <h1>Team</h1>
+        <div className="container">
+            <TeamContainer/>
+        </div>
     )
 }
 export default TeamPage;

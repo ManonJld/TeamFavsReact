@@ -1,14 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import jwtDecode from "jwt-decode";
+import {Link} from "react-router-dom";
+import {setTeamName} from "../../action/appActions";
 
 function MyAccount(props) {
 
     const {
         token,
-        isLoading,
+        isLoadingTeams,
         teams,
         getTeams,
-        clearTeams
+        clearTeams,
+        getCategories,
+        setTeamName
     } = props;
 
     let [tokenData, setTokenData] = useState("");
@@ -24,17 +28,20 @@ function MyAccount(props) {
     }, [token, getTeams, clearTeams])
 
 
-    if(isLoading){
+    if(isLoadingTeams){
         return <div>Chargement en cours</div>
+    }
+
+    const handleEvent = (id, name) => {
+        getCategories(id);
+        setTeamName(name)
     }
 
     return(
         <React.Fragment>
             <div className="container">
 
-                {tokenData==="" ? (
-                    <h1>Loading</h1>
-                ) : (
+                {tokenData==="" ? null : (
                     <h1>Bienvenue {tokenData.firstname} {tokenData.lastname}</h1>
                 )
                 }
@@ -43,7 +50,7 @@ function MyAccount(props) {
                     {teams.length > 0 ? (
                         teams.map((team, key )=> (
 
-                            <li key={key}>{team.name} Voir, id: {team.id}</li>
+                            <li key={key}>{team.name} <Link to={"/team/" + team.name} onClick={() => handleEvent(team.id, team.name)}> Voir, id: {team.id}</Link></li>
 
                         ))
                     ) : null

@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 function Login(props) {
     const {
         email,
@@ -30,9 +31,10 @@ function Login(props) {
 
         } catch (error) {
             props.returnErrors()
+            console.log(errorMsg)
         }
         // console.log("error" + {error})
-        console.log(errorMsg)
+
     }
     console.log(window.localStorage)
 

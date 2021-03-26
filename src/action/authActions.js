@@ -100,6 +100,7 @@ export function setup(){
 function setAxiosToken(token)
 {
     axios.defaults.headers['Authorization'] = "Bearer " + token;
+    console.log(axios.defaults.headers['Authorization'])
 }
 
 export function logout()

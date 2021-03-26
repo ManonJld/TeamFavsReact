@@ -6,10 +6,10 @@ function LoginPage({history}) {
 
     console.log(window.localStorage)
     return(
-        <React.Fragment>
+        <div className="container">
             <h1>Page de connexion</h1>
             <LoginContainer history={history}/>
-        </React.Fragment>
+        </div>
 
     )
 }
