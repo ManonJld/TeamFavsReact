@@ -1,7 +1,6 @@
 import React from 'react';
 import {NavLink, Link} from "react-router-dom";
 import logo from '../../../assets/logosmallh200.png'
-// import logo from "../../../assets/logosmallh200.png";
 // import authApi from "../../../services/authApi";
 // import AuthContext from "../../../context/AuthContext";
 

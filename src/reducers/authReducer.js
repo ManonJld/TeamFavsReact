@@ -55,7 +55,7 @@ function authReducer(state = initialState, action){
             return{
                 ...state,
                 //will contain the user and the token
-                ...action.payload,
+                authToken: action.payload.token,
                 isAuthenticated: true,
                 isLoading: false,
                 loginInfo: {username: "", password: ""}
