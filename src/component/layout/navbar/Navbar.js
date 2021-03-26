@@ -7,6 +7,7 @@ import logo from '../../../assets/logosmallh200.png'
 
 function Navbar(props)
 {
+    const { isAuthenticated } = props;
 
     // const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
     //
@@ -30,17 +31,17 @@ function Navbar(props)
 
                 <div className="d-flex flex-row-reverse collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav">
-                        {/*{(!isAuthenticated && (*/}
-                        {/*    <>*/}
+                        {(!isAuthenticated && (
+                            <>
                                 <li className="nav-item mx-3">
                                     <NavLink exact to='/creer-un-compte' className='nav-link btn btn-myBlue'>Créer un compte</NavLink>
                                 </li>
                                 <li className="nav-item mx-3">
                                     <NavLink to='/login' className='nav-link btn btn-myBlue'>Se connecter</NavLink>
                                 </li>
-                        {/*    </>*/}
-                        {/*)) || (*/}
-                        {/*    <>*/}
+                            </>
+                        )) || (
+                            <>
                                 <li className="nav-item mx-3">
                                     <NavLink exact to='/mon-compte' className='nav-link btn btn-myBlue'>Mon compte</NavLink>
                                 </li>
@@ -50,8 +51,8 @@ function Navbar(props)
                                 <li className="nav-item mx-3">
                                     <button onClick={handleLogout} className='nav-link btn btn-myBlue'>Déconnexion</button>
                                 </li>
-                        {/*    </>*/}
-                        {/*)}*/}
+                            </>
+                        )}
                     </ul>
                 </div>
             </div>

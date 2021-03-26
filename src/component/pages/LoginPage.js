@@ -1,6 +1,5 @@
 import React from 'react';
 import LoginContainer from "../login/LoginContainer";
-import Login from "../login/Login";
 
 // function LoginPage({history})
 function LoginPage({history}) {

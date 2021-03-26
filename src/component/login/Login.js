@@ -1,15 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 function Login(props) {
     const {
         email,
         password,
-        message,
-        change,
+        // message,
+        // change,
         changeInputEmail,
         errorMsg,
         username,
-        isAuthenticated
+        // isAuthenticated
         // error
 
 

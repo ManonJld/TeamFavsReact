@@ -3,9 +3,9 @@ import {returnErrors} from "./errorActions";
 import jwtDecode from "jwt-decode";
 
 import {
-    USER_LOADING,
-    USER_LOADED,
-    AUTH_ERROR,
+    // USER_LOADING,
+    // USER_LOADED,
+    // AUTH_ERROR,
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
@@ -14,7 +14,7 @@ import {
     // REGISTER_FAIL,
     CHANGE_INPUT_LOGIN_PASSWORD,
     CHANGE_INPUT_LOGIN_EMAIL,
-    SETUP_PENDING,
+    // SETUP_PENDING,
     SETUP_SUCCESS,
     SETUP_FAILURE
 } from "../action/types"
