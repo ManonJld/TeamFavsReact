@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from "react-router-dom";
 
 
 function Login(props) {
@@ -10,7 +11,7 @@ function Login(props) {
         changeInputEmail,
         errorMsg,
         username,
-        // isAuthenticated
+        isAuthenticated
         // error
 
 
@@ -20,7 +21,9 @@ function Login(props) {
 
     } = props;
 
-    // const changeInputLoginEmail = props.changeInputLoginEmail;
+    if (isAuthenticated){
+        props.history.replace("/mon-compte")
+    }
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -37,6 +40,7 @@ function Login(props) {
 
     }
     console.log(window.localStorage)
+
 
     return (
         <div className='container'>

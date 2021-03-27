@@ -8,7 +8,7 @@ import {setup} from "./action/authActions";
 
 import NavbarContainer from "./component/layout/navbar/NavbarContainer";
 import { connect } from 'react-redux';
-// import PrivateRoute from "./_helpers/PrivateRoute";
+import PrivateRoute from "./_helpers/PrivateRoute";
 
 function App(props) {
     // useEffect(() => {
@@ -28,10 +28,8 @@ function App(props) {
               <NavbarWithRouter/>
                   <Switch>
                       <Route path='/login' component={LoginPage}/>
-                      {/*<PrivateRoute path='/mon-compte' component={MyAccountPage}/>*/}
-                      {/*<PrivateRoute path='/team' component={TeamPage}/>          */}
-                      <Route path='/mon-compte' component={MyAccountPage}/>
-                      <Route path='/team/:teamId' component={TeamPage}/>
+                      <PrivateRoute path='/mon-compte' component={MyAccountPage}/>
+                      <PrivateRoute path='/team/:teamId' component={TeamPage}/>
                   </Switch>
           </React.Fragment>
       );
