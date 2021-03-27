@@ -87,9 +87,11 @@ export function setup(){
             dispatch({type: SETUP_FAILURE})
         } else if (token){
             const jwtData = jwtDecode(token)
+            console.log(jwtData)
             if(jwtData.exp*1000 > new Date().getTime()){
-                console.log("OK")
-                dispatch({type: SETUP_SUCCESS})
+                console.log("OK");
+                setAxiosToken(token);
+                dispatch({type: SETUP_SUCCESS});
             }
 
         }
