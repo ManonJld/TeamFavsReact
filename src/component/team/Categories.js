@@ -34,7 +34,7 @@ function Categories(props){
                 {categories.length > 0 ? (
                     categories.map((cate, key )=> (
 
-                        <li key={key} onClick={() => {handleEvent(cate.id)}}>{cate.name}</li>
+                        <li key={key} onClick={() => {handleEvent(cate.id)}} className="link">{cate.name}</li>
 
                     ))
                 ) : null

@@ -15,10 +15,20 @@ function Team(props){
 
     return (
         <React.Fragment>
-            <h1>{teamName}</h1>
-            <CategoriesContainer teamId={teamId}/>
-            <BookmarksContainer/>
-            {/*<BookmarksContainer cateId={props.match.params.cateId}/>*/}
+            <div className="container">
+                <h1>{teamName}</h1>
+                <div className="row">
+                    <div className="col-4">
+                        <CategoriesContainer teamId={teamId}/>
+                    </div>
+                    <div className="col-8">
+                        <BookmarksContainer/>
+                    </div>
+                </div>
+            </div>
+
+
+
         </React.Fragment>
     )
 }

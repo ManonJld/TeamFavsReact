@@ -98,6 +98,7 @@ $myBlack: black;
     border-color: $myBlueDarker;
     &:focus{
       font-weight: bold ;
+      color: white;
     }
   }
 
@@ -115,4 +116,17 @@ p{
 .navbar-beige{
   background-color: rgba(230, 224, 193, 0.42);
 
+}
+
+.link, a{
+  color: $myBlue;
+  text-decoration: underline;
+    &:hover, &:active, &:focus{
+      cursor: pointer;
+      color: $myGreen
+    }
+}
+
+li{
+  list-style-type: none;
 }
