@@ -1,6 +1,6 @@
 import {Switch, Route, withRouter} from 'react-router-dom';
 import React from 'react';
-import './App.scss';
+import './css/app.min.css';
 import LoginPage from "./component/pages/LoginPage";
 import MyAccountPage from "./component/pages/MyAccountPage";
 import TeamPage from "./component/pages/TeamPage";
