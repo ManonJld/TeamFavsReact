@@ -2,8 +2,7 @@ import {connect} from 'react-redux'
 import Login from './Login';
 import{
     // loadUser,
-    changeInputLoginEmail,
-    changeInputLoginPassword,
+    changeInputLogin,
     loginRequest,
 } from "../../action/authActions";
 import{
@@ -24,12 +23,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     // loadUser: () => dispatch(loadUser()),
     loginRequest: () => dispatch(loginRequest()),
-    changeInputLoginPassword: password => (
-        dispatch(changeInputLoginPassword(password))
+    changeInputLogin: () => (
+        dispatch(changeInputLogin())
     ),
-    changeInputEmail: username => {
-        dispatch(changeInputLoginEmail(username))
-    },
     returnErrors: () => dispatch(returnErrors())
 })
 

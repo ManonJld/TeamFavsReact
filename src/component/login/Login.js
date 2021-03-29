@@ -1,24 +1,14 @@
 import React from 'react';
-import {Redirect} from "react-router-dom";
 
 
 function Login(props) {
     const {
         email,
         password,
-        // message,
-        // change,
-        changeInputEmail,
+        changeInputLogin,
         errorMsg,
         username,
         isAuthenticated
-        // error
-
-
-
-        // loadUser
-
-
     } = props;
 
     if (isAuthenticated){
@@ -50,8 +40,7 @@ function Login(props) {
                     <label htmlFor="username">Adresse email</label>
                     <input
                         onChange={event =>
-                            changeInputEmail(event.target.value)
-
+                            changeInputLogin(event)
                         }
                         value={username}
                         name="username"
@@ -67,7 +56,7 @@ function Login(props) {
                     <label htmlFor="password">Mot de passe</label>
                     <input
                         value={password}
-                        onChange={event => props.changeInputLoginPassword(event.target.value)}
+                        onChange={event => changeInputLogin(event)}
                         name="password"
                         id="password"
                         type="password"

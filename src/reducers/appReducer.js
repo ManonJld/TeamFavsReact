@@ -14,7 +14,8 @@ import {
     GET_BOOKMARKS_FAILURE,
     CLEAR_BOOKMARKS,
     CLEAR_CATEGORIES,
-    SET_TEAM_ID
+    SET_TEAM_ID,
+    CHANGE_INPUT_APP
 
 } from "../action/types"
 
@@ -124,6 +125,13 @@ function appReducer(state = initialState, action){
                 ...state,
                 categoryId: action.payload
             }
+        }
+        case CHANGE_INPUT_APP:{
+            const { name, value } = action.payload.target;
+            return {
+                ...state,
+                [name]: value
+            };
         }
         default:
             return state

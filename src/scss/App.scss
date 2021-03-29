@@ -1,3 +1,5 @@
+@import '~bootstrap';
+
 //My colors
 $myBlue: #003F87;
 $myBlueDarker: #022d62;
@@ -96,7 +98,7 @@ $myBlack: black;
   &:hover, &:active, &:focus{
     background-color: $myBlueDarker;
     border-color: $myBlueDarker;
-    &:focus{
+    &:focus, .focus{
       font-weight: bold ;
       color: white;
     }

@@ -16,7 +16,8 @@ import {
     GET_BOOKMARKS_SUCCESS,
     GET_BOOKMARKS_FAILURE,
     CLEAR_BOOKMARKS,
-    CLEAR_CATEGORIES
+    CLEAR_CATEGORIES,
+    CHANGE_INPUT_APP
 } from "../action/types"
 import {returnErrors} from "./errorActions";
 
@@ -86,4 +87,8 @@ export function getBookmarks(id){
 
 export function clearBookmarks(){
     return {type: CLEAR_BOOKMARKS}
+}
+
+export function changeInputApp(event){
+    return {type: CHANGE_INPUT_APP, payload: event};
 }

@@ -3,8 +3,6 @@ import {returnErrors} from "./errorActions";
 import jwtDecode from "jwt-decode";
 
 import {
-    // USER_LOADING,
-    // USER_LOADED,
     // AUTH_ERROR,
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
@@ -12,48 +10,12 @@ import {
     LOGOUT_SUCCESS,
     // REGISTER_SUCCESS,
     // REGISTER_FAIL,
-    CHANGE_INPUT_LOGIN_PASSWORD,
-    CHANGE_INPUT_LOGIN_EMAIL,
+    CHANGE_INPUT_LOGIN,
     // SETUP_PENDING,
     SETUP_SUCCESS,
     SETUP_FAILURE
 } from "../action/types"
-
-// //check token and load user
-// export const loadUser = () => (dispatch, getState) => {
-//     //user loading
-//     dispatch({type: USER_LOADING});
-//
-//
-//     axios.get(process.env.REACT_APP_API_URL + '/login_check', tokenConfig(getState))
-//         .then(res => dispatch({
-//             type: USER_LOADED,
-//             payload: res.data
-//         }))
-//         .catch(err => {
-//             dispatch(returnErrors(err.response.data, err.response.status));
-//             dispatch({
-//                 type: AUTH_ERROR
-//             });
-//         });
-// };
-
-// //setup config/header and token
-// export const tokenConfig = getState => {
-//     //get token from local storage
-//     const token = getState().authReducer.token;
-//     //headers
-//     const config = {
-//         headers: {
-//             "Content-type": "application/json"
-//         }
-//     }
-//     //if token, add to headers
-//     if(token){
-//         config.headers['x-auth-token'] = token;
-//     }
-//     return config;
-// };
+import {CHANGE_INPUT} from "./types";
 
 export function loginRequest(){
     return (dispatch, getState) => {
@@ -69,7 +31,8 @@ export function loginRequest(){
                 //On previent axios qu'on a maintenant un header par défaut sur toutes nos futures requetes http
                 setAxiosToken(data.token)})
             .catch(err => {
-                dispatch(returnErrors(err.response.data, err.response.status));
+                // dispatch(returnErrors(err.response.data, err.response.status));
+                console.log(err);
                 dispatch({
                     type: LOGIN_FAIL
                 });
@@ -77,7 +40,7 @@ export function loginRequest(){
             });
         }
 }
-
+//function to know if the user is already connecting when loading the app
 export function setup(){
     return (dispatch) => {
         const token = window.localStorage.getItem("authToken")
@@ -112,12 +75,7 @@ export function logout()
     return{type: LOGOUT_SUCCESS}
 }
 
-
-
-export function changeInputLoginEmail(value){
-    return {type: CHANGE_INPUT_LOGIN_EMAIL, payload: value};
+export function changeInputLogin(event){
+    return {type: CHANGE_INPUT_LOGIN, payload: event};
 }
 
-export function changeInputLoginPassword(value){
-    return {type: CHANGE_INPUT_LOGIN_PASSWORD, payload: value};
-}

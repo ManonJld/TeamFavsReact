@@ -1,6 +1,4 @@
 import {
-    USER_LOADING,
-    USER_LOADED,
     AUTH_ERROR,
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
@@ -8,8 +6,7 @@ import {
     LOGOUT_SUCCESS,
     REGISTER_SUCCESS,
     REGISTER_FAIL,
-    CHANGE_INPUT_LOGIN_EMAIL,
-    CHANGE_INPUT_LOGIN_PASSWORD,
+    CHANGE_INPUT_LOGIN,
     SETUP_PENDING,
     SETUP_SUCCESS,
     SETUP_FAILURE
@@ -29,19 +26,6 @@ const initialState = {
 
 function authReducer(state = initialState, action){
     switch (action.type){
-        case USER_LOADING:
-            return {
-                ...state,
-                isLoading: true
-            };
-        case USER_LOADED:
-            return{
-                ...state,
-                isAuthenticated: true,
-                isLoading: false,
-                user: action.payload
-            };
-
         case LOGIN_REQUEST:{
             return {
                 ...state,
@@ -54,7 +38,6 @@ function authReducer(state = initialState, action){
             localStorage.setItem('authToken', action.payload.token)
             return{
                 ...state,
-                //will contain the user and the token
                 authToken: action.payload.token,
                 isAuthenticated: true,
                 isLoading: false,
@@ -72,15 +55,12 @@ function authReducer(state = initialState, action){
                 isAuthenticated: false,
                 isLoading: false,
             }
-        case CHANGE_INPUT_LOGIN_PASSWORD:
+        case CHANGE_INPUT_LOGIN:
+            const { name, value } = action.payload.target;
             return {
+
                 ...state,
-                loginInfo: {...state.loginInfo, password: action.payload}
-            };
-        case CHANGE_INPUT_LOGIN_EMAIL:
-            return{
-                ...state,
-                loginInfo: {...state.loginInfo, username: action.payload}
+                loginInfo: {...state.loginInfo, [name]: value}
             };
         case SETUP_PENDING:
             return{

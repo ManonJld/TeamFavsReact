@@ -5,8 +5,6 @@ function Bookmarks(props){
         isLoadingBookmark,
         bookmarks,
         clearBookmarks,
-        categoryId,
-        getBookmarks
     } = props;
 
 

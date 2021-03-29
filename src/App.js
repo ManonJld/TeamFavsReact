@@ -1,6 +1,9 @@
 import {Switch, Route, withRouter} from 'react-router-dom';
 import React from 'react';
 import './css/app.min.css';
+// import 'jquery/dist/jquery.min.js';
+// import 'popper.js';
+// import 'bootstrap/dist/js/bootstrap.min.js';
 import LoginPage from "./component/pages/LoginPage";
 import MyAccountPage from "./component/pages/MyAccountPage";
 import TeamPage from "./component/pages/TeamPage";

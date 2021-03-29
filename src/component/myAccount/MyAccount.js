@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import jwtDecode from "jwt-decode";
 import {Link} from "react-router-dom";
-import {setTeamName} from "../../action/appActions";
 
 function MyAccount(props) {
 
@@ -11,9 +10,7 @@ function MyAccount(props) {
         teams,
         getTeams,
         clearTeams,
-        getCategories,
         setTeamName,
-        setTeamId,
         teamId
     } = props;
 
@@ -35,8 +32,6 @@ function MyAccount(props) {
     }
 
     const handleEvent = (id, name) => {
-        // getCategories(id);
-        // setTeamId(id)
         setTeamName(name)
         console.log(teamId)
     }
