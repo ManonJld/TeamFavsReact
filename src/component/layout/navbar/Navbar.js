@@ -40,16 +40,10 @@ function Navbar(props)
                             </>
                         )) || (
                             <>
-
                                 <NavbarMenu link="/mon-compte" color="btn-myBlue" title="Mon compte" />
-                                <NavbarMenu link="" color="btn-myBlue" title="Créer une team" />
                                 <li className="nav-item mx-3">
                                     <button onClick={handleLogout} className='nav-link btn btn-myBlue'>Déconnexion</button>
                                 </li>
-                                <li>
-                                    <ModalNewTeam/>
-                                </li>
-
                             </>
                         )}
                     </ul>

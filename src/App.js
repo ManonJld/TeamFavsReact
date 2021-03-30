@@ -1,6 +1,7 @@
 import {Switch, Route, withRouter} from 'react-router-dom';
 import React from 'react';
-import './css/app.min.css';
+import './scss/App.scss';
+// import './css/app.css';
 // import 'jquery/dist/jquery.min.js';
 // import 'popper.js';
 // import 'bootstrap/dist/js/bootstrap.min.js';

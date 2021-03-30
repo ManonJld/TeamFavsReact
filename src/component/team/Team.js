@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import CategoriesContainer from "./CategoriesContainer";
 import BookmarksContainer from "./BookmarksContainer";
 import ModalNewCategory from "../modals/ModalNewCategory";
+import ModalNewBookmark from "../modals/ModalNewBookmark";
 
 function Team(props){
     const {
@@ -16,14 +17,15 @@ function Team(props){
 
     return (
         <React.Fragment>
-            <div className="container">
+            <div>
                 <h1>{teamName}</h1>
                 <ModalNewCategory/>
+                <ModalNewBookmark/>
                 <div className="row">
-                    <div className="col-4">
+                    <div className="col-2">
                         <CategoriesContainer teamId={teamId}/>
                     </div>
-                    <div className="col-8">
+                    <div className="col-10">
                         <BookmarksContainer/>
                     </div>
                 </div>

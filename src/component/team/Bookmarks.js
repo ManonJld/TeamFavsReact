@@ -21,16 +21,16 @@ function Bookmarks(props){
 
     return (
         <React.Fragment>
-            <ModalNewBookmark/>
-            {bookmarks.length > 0 ? (
-                bookmarks.map((bookmark)=> (
+            <div className="d-flex justify-content-around flex-wrap">
+                {bookmarks.length > 0 ? (
+                    bookmarks.map((bookmark)=> (
 
-                    <BookmarkCard key={bookmark.id} bookmark={bookmark}/>
+                        <BookmarkCard key={bookmark.id} bookmark={bookmark}/>
 
-                ))
-            ) : null
-            }
-
+                    ))
+                ) : null
+                }
+            </div>
         </React.Fragment>
     )
 }

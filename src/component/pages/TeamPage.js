@@ -5,7 +5,7 @@ import TeamContainer from "../team/TeamContainer";
 const TeamPage = (props) => {
 
     return(
-        <div className="container">
+        <div>
             <TeamContainer teamId={props.match.params.teamId}/>
         </div>
     )

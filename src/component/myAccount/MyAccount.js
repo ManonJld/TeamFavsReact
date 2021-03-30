@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import jwtDecode from "jwt-decode";
 import {Link} from "react-router-dom";
+import ModalNewTeam from "../modals/ModalNewTeam";
 
 function MyAccount(props) {
 
@@ -46,7 +47,7 @@ function MyAccount(props) {
                     <h1>Bienvenue {tokenData.firstname} {tokenData.lastname}</h1>
                 )
                 }
-
+                <ModalNewTeam/>
                 <ul>
                     {teams.length > 0 ? (
                         teams.map((team, key )=> (
