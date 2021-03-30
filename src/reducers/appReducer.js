@@ -24,7 +24,8 @@ import {
     POST_NEWCATEGORY_FAILURE,
     POST_NEWBOOKMARK_PENDING,
     POST_NEWBOOKMARK_SUCCESS,
-    POST_NEWBOOKMARK_FAILURE
+    POST_NEWBOOKMARK_FAILURE,
+    LOGOUT_SUCCESS
 
 } from "../action/types"
 
@@ -208,6 +209,9 @@ function appReducer(state = initialState, action){
                 ...state,
                 isLoading: {...state.isLoading, newBookmark: false },
             }
+        }
+        case LOGOUT_SUCCESS:{
+            return initialState
         }
         default:
             return state
