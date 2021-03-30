@@ -23,7 +23,7 @@ function MyAccount(props) {
             setTokenData(jwtDecode(token));
             getTeams()
         }
-        return () => clearTeams()
+        // return () => clearTeams()
 
     }, [token, getTeams, clearTeams])
 

@@ -23,7 +23,10 @@ import {
     POST_NEWTEAM_FAILURE,
     POST_NEWCATEGORY_PENDING,
     POST_NEWCATEGORY_SUCCESS,
-    POST_NEWCATEGORY_FAILURE
+    POST_NEWCATEGORY_FAILURE,
+    POST_NEWBOOKMARK_PENDING,
+    POST_NEWBOOKMARK_SUCCESS,
+    POST_NEWBOOKMARK_FAILURE
 } from "../action/types"
 import {returnErrors} from "./errorActions";
 
@@ -132,16 +135,17 @@ export function postCategory(){
 
 export function postBookmark(){
     return(dispatch, getState) =>{
-        const newCategory = getState().appReducer.newCategory;
-        const teamId = getState().appReducer.teamId;
-        dispatch({type: POST_NEWCATEGORY_PENDING});
+        const newBookmark = getState().appReducer.newBookmark;
+        const categoryId = getState().appReducer.categoryId;
+        const url = getState().appReducer.url;
+        dispatch({type: POST_NEWBOOKMARK_PENDING});
         axios
-            .post(process.env.REACT_APP_API_URL + "/categories", {name: newCategory, team:"api/teams/" + teamId})
+            .post(process.env.REACT_APP_API_URL + "/bookmarks", {name: newBookmark, category:"api/categories/" + categoryId, url:url})
             .then(response =>response.data)
-            .then(data => dispatch({type: POST_NEWCATEGORY_SUCCESS, payload: data}))
+            .then(data => dispatch({type: POST_NEWBOOKMARK_SUCCESS, payload: data}))
             .catch(err=> {
                 console.log(err);
-                dispatch({type:POST_NEWCATEGORY_FAILURE})
+                dispatch({type:POST_NEWBOOKMARK_FAILURE})
             })
     }
 }

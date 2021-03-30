@@ -21,7 +21,10 @@ import {
     POST_NEWTEAM_FAILURE,
     POST_NEWCATEGORY_PENDING,
     POST_NEWCATEGORY_SUCCESS,
-    POST_NEWCATEGORY_FAILURE
+    POST_NEWCATEGORY_FAILURE,
+    POST_NEWBOOKMARK_PENDING,
+    POST_NEWBOOKMARK_SUCCESS,
+    POST_NEWBOOKMARK_FAILURE
 
 } from "../action/types"
 
@@ -33,14 +36,17 @@ const initialState = {
         categories: false,
         bookmarks: false,
         newTeam: false,
-        newCategory: false
+        newCategory: false,
+        newBookmark: false
     },
     teamName:"",
     bookmarks: [],
     teamId:"",
     categoryId:"",
     newTeam:"",
-    newCategory:""
+    newCategory:"",
+    newBookmark:"",
+    url:""
 }
 
 function appReducer(state = initialState, action){
@@ -146,39 +152,61 @@ function appReducer(state = initialState, action){
         case POST_NEWTEAM_PENDING:{
             return {
                 ...state,
-                isLoading: {...state, newTeam: true}
+                isLoading: {...state.isLoading, newTeam: true}
             };
         }
         case POST_NEWTEAM_SUCCESS:{
             return {
                 ...state,
-                isLoading: {...state, newTeam: false},
+                isLoading: {...state.isLoading, newTeam: false},
+                teams: [...state.teams, action.payload],
                 newTeam: initialState.newTeam
             };
         }
         case POST_NEWTEAM_FAILURE:{
             return{
                 ...state,
-                isLoading: {...state, newTeam: false}
+                isLoading: {...state.isLoading, newTeam: false}
             };
         }
         case POST_NEWCATEGORY_PENDING:{
             return{
                 ...state,
-                isLoading: {...state, newCategory: true}
+                isLoading: {...state.isLoading, newCategory: true}
             }
         }
         case POST_NEWCATEGORY_SUCCESS:{
             return {
                 ...state,
-                isLoading: {...state, newCategory: false},
-                newCategory: initialState.newCategory
+                isLoading: {...state.isLoading, newCategory: false},
+                newCategory: initialState.newCategory,
+                categories: [...state.categories, action.payload]
             }
         }
         case POST_NEWCATEGORY_FAILURE:{
             return {
                 ...state,
-                isLoading: {...state, newCategory: false}
+                isLoading: {...state.isLoading, newCategory: false}
+            }
+        }
+        case POST_NEWBOOKMARK_PENDING:{
+            return {
+                ...state,
+                isLoading: {...state.isLoading, newBookmark: true }
+            }
+        }
+        case POST_NEWBOOKMARK_SUCCESS:{
+            return {
+                ...state,
+                isLoading: {...state.isLoading, newBookmark: false },
+                bookmarks: [...state.bookmarks, action.payload],
+                newBookmark: initialState.newBookmark
+            }
+        }
+        case POST_NEWBOOKMARK_FAILURE:{
+            return{
+                ...state,
+                isLoading: {...state.isLoading, newBookmark: false },
             }
         }
         default:

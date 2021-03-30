@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import ModalNewBookmark from "../modals/ModalNewBookmark";
 
 function Bookmarks(props){
     const {
@@ -19,6 +20,7 @@ function Bookmarks(props){
 
     return (
         <React.Fragment>
+            <ModalNewBookmark/>
             <ul>
                 {bookmarks.length > 0 ? (
                     bookmarks.map((bookmark, key)=> (
