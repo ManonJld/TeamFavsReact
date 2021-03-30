@@ -15,7 +15,13 @@ import {
     CLEAR_BOOKMARKS,
     CLEAR_CATEGORIES,
     SET_TEAM_ID,
-    CHANGE_INPUT_APP
+    CHANGE_INPUT_APP,
+    POST_NEWTEAM_PENDING,
+    POST_NEWTEAM_SUCCESS,
+    POST_NEWTEAM_FAILURE,
+    POST_NEWCATEGORY_PENDING,
+    POST_NEWCATEGORY_SUCCESS,
+    POST_NEWCATEGORY_FAILURE
 
 } from "../action/types"
 
@@ -25,12 +31,16 @@ const initialState = {
     isLoading:{
         teams: false,
         categories: false,
-        bookmarks: false
+        bookmarks: false,
+        newTeam: false,
+        newCategory: false
     },
     teamName:"",
     bookmarks: [],
     teamId:"",
-    categoryId:""
+    categoryId:"",
+    newTeam:"",
+    newCategory:""
 }
 
 function appReducer(state = initialState, action){
@@ -54,7 +64,7 @@ function appReducer(state = initialState, action){
         case CLEAR_TEAMS:
             return {
                 ...state,
-                teams: []
+                teams: initialState.teams
             }
         case GET_CATEGORIES_PENDING:
             return{
@@ -80,7 +90,7 @@ function appReducer(state = initialState, action){
         case CLEAR_TEAM_NAME:{
             return {
                 ...state,
-                teamName: ""
+                teamName: initialState.teamName
             }
         }
         case SET_TEAM_ID:{
@@ -111,13 +121,13 @@ function appReducer(state = initialState, action){
         case CLEAR_BOOKMARKS:{
             return {
                 ...state,
-                bookmarks: []
+                bookmarks: initialState.bookmarks
             }
         }
         case CLEAR_CATEGORIES:{
             return {
                 ...state,
-                categories: []
+                categories: initialState.categories
             }
         }
         case SET_CATEGORY_ID:{
@@ -132,6 +142,44 @@ function appReducer(state = initialState, action){
                 ...state,
                 [name]: value
             };
+        }
+        case POST_NEWTEAM_PENDING:{
+            return {
+                ...state,
+                isLoading: {...state, newTeam: true}
+            };
+        }
+        case POST_NEWTEAM_SUCCESS:{
+            return {
+                ...state,
+                isLoading: {...state, newTeam: false},
+                newTeam: initialState.newTeam
+            };
+        }
+        case POST_NEWTEAM_FAILURE:{
+            return{
+                ...state,
+                isLoading: {...state, newTeam: false}
+            };
+        }
+        case POST_NEWCATEGORY_PENDING:{
+            return{
+                ...state,
+                isLoading: {...state, newCategory: true}
+            }
+        }
+        case POST_NEWCATEGORY_SUCCESS:{
+            return {
+                ...state,
+                isLoading: {...state, newCategory: false},
+                newCategory: initialState.newCategory
+            }
+        }
+        case POST_NEWCATEGORY_FAILURE:{
+            return {
+                ...state,
+                isLoading: {...state, newCategory: false}
+            }
         }
         default:
             return state

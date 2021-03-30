@@ -23,8 +23,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     // loadUser: () => dispatch(loadUser()),
     loginRequest: () => dispatch(loginRequest()),
-    changeInputLogin: () => (
-        dispatch(changeInputLogin())
+    changeInputLogin: (event) => (
+        dispatch(changeInputLogin(event))
     ),
     returnErrors: () => dispatch(returnErrors())
 })

@@ -11,7 +11,8 @@ function MyAccount(props) {
         getTeams,
         clearTeams,
         setTeamName,
-        teamId
+        teamId,
+        setTeamId
     } = props;
 
     let [tokenData, setTokenData] = useState("");
@@ -32,7 +33,8 @@ function MyAccount(props) {
     }
 
     const handleEvent = (id, name) => {
-        setTeamName(name)
+        setTeamId(id);
+        setTeamName(name);
         console.log(teamId)
     }
 

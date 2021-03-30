@@ -1,21 +1,21 @@
 import React from "react";
 import {connect} from "react-redux";
 import ModalComponent from "./ModalComponent";
-import {postTeam, changeInputApp} from "../../action/appActions";
+import {postCategory, changeInputApp} from "../../action/appActions";
 
 
-function ModalNewTeam(props){
+function ModalNewCategory(props){
 
     const {
-        newTeam,
-        postTeam,
+        newCategory,
+        postCategory,
         changeInputApp
     } = props;
 
     const handleSubmit = event => {
         event.preventDefault();
         try {
-            postTeam()
+            postCategory()
         } catch (error) {
             console.log(error)
         }
@@ -25,19 +25,19 @@ function ModalNewTeam(props){
 
     return(
         <ModalComponent
-            buttonLabel="Créer une team"
-            title="Créer une team">
+            buttonLabel="Créer une catégorie"
+            title="Créer une catégorie">
 
 
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="newTeam">Nouvelle team</label>
+                    <label htmlFor="newCategory">Nouvelle catégorie</label>
                     <input
-                        value={newTeam}
+                        value={newCategory}
                         onChange={event => changeInputApp(event)}
 
-                        name="newTeam"
-                        id="newTeam"
+                        name="newCategory"
+                        id="newCategory"
                         type="text"
                         className="form-control"
                         placeholder="Entrez un nom"
@@ -50,11 +50,11 @@ function ModalNewTeam(props){
 }
 
 const mapStateToProps = state => ({
-    newTeam: state.appReducer.newTeam
+    newCategory: state.appReducer.newCategory
 })
 
 const mapDispatchToProps = dispatch => ({
-    postTeam: (newTeam) => dispatch(postTeam(newTeam)),
+    postCategory: (newTeam) => dispatch(postCategory(newTeam)),
     changeInputApp: (event) => (
         dispatch(changeInputApp(event))
     ),
@@ -63,4 +63,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ModalNewTeam);
+)(ModalNewCategory);

@@ -15,7 +15,7 @@ import {
     SETUP_SUCCESS,
     SETUP_FAILURE
 } from "../action/types"
-import {CHANGE_INPUT} from "./types";
+
 
 export function loginRequest(){
     return (dispatch, getState) => {

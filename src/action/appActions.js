@@ -17,7 +17,13 @@ import {
     GET_BOOKMARKS_FAILURE,
     CLEAR_BOOKMARKS,
     CLEAR_CATEGORIES,
-    CHANGE_INPUT_APP
+    CHANGE_INPUT_APP,
+    POST_NEWTEAM_PENDING,
+    POST_NEWTEAM_SUCCESS,
+    POST_NEWTEAM_FAILURE,
+    POST_NEWCATEGORY_PENDING,
+    POST_NEWCATEGORY_SUCCESS,
+    POST_NEWCATEGORY_FAILURE
 } from "../action/types"
 import {returnErrors} from "./errorActions";
 
@@ -91,4 +97,51 @@ export function clearBookmarks(){
 
 export function changeInputApp(event){
     return {type: CHANGE_INPUT_APP, payload: event};
+}
+
+export function postTeam(){
+    return(dispatch, getState) =>{
+        const newTeam = getState().appReducer.newTeam;
+        dispatch({type: POST_NEWTEAM_PENDING});
+        axios
+            .post(process.env.REACT_APP_API_URL + "/teams", {name: newTeam})
+            .then(response =>response.data)
+            .then(data => dispatch({type: POST_NEWTEAM_SUCCESS, payload: data}))
+            .catch(err=> {
+                console.log(err);
+                dispatch({type:POST_NEWTEAM_FAILURE})
+            })
+    }
+}
+
+export function postCategory(){
+    return(dispatch, getState) =>{
+        const newCategory = getState().appReducer.newCategory;
+        const teamId = getState().appReducer.teamId;
+        dispatch({type: POST_NEWCATEGORY_PENDING});
+        axios
+            .post(process.env.REACT_APP_API_URL + "/categories", {name: newCategory, team:"api/teams/" + teamId})
+            .then(response =>response.data)
+            .then(data => dispatch({type: POST_NEWCATEGORY_SUCCESS, payload: data}))
+            .catch(err=> {
+                console.log(err);
+                dispatch({type:POST_NEWCATEGORY_FAILURE})
+            })
+    }
+}
+
+export function postBookmark(){
+    return(dispatch, getState) =>{
+        const newCategory = getState().appReducer.newCategory;
+        const teamId = getState().appReducer.teamId;
+        dispatch({type: POST_NEWCATEGORY_PENDING});
+        axios
+            .post(process.env.REACT_APP_API_URL + "/categories", {name: newCategory, team:"api/teams/" + teamId})
+            .then(response =>response.data)
+            .then(data => dispatch({type: POST_NEWCATEGORY_SUCCESS, payload: data}))
+            .catch(err=> {
+                console.log(err);
+                dispatch({type:POST_NEWCATEGORY_FAILURE})
+            })
+    }
 }
