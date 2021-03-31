@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import logo from '../../../assets/logosmallh200.png'
 import {Collapse, Nav, Navbar, NavbarBrand, NavbarToggler} from "reactstrap";
-import NavbarItemTest from "./NavbarItemTest";
+import NavbarItem from "./NavbarItem";
 import {logout} from "../../../action/authActions";
 import {connect} from "react-redux";
 
 
-function NavbarTest(props)
+const NavbarNew = (props) =>
 {
     const { isAuthenticated } = props;
 
@@ -26,16 +26,16 @@ function NavbarTest(props)
                 <NavbarBrand href="/"><img src={logo} alt="TeamFavs"/></NavbarBrand>
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
-                    <Nav className="ml-auto" navbar>
+                    <Nav className="ml-auto align-bottom" navbar>
                         {(!isAuthenticated && (
                             <>
-                                <NavbarItemTest href="/créer-un-compte" color="btn-myBlue" title="Créer un compte"/>
-                                <NavbarItemTest href="/login" color="btn-myBlue" title="Se connecter"/>
+                                <NavbarItem href="/créer-un-compte" title="Créer un compte"/>
+                                <NavbarItem href="/login" color="btn-myBlue" title="Se connecter"/>
                             </>
                         )) || (
                             <>
-                                <NavbarItemTest href="/mon-compte" color="btn-myBlue" title="Mon compte" />
-                                <NavbarItemTest action={handleLogout} color="btn-myBlue" title="Déconnexion"/>
+                                <NavbarItem href="/mon-compte" color="btn-myBlue" title="Mon compte" />
+                                <NavbarItem action={handleLogout} color="btn-myBlue" title="Déconnexion"/>
                             </>
                         )}
                     </Nav>
@@ -55,5 +55,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps)
-(NavbarTest)
+    mapDispatchToProps
+)(NavbarNew);

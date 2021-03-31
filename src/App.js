@@ -5,17 +5,12 @@ import LoginPage from "./component/pages/LoginPage";
 import MyAccountPage from "./component/pages/MyAccountPage";
 import TeamPage from "./component/pages/TeamPage";
 import {setup} from "./action/authActions";
-
-import NavbarContainer from "./component/layout/navbar/NavbarContainer";
 import { connect } from 'react-redux';
 import PrivateRoute from "./_helpers/PrivateRoute";
-// import Example from "./component/layout/navbar/Example";
-import NavbarTest from "./component/layout/navbar/NavbarTest";
+import Navbar from "./component/layout/navbar/NavbarNew";
 
 function App(props) {
-    // useEffect(() => {
-    //     store.dispatch(loadUser());
-    // })
+
     try {
         console.log("try setup");
         props.setupOn()
@@ -24,7 +19,7 @@ function App(props) {
     }
 //Permet de récupérer les propriété history, comme pour un composant Route
 //     const NavbarWithRouter = withRouter(NavbarContainer);
-    const NavbarWithRouter = withRouter(NavbarTest);
+    const NavbarWithRouter = withRouter(Navbar);
 
       return (
           <React.Fragment>

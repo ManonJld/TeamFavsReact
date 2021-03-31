@@ -1,6 +1,6 @@
 import {logout} from "../../../action/authActions"
 import {connect} from 'react-redux';
-import Navbar from "./Navbar";
+import NavbarOld from "./NavbarOld";
 
 const mapStateToProps = state => ({
     isAuthenticated: state.authReducer.isAuthenticated
@@ -13,4 +13,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Navbar);
+)(NavbarOld);

@@ -1,13 +1,13 @@
 import React from 'react';
 import {NavLink, Link} from "react-router-dom";
 import logo from '../../../assets/logosmallh200.png'
-import NavbarMenu from "./NavbarMenu";
+import NavbarMenuOld from "./NavbarMenuOld";
 import ModalNewTeam from "../../modals/ModalNewTeam";
 import ModalComponent from "../../modals/ModalComponent";
 // import authApi from "../../../services/authApi";
 // import AuthContext from "../../../context/AuthContext";
 
-function Navbar(props)
+function NavbarOld(props)
 {
     const { isAuthenticated } = props;
 
@@ -35,12 +35,12 @@ function Navbar(props)
                     <ul className="navbar-nav">
                         {(!isAuthenticated && (
                             <>
-                                <NavbarMenu link="/créer-un-compte" color="btn-myBlue" title="Créer un compte"/>
-                                <NavbarMenu link='/login' color="btn-myBlue" title="Se connecter"/>
+                                <NavbarMenuOld link="/créer-un-compte" color="btn-myBlue" title="Créer un compte"/>
+                                <NavbarMenuOld link='/login' color="btn-myBlue" title="Se connecter"/>
                             </>
                         )) || (
                             <>
-                                <NavbarMenu link="/mon-compte" color="btn-myBlue" title="Mon compte" />
+                                <NavbarMenuOld link="/mon-compte" color="btn-myBlue" title="Mon compte" />
                                 <li className="nav-item mx-3">
                                     <button onClick={handleLogout} className='nav-link btn btn-myBlue'>Déconnexion</button>
                                 </li>
@@ -53,4 +53,4 @@ function Navbar(props)
     )
 }
 
-export default Navbar;
+export default NavbarOld;

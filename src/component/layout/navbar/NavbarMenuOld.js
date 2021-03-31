@@ -1,8 +1,8 @@
 import React from 'react'
-import {NavLink, Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 
-function NavbarMenu ({title, color, action, link}){
+function NavbarMenuOld ({title, color, action, link}){
 
 
     return(
@@ -12,4 +12,4 @@ function NavbarMenu ({title, color, action, link}){
     )
 }
 
-export default NavbarMenu;
+export default NavbarMenuOld;

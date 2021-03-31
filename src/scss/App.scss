@@ -115,7 +115,6 @@ p{
 }
 .navbar-beige{
   background-color: rgba(230, 224, 193, 0.42);
-
 }
 
 .link, a{
@@ -138,4 +137,8 @@ li{
   max-width: 300px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.content{
+  padding: 20px;
 }
