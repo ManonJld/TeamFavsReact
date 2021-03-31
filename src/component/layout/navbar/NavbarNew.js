@@ -20,7 +20,7 @@ const NavbarNew = (props) =>
         props.history.push("/login");
     }
 
-    //cacher navbar sur la page Team
+    // cacher navbar sur la page Team
     if(window.location.href.slice(22, 26) === 'team'){
         return null
     }

@@ -1,0 +1,51 @@
+.aside{
+  background-color: $myGreen;
+  position: sticky;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  ul {
+    //list-style-type: none;
+    margin: 0;
+    padding: 10px;
+  }
+  li a {
+    display: block;
+    width: 60px;
+  }
+
+}
+
+.linkCate{
+  color: white;
+  text-decoration: none;
+  padding: 8px;
+  font: normal 1.2rem "Montserrat";
+  &:hover, &:active, &:focus{
+    cursor: pointer;
+    background-color: $myBlue;
+
+  }
+}
+
+.main{
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+}
+
+.bookmark{
+  height: auto;
+  max-height: 250px;
+  width: auto;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

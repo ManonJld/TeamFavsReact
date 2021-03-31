@@ -20,8 +20,8 @@ function Bookmarks(props){
     }
 
     return (
-        <React.Fragment>
-            <div className="d-flex justify-content-around flex-wrap flex-start">
+        <>
+
                 {bookmarks.length > 0 ? (
                     bookmarks.map((bookmark)=> (
 
@@ -30,8 +30,9 @@ function Bookmarks(props){
                     ))
                 ) : null
                 }
-            </div>
-        </React.Fragment>
+                {/*<p>bookmarks</p>*/}
+
+        </>
     )
 }
 

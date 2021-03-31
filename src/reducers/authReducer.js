@@ -1,3 +1,5 @@
+import jwtDecode from "jwt-decode";
+
 import {
     AUTH_ERROR,
     LOGIN_REQUEST,
@@ -12,12 +14,12 @@ import {
     SETUP_FAILURE
 } from "../action/types"
 
+
 const initialState = {
     authToken: localStorage.getItem('authToken'),
     isAuthenticated: null,
     isLoading: false,
-    user: null,
-    email: "test",
+    user: {},
     loginInfo:{
         username:"",
         password:""
@@ -35,13 +37,15 @@ function authReducer(state = initialState, action){
         }
         case LOGIN_SUCCESS:
         case REGISTER_SUCCESS:
-            localStorage.setItem('authToken', action.payload.token)
+            const tokenJwt = action.payload.token
+            localStorage.setItem('authToken', tokenJwt)
             return{
                 ...state,
                 authToken: action.payload.token,
                 isAuthenticated: true,
                 isLoading: false,
-                loginInfo: {username: "", password: ""}
+                loginInfo: {username: "", password: ""},
+                user:  jwtDecode(tokenJwt)
             };
         case LOGIN_FAIL:
         case REGISTER_FAIL:
@@ -69,10 +73,12 @@ function authReducer(state = initialState, action){
                 isLoading: true,
             };
         case SETUP_SUCCESS:
+            const tokenJwt2 = localStorage.getItem('authToken');
             return{
                 ...state,
                 isAuthenticated: true,
                 isLoading: false,
+                user: jwtDecode(tokenJwt2)
             }
         case SETUP_FAILURE:
             return{
