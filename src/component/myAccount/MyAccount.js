@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import jwtDecode from "jwt-decode";
 import {Link} from "react-router-dom";
 import ModalNewTeam from "../modals/ModalNewTeam";
+import Loader from "../../_helpers/Loader";
 
 function MyAccount(props) {
 
@@ -30,7 +31,7 @@ function MyAccount(props) {
 
 
     if(isLoadingTeams){
-        return <div>Chargement en cours</div>
+        return <Loader/>
     }
 
     const handleEvent = (id, name) => {

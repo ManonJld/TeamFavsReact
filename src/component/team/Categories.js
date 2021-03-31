@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import Loader from "../../_helpers/Loader";
 
 function Categories(props){
     const {
@@ -17,7 +18,7 @@ function Categories(props){
     }, [getCategories, teamId])
 
     if(isLoadingCate){
-        return <div>Chargement en cours</div>
+        return <Loader/>
     }
 
     const handleEvent = (id) => {

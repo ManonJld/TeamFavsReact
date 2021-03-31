@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import ModalNewBookmark from "../modals/ModalNewBookmark";
 import BookmarkCard from "./BookmarkCard";
+import Loader from "../../_helpers/Loader";
 
 function Bookmarks(props){
     const {
@@ -16,7 +17,7 @@ function Bookmarks(props){
     }, [clearBookmarks])
 
     if(isLoadingBookmark){
-        return <div>Chargement en cours</div>
+        return <Loader/>
     }
 
     return (

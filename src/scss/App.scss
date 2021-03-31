@@ -136,4 +136,6 @@ li{
   max-height: 250px;
   width: auto;
   max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
