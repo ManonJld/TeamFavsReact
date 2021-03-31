@@ -7,7 +7,7 @@ import TeamPage from "./component/pages/TeamPage";
 import {setup} from "./action/authActions";
 import { connect } from 'react-redux';
 import PrivateRoute from "./_helpers/PrivateRoute";
-import Navbar from "./component/layout/navbar/NavbarNew";
+import NavbarNew from "./component/layout/navbar/NavbarNew";
 
 function App(props) {
 
@@ -19,7 +19,7 @@ function App(props) {
     }
 //Permet de récupérer les propriété history, comme pour un composant Route
 //     const NavbarWithRouter = withRouter(NavbarContainer);
-    const NavbarWithRouter = withRouter(Navbar);
+    const NavbarWithRouter = withRouter(NavbarNew);
 
       return (
           <React.Fragment>

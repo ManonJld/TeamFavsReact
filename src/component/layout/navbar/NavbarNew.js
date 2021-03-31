@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import logo from '../../../assets/logosmallh200.png'
-import {Collapse, Nav, Navbar, NavbarBrand, NavbarToggler} from "reactstrap";
+import {Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem} from "reactstrap";
 import NavbarItem from "./NavbarItem";
 import {logout} from "../../../action/authActions";
 import {connect} from "react-redux";
@@ -29,13 +29,15 @@ const NavbarNew = (props) =>
                     <Nav className="ml-auto align-bottom" navbar>
                         {(!isAuthenticated && (
                             <>
-                                <NavbarItem href="/créer-un-compte" title="Créer un compte"/>
-                                <NavbarItem href="/login" color="btn-myBlue" title="Se connecter"/>
+                                <NavbarItem link="/créer-un-compte" title="Créer un compte"/>
+                                <NavbarItem link="/login" color="btn-myBlue" title="Se connecter"/>
                             </>
                         )) || (
                             <>
-                                <NavbarItem href="/mon-compte" color="btn-myBlue" title="Mon compte" />
-                                <NavbarItem action={handleLogout} color="btn-myBlue" title="Déconnexion"/>
+                                <NavbarItem link="/mon-compte" color="btn-myBlue" title="Mon compte" />
+                                <NavItem>
+                                    <a className="btn btn-myBlue my-1 mx-2" onClick={handleLogout}>Déconnexion</a>
+                                </NavItem>
                             </>
                         )}
                     </Nav>
