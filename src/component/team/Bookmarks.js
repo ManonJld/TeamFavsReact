@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import ModalNewBookmark from "../modals/ModalNewBookmark";
 import BookmarkCard from "./BookmarkCard";
 import Loader from "../../_helpers/Loader";
 
@@ -22,7 +21,7 @@ function Bookmarks(props){
 
     return (
         <React.Fragment>
-            <div className="d-flex justify-content-around flex-wrap">
+            <div className="d-flex justify-content-around flex-wrap flex-start">
                 {bookmarks.length > 0 ? (
                     bookmarks.map((bookmark)=> (
 
