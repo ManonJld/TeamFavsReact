@@ -26,7 +26,8 @@ import {
     POST_NEWBOOKMARK_SUCCESS,
     POST_NEWBOOKMARK_FAILURE,
     LOGOUT_SUCCESS,
-    CHANGE_INPUT_NEW_BOOKMARK
+    CHANGE_INPUT_NEW_BOOKMARK,
+    CLEAR_CATEGORY_ID
 
 } from "../action/types"
 
@@ -223,6 +224,12 @@ function appReducer(state = initialState, action){
             return {
                 ...state,
                 newBookmark: {...state.newBookmark, [name]: value }
+            }
+        }
+        case CLEAR_CATEGORY_ID:{
+            return{
+                ...state,
+                categoryId: initialState.categoryId
             }
         }
 

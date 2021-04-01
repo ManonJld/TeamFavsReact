@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import Bookmarks from "./Bookmarks";
-import {clearBookmarks, getBookmarks} from "../../action/appActions";
+import {clearBookmarks, getBookmarks, clearCategoryId} from "../../action/appActions";
 
 
 //envoyer des données dans les props
@@ -14,7 +14,8 @@ const mapStateToProps = state => ({
 //envoyer des fonctions dans les props
 const mapDispatchToProps = dispatch => ({
     clearBookmarks : () => dispatch(clearBookmarks()),
-    getBookmarks: (id) => dispatch(getBookmarks(id))
+    getBookmarks: (id) => dispatch(getBookmarks(id)),
+    clearCategoryId: () => dispatch(clearCategoryId())
 })
 
 export default connect(

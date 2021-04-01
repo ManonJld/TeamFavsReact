@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import BookmarkCard from "./BookmarkCard";
 import Loader from "../../_helpers/Loader";
 
@@ -8,48 +8,47 @@ function Bookmarks(props){
         bookmarks,
         clearBookmarks,
         getBookmarks,
-        categoryId
+        categoryId,
+        clearCategoryId
     } = props;
 
 
-    useEffect(() =>{
-        getBookmarks(categoryId);
 
-        return () => clearBookmarks();
-    }, [clearBookmarks, getBookmarks, categoryId])
+    useEffect(() =>{
+        if(categoryId){
+            getBookmarks(categoryId);
+        } else {
+            console.log("no cate")
+        }
+
+
+        return () => {
+            clearBookmarks()
+            clearCategoryId()
+        };
+    }, [clearBookmarks, getBookmarks, categoryId, clearCategoryId])
 
     if(isLoadingBookmark){
         return <Loader/>
     }
 
-    const compare = (a, b) => {
-        const bookA = a.bookmark.name;
-        const bookB = b.bookmark.name;
-        let comparison = 0;
-        if (bookA > bookB) {
-            comparison = 1;
-        } else if (bookA < bookB) {
-            comparison = -1;
-        }
-        return comparison;
+    console.log(bookmarks)
+    //trie les bookmarks par ordre alphabétique de nom,
+    // utile lors de la création d'un nouveau bookmark,
+    // sinon il va à la fin de la liste et n'est pas trié correctement
+    if (bookmarks.length > 0 ) {
+        let sortedBookmarks = ([].concat(bookmarks)
+            .sort((a, b) => a.name > b.name ? 1 : -1))
+        return (
+            sortedBookmarks.map((bookmark)=> (
+                <BookmarkCard key={bookmark.id} bookmark={bookmark}/>
+            ))
+        )
     }
 
-    const sortedBookmark = [].concat(bookmarks)
-        .sort((a, b) => a.name > b.name ? 1 : -1)
-
-
-    console.log(sortedBookmark)
 
     return (
         <>
-            {sortedBookmark.length > 0 ? (
-                sortedBookmark.map((bookmark)=> (
-
-                    <BookmarkCard key={bookmark.id} bookmark={bookmark}/>
-
-                ))
-            ) : null
-            }
         </>
     )
 }

@@ -28,6 +28,7 @@ import {
     POST_NEWBOOKMARK_SUCCESS,
     POST_NEWBOOKMARK_FAILURE,
     CHANGE_INPUT_NEW_BOOKMARK,
+    CLEAR_CATEGORY_ID
 } from "../action/types"
 import {returnErrors} from "./errorActions";
 
@@ -58,6 +59,9 @@ export function setTeamName(value){
 
 export function clearTeamName(){
     return {type: CLEAR_TEAM_NAME};
+}
+export function clearCategoryId(){
+    return {type: CLEAR_CATEGORY_ID};
 }
 
 export function getCategories(id){
