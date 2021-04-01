@@ -62,6 +62,7 @@ function ModalNewCategory(props){
                 <div className="form-group">
                     <label htmlFor="category">Sélectionner une catégorie</label>
                     <select className="form-control" id="category" name="category" value={newBookmark.category} onChange={event => changeInputNewBookmark(event)}>
+                        <option value="">Veuillez choisir une catégorie</option>
                         {categoriesOption}
                     </select>
                 </div>
