@@ -8,6 +8,7 @@
   background-color: $myBlue;
   border-color: $myBlue;
   font: normal 1rem "Montserrat";
+  text-decoration: none;
   &:hover, &:active, &:focus{
     background-color: $myBlueDarker;
     border-color: $myBlueDarker;

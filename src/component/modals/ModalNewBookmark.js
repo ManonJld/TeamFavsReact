@@ -65,7 +65,7 @@ function ModalNewCategory(props){
 
 const mapStateToProps = state => ({
     newBookmark: state.appReducer.newBookmark,
-    url: state.appReducer.url
+    url: state.appReducer.url,
 })
 
 const mapDispatchToProps = dispatch => ({

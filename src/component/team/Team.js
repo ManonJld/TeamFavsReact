@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import UserContainer from "./UserContainer";
 import CategoriesContainer from "./CategoriesContainer";
 import BookmarksContainer from "./BookmarksContainer";

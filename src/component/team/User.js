@@ -1,16 +1,16 @@
-import React, {useEffect} from 'react';
+import React from 'react';
+import {Link} from "react-router-dom";
 
 function User(props){
     const {
         firstname,
         lastname,
-        picture
     } = props;
 
 
     return (
         <>
-            <img src="https://o-ceane.ch/wp-content/uploads/2016/07/profile-icon-png-912-500x500.png" alt="profile pic" width="200px"/>
+            <Link to="/mon-compte" ><img src="https://o-ceane.ch/wp-content/uploads/2016/07/profile-icon-png-912-500x500.png" alt="profile pic" width="200px"/></Link>
             <p>{firstname + " " + lastname}</p>
         </>
     )

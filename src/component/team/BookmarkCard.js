@@ -3,7 +3,7 @@ import React from 'react';
 function BookmarkCard(props){
     const {bookmark} = props;
 
-    const width = 18;
+
     return (
 
         <div className="card bookmark">

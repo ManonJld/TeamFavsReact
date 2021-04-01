@@ -21,17 +21,15 @@ function Bookmarks(props){
 
     return (
         <>
+            {bookmarks.length > 0 ? (
+                bookmarks.map((bookmark)=> (
 
-                {bookmarks.length > 0 ? (
-                    bookmarks.map((bookmark)=> (
+                    <BookmarkCard key={bookmark.id} bookmark={bookmark}/>
 
-                        <BookmarkCard key={bookmark.id} bookmark={bookmark}/>
-
-                    ))
-                ) : null
-                }
-                {/*<p>bookmarks</p>*/}
-
+                ))
+            ) : null
+            }
+            {/*<p>bookmarks</p>*/}
         </>
     )
 }

@@ -30,18 +30,18 @@ function Categories(props){
 
 
     return (
-        <React.Fragment>
-            <ul className="text-center">
-                {categories.length > 0 ? (
-                    categories.map((cate, key )=> (
+            <div  className="categories">
+                <ul className="text-center">
+                    {categories.length > 0 ? (
+                        categories.map((cate, key )=> (
 
-                        <li key={key} onClick={() => {handleEvent(cate.id)}} className="linkCate">{cate.name}</li>
+                            <li key={key} onClick={() => {handleEvent(cate.id)}} className="linkCate">{cate.name}</li>
 
-                    ))
-                ) : null
-                }
-            </ul>
-        </React.Fragment>
+                        ))
+                    ) : null
+                    }
+                </ul>
+            </div>
     )
 }
 
