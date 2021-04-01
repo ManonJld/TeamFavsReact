@@ -28,7 +28,7 @@ import {
     POST_NEWBOOKMARK_SUCCESS,
     POST_NEWBOOKMARK_FAILURE,
     CHANGE_INPUT_NEW_BOOKMARK,
-    CLEAR_CATEGORY_ID
+    CLEAR_CATEGORY_ID, SET_ALL_BOOKMARKS_BY_TEAM
 } from "../action/types"
 import {returnErrors} from "./errorActions";
 
@@ -63,6 +63,7 @@ export function clearTeamName(){
 export function clearCategoryId(){
     return {type: CLEAR_CATEGORY_ID};
 }
+
 
 export function getCategories(id){
     return (dispatch) =>{

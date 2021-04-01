@@ -27,7 +27,7 @@ import {
     POST_NEWBOOKMARK_FAILURE,
     LOGOUT_SUCCESS,
     CHANGE_INPUT_NEW_BOOKMARK,
-    CLEAR_CATEGORY_ID
+    CLEAR_CATEGORY_ID,
 
 } from "../action/types"
 
@@ -52,7 +52,8 @@ const initialState = {
         name:"",
         url:"",
         category:""
-    }
+    },
+
 
 }
 
@@ -232,6 +233,7 @@ function appReducer(state = initialState, action){
                 categoryId: initialState.categoryId
             }
         }
+
 
         default:
             return state

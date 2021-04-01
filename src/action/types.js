@@ -45,4 +45,6 @@ export const POST_NEWBOOKMARK_FAILURE = "POST_NEWBOOKMARK_FAILURE";
 export const CHANGE_INPUT_NEW_BOOKMARK = "CHANGE_INPUT_NEW_BOOKMARK";
 export const CLEAR_CATEGORY_ID = "CLEAR_CATEGORY_ID";
 
+//todo : GET_TEAM_CONTENT + CLEAR_TEAM_CONTENT mettre le get dans la page mon-compte? et le clear dans le composant Team?
+
 
