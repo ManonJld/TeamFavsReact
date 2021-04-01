@@ -14,7 +14,7 @@ const mapStateToProps = state => ({
 //envoyer des fonctions dans les props
 const mapDispatchToProps = dispatch => ({
     clearBookmarks : () => dispatch(clearBookmarks()),
-    getBookmarks: (categoryId) => dispatch(getBookmarks(categoryId))
+    getBookmarks: (id) => dispatch(getBookmarks(id))
 })
 
 export default connect(

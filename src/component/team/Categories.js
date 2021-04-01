@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import Loader from "../../_helpers/Loader";
 
+
 function Categories(props){
     const {
         categories,
@@ -22,7 +23,7 @@ function Categories(props){
     }
 
     const handleEvent = (id) => {
-        getBookmarks(id)
+        // getBookmarks(id)
         setCategoryId(id)
     }
 
@@ -32,6 +33,7 @@ function Categories(props){
     return (
             <div  className="categories">
                 <ul className="text-center">
+                    <li className="linkCate">Derniers ajouts </li>
                     {categories.length > 0 ? (
                         categories.map((cate, key )=> (
 
