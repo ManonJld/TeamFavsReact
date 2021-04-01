@@ -25,7 +25,8 @@ import {
     POST_NEWBOOKMARK_PENDING,
     POST_NEWBOOKMARK_SUCCESS,
     POST_NEWBOOKMARK_FAILURE,
-    LOGOUT_SUCCESS
+    LOGOUT_SUCCESS,
+    CHANGE_INPUT_NEW_BOOKMARK
 
 } from "../action/types"
 
@@ -46,8 +47,12 @@ const initialState = {
     categoryId:"",
     newTeam:"",
     newCategory:"",
-    newBookmark:"",
-    url:""
+    newBookmark:{
+        name:"",
+        url:"",
+        category:""
+    }
+
 }
 
 function appReducer(state = initialState, action){
@@ -213,6 +218,14 @@ function appReducer(state = initialState, action){
         case LOGOUT_SUCCESS:{
             return initialState
         }
+        case CHANGE_INPUT_NEW_BOOKMARK:{
+            const { name, value } = action.payload.target;
+            return {
+                ...state,
+                newBookmark: {...state.newBookmark, [name]: value }
+            }
+        }
+
         default:
             return state
     }

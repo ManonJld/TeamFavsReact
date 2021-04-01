@@ -26,7 +26,8 @@ import {
     POST_NEWCATEGORY_FAILURE,
     POST_NEWBOOKMARK_PENDING,
     POST_NEWBOOKMARK_SUCCESS,
-    POST_NEWBOOKMARK_FAILURE
+    POST_NEWBOOKMARK_FAILURE,
+    CHANGE_INPUT_NEW_BOOKMARK,
 } from "../action/types"
 import {returnErrors} from "./errorActions";
 
@@ -102,6 +103,10 @@ export function changeInputApp(event){
     return {type: CHANGE_INPUT_APP, payload: event};
 }
 
+export function changeInputNewBookmark(event){
+    console.log(event.target)
+    return {type: CHANGE_INPUT_NEW_BOOKMARK, payload: event}
+}
 export function postTeam(){
     return(dispatch, getState) =>{
         const newTeam = getState().appReducer.newTeam;
@@ -133,14 +138,13 @@ export function postCategory(){
     }
 }
 
+
 export function postBookmark(){
     return(dispatch, getState) =>{
         const newBookmark = getState().appReducer.newBookmark;
-        const categoryId = getState().appReducer.categoryId;
-        const url = getState().appReducer.url;
         dispatch({type: POST_NEWBOOKMARK_PENDING});
         axios
-            .post(process.env.REACT_APP_API_URL + "/bookmarks", {name: newBookmark, category:"api/categories/" + categoryId, url:url})
+            .post(process.env.REACT_APP_API_URL + "/bookmarks", newBookmark)
             .then(response =>response.data)
             .then(data => dispatch({type: POST_NEWBOOKMARK_SUCCESS, payload: data}))
             .catch(err=> {

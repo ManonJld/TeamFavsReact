@@ -1,16 +1,16 @@
 import React from "react";
 import {connect} from "react-redux";
 import ModalComponent from "./ModalComponent";
-import {postBookmark, changeInputApp} from "../../action/appActions";
+import {postBookmark, changeInputNewBookmark} from "../../action/appActions";
 
 
 function ModalNewCategory(props){
 
     const {
-        newBookmark,
         postBookmark,
-        changeInputApp,
-        url
+        newBookmark,
+        categories,
+        changeInputNewBookmark,
     } = props;
 
     const handleSubmit = event => {
@@ -22,6 +22,10 @@ function ModalNewCategory(props){
         }
     }
 
+    const categoriesOption = categories.map((category) => (
+        <option key={category.id} value={category['@id']}>{category.name}</option>
+    ))
+
 
 
     return(
@@ -32,13 +36,12 @@ function ModalNewCategory(props){
 
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="newBookmark">Nom du favoris</label>
+                    <label htmlFor="name">Nom du favoris</label>
                     <input
-                        value={newBookmark}
-                        onChange={event => changeInputApp(event)}
-
-                        name="newBookmark"
-                        id="newBookmark"
+                        value={newBookmark.name}
+                        onChange={event => changeInputNewBookmark(event)}
+                        name="name"
+                        id="name"
                         type="text"
                         className="form-control"
                         placeholder="Entrez un nom"
@@ -47,15 +50,20 @@ function ModalNewCategory(props){
                 <div className="form-group">
                     <label htmlFor="url">Url du favoris</label>
                     <input
-                        value={url}
-                        onChange={event => changeInputApp(event)}
-
+                        value={newBookmark.url}
+                        onChange={event => changeInputNewBookmark(event)}
                         name="url"
                         id="url"
                         type="text"
                         className="form-control"
                         placeholder="Entrez une url"
                     />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="category">Sélectionner une catégorie</label>
+                    <select className="form-control" id="category" name="category" value={newBookmark.category} onChange={event => changeInputNewBookmark(event)}>
+                        {categoriesOption}
+                    </select>
                 </div>
                 <button type="submit"> Valider </button>
             </form>
@@ -65,13 +73,13 @@ function ModalNewCategory(props){
 
 const mapStateToProps = state => ({
     newBookmark: state.appReducer.newBookmark,
-    url: state.appReducer.url,
+    categories: state.appReducer.categories
 })
 
 const mapDispatchToProps = dispatch => ({
     postBookmark: (newTeam) => dispatch(postBookmark(newTeam)),
-    changeInputApp: (event) => (
-        dispatch(changeInputApp(event))
+    changeInputNewBookmark: (event) => (
+        dispatch(changeInputNewBookmark(event))
     ),
 })
 
