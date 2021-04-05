@@ -11,12 +11,13 @@ import NavbarNew from "./component/layout/navbar/NavbarNew";
 
 function App(props) {
 
-    try {
-        console.log("try setup");
-        props.setupOn()
-    } catch {
-        console.log("pas authentifié")
-    }
+    // try {
+    //     console.log("try setup");
+    //     props.setupOn()
+    // } catch {
+    //     console.log("pas authentifié")
+    // }
+    props.setupOn();
 //Permet de récupérer les propriété history, comme pour un composant Route
 //     const NavbarWithRouter = withRouter(NavbarContainer);
     const NavbarWithRouter = withRouter(NavbarNew);

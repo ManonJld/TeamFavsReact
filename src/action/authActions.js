@@ -41,28 +41,49 @@ export function loginRequest(){
         }
 }
 //function to know if the user is already connecting when loading the app
+// export function setup(){
+//     return (dispatch) => {
+//         const token = window.localStorage.getItem("authToken")
+//         // dispatch({type: SETUP_PENDING});
+//         if (token === undefined){
+//             console.log("token undefined")
+//             dispatch({type: SETUP_FAILURE})
+//         } else if (token){
+//             const jwtData = jwtDecode(token)
+//             console.log(jwtData)
+//             if(jwtData.exp*1000 > new Date().getTime()){
+//                 console.log("OK");
+//                 //au rechargement de la page, le token stocké côté axios disparait, il faut donc le stocker à nouveau si le token est toujours valide
+//                 setAxiosToken(token);
+//                 dispatch({type: SETUP_SUCCESS});
+//             }
+//             //voir si la redirection fonctionne avec ça
+//             dispatch({type: SETUP_FAILURE})
+//         }
+//         //voir si la redirection fonctionne avec ça TODO: non, marche toujours pas
+//         dispatch({type: SETUP_FAILURE})
+//
+//     }
+// }
+
+//TODO : voir demain ce que ça donne, si j'ai pas des erreurs avec le token
 export function setup(){
     return (dispatch) => {
         const token = window.localStorage.getItem("authToken")
-        // dispatch({type: SETUP_PENDING});
-        if (token === undefined){
-            console.log("token undefined")
-            dispatch({type: SETUP_FAILURE})
-        } else if (token){
+        if(token){
             const jwtData = jwtDecode(token)
             console.log(jwtData)
             if(jwtData.exp*1000 > new Date().getTime()){
-                console.log("OK");
-                //au rechargement de la page, le token stocké côté axios disparait, il faut donc le stocker à nouveau si le token est toujours valide
                 setAxiosToken(token);
                 dispatch({type: SETUP_SUCCESS});
+            } else {
+                dispatch({type: SETUP_FAILURE})
+                logout();
             }
-            //voir si la redirection fonctionne avec ça
+        } else {
             dispatch({type: SETUP_FAILURE})
+            logout();
         }
-        //voir si la redirection fonctionne avec ça TODO: non, marche toujours pas (test avec l'ajout juste au dessus)
-        dispatch({type: SETUP_FAILURE})
-
     }
 }
 

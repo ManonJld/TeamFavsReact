@@ -11,7 +11,7 @@ const PrivateRoute = ( props) => {
     } = props
 
     console.log("private route"+ isAuthenticated);
-    return setup() ? <Route path={props.path} component={props.component}/> : <Redirect to="/login"/>
+    return isAuthenticated ? <Route path={props.path} component={props.component}/> : <Redirect to="/login"/>
 }
 
 const mapStateToProps = state => ({
