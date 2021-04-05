@@ -4,6 +4,7 @@ import CategoriesContainer from "./CategoriesContainer";
 import BookmarksContainer from "./BookmarksContainer";
 import ModalNewCategory from "../modals/ModalNewCategory";
 import ModalNewBookmark from "../modals/ModalNewBookmark";
+import Aside from "./Aside"
 
 function Team(props){
     const {
@@ -15,13 +16,10 @@ function Team(props){
         <React.Fragment>
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-2 aside">
-                        <UserContainer/>
-                        <ModalNewCategory/>
-                        <ModalNewBookmark/>
-                        <CategoriesContainer teamId={teamId}/>
+                    <div className="aside">
+                        <Aside/>
                     </div>
-                    <div className="col-10 main">
+                    <div className="main">
                         <BookmarksContainer/>
                     </div>
                 </div>

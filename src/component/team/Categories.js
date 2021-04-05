@@ -35,7 +35,7 @@ function Categories(props){
 
 
     return (
-            <div  className="categories">
+            <div className="categories">
                 <ul className="text-center">
                     <li className="linkCate" onClick={handleClick}>Derniers ajouts {clock}</li>
                     {categories.length > 0 ? (

@@ -50,7 +50,9 @@ export function clearTeams(){
     return {type: CLEAR_TEAMS}
 }
 export function setTeamId(value){
+    console.log(value)
     return {type: SET_TEAM_ID, payload: value};
+
 }
 
 export function setTeamName(value){

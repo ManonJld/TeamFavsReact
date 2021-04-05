@@ -7,6 +7,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 25%;
+  overflow: auto;
   ul {
     //list-style-type: none;
     margin: 0;
@@ -17,6 +19,10 @@
     width: 60px;
   }
 
+}
+
+.toggler{
+  display: none;
 }
 
 .linkCate{
@@ -31,6 +37,7 @@
   }
 }
 
+
 .main{
   margin: 0;
   padding: 20px;
@@ -38,8 +45,34 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  width: 75%;
+  height: 100vh;
+  overflow: auto;
 
 }
+
+@media screen and (max-width: 768px){
+  .aside{
+    width: 100%;
+    position: relative;
+    height: auto;
+    min-height: 70px;
+  }
+  //.categories{
+  //  display: none;
+  //}
+  .main{
+    width: 100%;
+  }
+
+  .toggler{
+    align-self: flex-end;
+    display: initial;
+    position: absolute;
+  }
+}
+
+
 
 .bookmark{
   height: auto;
@@ -50,7 +83,3 @@
   text-overflow: ellipsis;
 }
 
-.categories{
-  overflow: auto;
-  margin-top: 10px;
-}

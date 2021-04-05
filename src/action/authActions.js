@@ -53,11 +53,15 @@ export function setup(){
             console.log(jwtData)
             if(jwtData.exp*1000 > new Date().getTime()){
                 console.log("OK");
+                //au rechargement de la page, le token stocké côté axios disparait, il faut donc le stocker à nouveau si le token est toujours valide
                 setAxiosToken(token);
                 dispatch({type: SETUP_SUCCESS});
             }
-
+            //voir si la redirection fonctionne avec ça
+            dispatch({type: SETUP_FAILURE})
         }
+        //voir si la redirection fonctionne avec ça TODO: non, marche toujours pas (test avec l'ajout juste au dessus)
+        dispatch({type: SETUP_FAILURE})
 
     }
 }
