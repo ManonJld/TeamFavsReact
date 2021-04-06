@@ -26,7 +26,9 @@ function ModalNewTeam(props){
     return(
         <ModalComponent
             buttonLabel="Créer une team"
-            title="Créer une team">
+            title="Créer une team"
+            classname="nav-link btn-myBlue my-2"
+        >
 
 
             <form onSubmit={handleSubmit}>

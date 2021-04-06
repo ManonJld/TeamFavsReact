@@ -26,7 +26,9 @@ function ModalNewCategory(props){
     return(
         <ModalComponent
             buttonLabel="Créer une catégorie"
-            title="Créer une catégorie">
+            title="Créer une catégorie"
+            classname="nav-link btn-myBlue my-2"
+        >
 
 
             <form onSubmit={handleSubmit}>

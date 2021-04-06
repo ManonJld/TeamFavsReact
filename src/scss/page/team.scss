@@ -65,26 +65,44 @@
   .main{
     width: 100%;
   }
-
+  .userPicture{
+    display: none;
+  }
   .toggler{
-    align-self: flex-end;
-    display: initial;
-    position: absolute;
+    display: block;
+    color: black;
+    font-size: 30px;
+  }
+
+  .myDropdownChild{
+    display: none;
   }
 }
 
+.userName{
+  text-align: center;
+  font: normal 1.2rem "Montserrat"
+}
+
+
+
+.myAccount{
+  display: none;
+}
 
 .plus{
   color: $myBlue;
   font-size: 30px;
 }
 
-.myDropdown{
+
+
+.mySecondDropdown{
   position: relative;
   text-align: center;
 }
 
-.myDropdownChild{
+.mySecondDropdownChild{
   display: none;
 }
 
@@ -93,11 +111,18 @@
 }
 
 .bookmark{
+  margin: 10px;
   height: auto;
   max-height: 250px;
   width: auto;
   max-width: 300px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.details{
+  &:hover{
+    cursor: pointer;
+  }
 }
 

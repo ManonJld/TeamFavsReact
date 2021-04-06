@@ -13,34 +13,56 @@ function Aside(props){
         teamId
     } = props;
 
-    const [isOpen, setIsOpen ] = useState(true);
+    // const [isOpen, setIsOpen ] = useState(true);
     const [isActive, setIsActive ] = useState(false);
+    const [togglerIsActive, setTogglerIsActive ] = useState(true);
 
-    const toggle = () => {
-        setIsOpen(!isOpen)
-    }
+    // const toggle = () => {
+    //     setIsOpen(!isOpen)
+    // }
 
     const addClass = () => {
         setIsActive(!isActive)
     }
-    const bars = <FontAwesomeIcon icon={faBars}/>
+
+    const setToggler = () => {
+        setTogglerIsActive(!togglerIsActive)
+    }
+
+
+    const bars = <FontAwesomeIcon className="toggler" onClick={setToggler} icon={faBars}/>
     const plus = <FontAwesomeIcon className="plus" onClick={addClass} icon={faPlusCircle}/>
 
     //todo: garder le aside open quand on est sur une page supérieure à 768px
     return (
         <React.Fragment>
-            <NavbarToggler className="toggler" onClick={toggle}>{bars}</NavbarToggler>
-            <Collapse isOpen={isOpen} navbar>
-                <UserContainer/>
-                <div className="myDropdown">
-                    {plus}
-                    <div className={isActive? "myDropdownChild visible" : "myDropdownChild"}>
-                        <ModalNewCategory/>
-                        <ModalNewBookmark/>
+            <div className="myDropdown">
+                {bars}
+                <div className={togglerIsActive? "myDropdownChild visible" :  "myDropdownChild"}>
+                    <UserContainer/>
+                    <div className="mySecondDropdown">
+                        {plus}
+                        <div className={isActive? "mySecondDropdownChild visible" : "mySecondDropdownChild"}>
+                            <ModalNewCategory/>
+                            <ModalNewBookmark/>
+                        </div>
                     </div>
+                    <CategoriesContainer teamId={teamId}/>
                 </div>
-                <CategoriesContainer teamId={teamId}/>
-            </Collapse>
+
+            </div>
+            {/*<NavbarToggler className="toggler" onClick={toggle}>{bars}</NavbarToggler>*/}
+            {/*<Collapse isOpen={isOpen} navbar>*/}
+            {/*    <UserContainer/>*/}
+            {/*    <div className="mySecondDropdown">*/}
+            {/*        {plus}*/}
+            {/*        <div className={isActive? "mySecondDropdownChild visible" : "mySecondDropdownChild"}>*/}
+            {/*            <ModalNewCategory/>*/}
+            {/*            <ModalNewBookmark/>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*    <CategoriesContainer teamId={teamId}/>*/}
+            {/*</Collapse>*/}
         </React.Fragment>
     )
 }

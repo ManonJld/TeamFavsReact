@@ -4,7 +4,7 @@ import ModalComponent from "./ModalComponent";
 import {postBookmark, changeInputNewBookmark} from "../../action/appActions";
 
 
-function ModalNewCategory(props){
+function ModalNewBookmark(props){
 
     const {
         postBookmark,
@@ -31,7 +31,10 @@ function ModalNewCategory(props){
     return(
         <ModalComponent
             buttonLabel="Créer un favoris"
-            title="Créer un favoris">
+            title="Créer un favoris"
+            classname="nav-link btn-myBlue my-2"
+        >
+
 
 
             <form onSubmit={handleSubmit}>
@@ -87,4 +90,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ModalNewCategory);
+)(ModalNewBookmark);
