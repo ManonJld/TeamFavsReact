@@ -6,7 +6,7 @@ import CategoriesContainer from "./CategoriesContainer";
 import {connect} from "react-redux";
 import {Collapse, Navbar, NavbarToggler} from "reactstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock } from '@fortawesome/free-regular-svg-icons'
+import { faBars, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
 function Aside(props){
     const {
@@ -14,19 +14,31 @@ function Aside(props){
     } = props;
 
     const [isOpen, setIsOpen ] = useState(true);
+    const [isActive, setIsActive ] = useState(false);
 
     const toggle = () => {
         setIsOpen(!isOpen)
     }
-    const clock = <FontAwesomeIcon icon={faClock}/>
+
+    const addClass = () => {
+        setIsActive(!isActive)
+    }
+    const bars = <FontAwesomeIcon icon={faBars}/>
+    const plus = <FontAwesomeIcon className="plus" onClick={addClass} icon={faPlusCircle}/>
+
     //todo: garder le aside open quand on est sur une page supérieure à 768px
     return (
         <React.Fragment>
-            <NavbarToggler className="toggler" onClick={toggle}>{clock}</NavbarToggler>
+            <NavbarToggler className="toggler" onClick={toggle}>{bars}</NavbarToggler>
             <Collapse isOpen={isOpen} navbar>
                 <UserContainer/>
-                <ModalNewCategory/>
-                <ModalNewBookmark/>
+                <div className="myDropdown">
+                    {plus}
+                    <div className={isActive? "myDropdownChild visible" : "myDropdownChild"}>
+                        <ModalNewCategory/>
+                        <ModalNewBookmark/>
+                    </div>
+                </div>
                 <CategoriesContainer teamId={teamId}/>
             </Collapse>
         </React.Fragment>

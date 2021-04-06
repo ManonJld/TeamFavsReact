@@ -51,6 +51,7 @@
 
 }
 
+
 @media screen and (max-width: 768px){
   .aside{
     width: 100%;
@@ -73,6 +74,23 @@
 }
 
 
+.plus{
+  color: $myBlue;
+  font-size: 30px;
+}
+
+.myDropdown{
+  position: relative;
+  text-align: center;
+}
+
+.myDropdownChild{
+  display: none;
+}
+
+.visible{
+  display: block;
+}
 
 .bookmark{
   height: auto;

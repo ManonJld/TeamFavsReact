@@ -66,7 +66,7 @@ export function loginRequest(){
 //     }
 // }
 
-//TODO : voir demain ce que ça donne, si j'ai pas des erreurs avec le token
+//TODO : voir demain ce que ça donne, si j'ai pas des erreurs avec le token, a priori OK
 export function setup(){
     return (dispatch) => {
         const token = window.localStorage.getItem("authToken")
