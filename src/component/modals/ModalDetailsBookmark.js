@@ -23,6 +23,7 @@ function ModalDetailsBookmark(props){
         >
             <div>
                 {bookmark.description}
+                <p>Crée par {bookmark.user.shortName}</p>
             </div>
 
 
