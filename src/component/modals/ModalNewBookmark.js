@@ -48,6 +48,9 @@ function ModalNewBookmark(props){
                         type="text"
                         className="form-control"
                         placeholder="Entrez un nom"
+                        maxLength="40"
+                        minLength="3"
+                        pattern="^[a-z 0-9_-]{3,40}$"
                     />
                 </div>
                 <div className="form-group">
@@ -60,6 +63,7 @@ function ModalNewBookmark(props){
                         type="text"
                         className="form-control"
                         placeholder="Entrez une url"
+                        pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)"
                     />
                 </div>
                 <div className="form-group">

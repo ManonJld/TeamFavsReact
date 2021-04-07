@@ -37,12 +37,14 @@ function ModalNewTeam(props){
                     <input
                         value={newTeam}
                         onChange={event => changeInputApp(event)}
-
                         name="newTeam"
                         id="newTeam"
                         type="text"
                         className="form-control"
                         placeholder="Entrez un nom"
+                        maxLength="40"
+                        minLength="3"
+                        pattern="^[a-z 0-9_-]{3,40}$"
                     />
                 </div>
                 <button type="submit"> Valider </button>

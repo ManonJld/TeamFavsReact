@@ -37,12 +37,14 @@ function ModalNewCategory(props){
                     <input
                         value={newCategory}
                         onChange={event => changeInputApp(event)}
-
                         name="newCategory"
                         id="newCategory"
                         type="text"
                         className="form-control"
                         placeholder="Entrez un nom"
+                        maxLength="40"
+                        minLength="3"
+                        pattern="^[a-z 0-9_-]{3,40}$"
                     />
                 </div>
                 <button type="submit"> Valider </button>
