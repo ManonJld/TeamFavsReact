@@ -31,13 +31,14 @@ function Team(props){
                     </div>
                     <div className="main">
                         <div className="navTopTeam">
-                            <nav aria-label="breadcrumb">
-                                <ol className="breadcrumb">
-                                    <li className="breadcrumb-item"><a href="#">{teamName}</a></li>
-                                    {categoryName? <li className="breadcrumb-item active" aria-current="page">{categoryName}</li> : null}
+                            {/*<nav aria-label="breadcrumb">*/}
+                            {/*    <ol className="breadcrumb">*/}
+                            {/*        <li className="breadcrumb-item"><a href="#">{teamName}</a></li>*/}
+                            {/*        {categoryName? <li className="breadcrumb-item active" aria-current="page">{categoryName}</li> : null}*/}
 
-                                </ol>
-                            </nav>
+                            {/*    </ol>*/}
+                            {/*</nav>*/}
+                            {teamName} {categoryName? " / "+categoryName : null}
                         </div>
                         <BookmarksContainer/>
                     </div>
