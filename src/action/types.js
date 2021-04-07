@@ -46,6 +46,8 @@ export const CHANGE_INPUT_NEW_BOOKMARK = "CHANGE_INPUT_NEW_BOOKMARK";
 export const CLEAR_CATEGORY_ID = "CLEAR_CATEGORY_ID";
 export const CATEGORY_CLICKED = "CATEGORY_CLICKED";
 export const CLEAR_CATEGORY_CLICKED = "CLEAR_CATEGORY_CLICKED";
+export const SET_CATEGORY_NAME = "SET_CATEGORY_NAME";
+export const CLEAR_CATEGORY_NAME = "CLEAR_CATEGORY_NAME";
 
 //todo : GET_TEAM_CONTENT + CLEAR_TEAM_CONTENT mettre le get dans la page mon-compte? et le clear dans le composant Team?
 

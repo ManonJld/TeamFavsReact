@@ -75,8 +75,8 @@ function Bookmarks(props){
 
 
     return (
-        <>
-        </>
+        <div className="container-fluid">
+        </div>
     )
 }
 

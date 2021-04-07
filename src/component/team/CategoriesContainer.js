@@ -1,6 +1,13 @@
 import {connect} from 'react-redux'
 import Categories from "./Categories";
-import {clearCategories, clearCategoryId, getBookmarks, getCategories, setCategoryId} from "../../action/appActions";
+import {
+    clearCategories,
+    clearCategoryId,
+    getBookmarks,
+    getCategories,
+    setCategoryId,
+    setCategoryName
+} from "../../action/appActions";
 
 
 //envoyer des données dans les props
@@ -17,7 +24,8 @@ const mapDispatchToProps = dispatch => ({
     getCategories: (id) => dispatch(getCategories(id)),
     setCategoryId: (id) => dispatch(setCategoryId(id)),
     getBookmarks: (id) => dispatch(getBookmarks(id)),
-    clearCategoryId: () => dispatch(clearCategoryId())
+    clearCategoryId: () => dispatch(clearCategoryId()),
+    setCategoryName: (id) => dispatch(setCategoryName(id))
 })
 
 export default connect(

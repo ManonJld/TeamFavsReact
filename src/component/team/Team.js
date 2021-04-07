@@ -7,6 +7,9 @@ function Team(props){
     const {
         teamId,
         clearCategoryClicked,
+        teamName,
+        categoryName,
+        clearCategoryName
 
     } = props;
 
@@ -14,8 +17,9 @@ function Team(props){
 
         return () => {
             clearCategoryClicked()
+            clearCategoryName()
         };
-    }, [clearCategoryClicked])
+    }, [clearCategoryClicked, clearCategoryName])
 
 
     return (
@@ -26,6 +30,15 @@ function Team(props){
                         <Aside teamId={teamId}/>
                     </div>
                     <div className="main">
+                        <div className="navTopTeam">
+                            <nav aria-label="breadcrumb">
+                                <ol className="breadcrumb">
+                                    <li className="breadcrumb-item"><a href="#">{teamName}</a></li>
+                                    {categoryName? <li className="breadcrumb-item active" aria-current="page">{categoryName}</li> : null}
+
+                                </ol>
+                            </nav>
+                        </div>
                         <BookmarksContainer/>
                     </div>
                 </div>

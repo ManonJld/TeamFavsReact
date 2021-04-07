@@ -31,7 +31,9 @@ import {
     CLEAR_CATEGORY_ID,
     SET_ALL_BOOKMARKS_BY_TEAM,
     CATEGORY_CLICKED,
-    CLEAR_CATEGORY_CLICKED
+    CLEAR_CATEGORY_CLICKED,
+    SET_CATEGORY_NAME,
+    CLEAR_CATEGORY_NAME
 } from "../action/types"
 import {returnErrors} from "./errorActions";
 
@@ -93,6 +95,7 @@ export function clearCategories(){
 
 export function getBookmarks(id){
     return (dispatch) => {
+        console.log("bookmark")
         dispatch({type: GET_BOOKMARKS_PENDING});
         axios
             .get(process.env.REACT_APP_API_URL + "/categories/" + id + "/bookmarks")
@@ -106,6 +109,21 @@ export function getBookmarks(id){
                 dispatch({type: GET_BOOKMARKS_FAILURE})
             })
     }
+}
+
+export function setCategoryName(id){
+    return (dispatch, getState) => {
+        const categories = getState().appReducer.categories;
+        const category = categories.filter(category => category.id === id);
+        // console.log(category);
+        const categoryName = category[0].name;
+        // console.log(categoryName);
+        dispatch({type: SET_CATEGORY_NAME, payload: categoryName})
+    }
+}
+
+export function clearCategoryName(){
+    return {type: CLEAR_CATEGORY_NAME}
 }
 
 export function categoryClicked(){

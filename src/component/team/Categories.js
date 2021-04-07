@@ -10,6 +10,7 @@ function Categories(props){
         getCategories,
         teamId,
         setCategoryId,
+        setCategoryName
     } = props;
 
 
@@ -24,6 +25,7 @@ function Categories(props){
 
     const handleEvent = (id) => {
         setCategoryId(id)
+        setCategoryName(id)
     }
 
     const handleClick = () => {

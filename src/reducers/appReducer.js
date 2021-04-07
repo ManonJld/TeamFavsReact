@@ -29,7 +29,9 @@ import {
     CHANGE_INPUT_NEW_BOOKMARK,
     CLEAR_CATEGORY_ID,
     CATEGORY_CLICKED,
-    CLEAR_CATEGORY_CLICKED
+    CLEAR_CATEGORY_CLICKED,
+    SET_CATEGORY_NAME,
+    CLEAR_CATEGORY_NAME
 
 } from "../action/types"
 
@@ -56,6 +58,7 @@ const initialState = {
         category:""
     },
     categoryClicked:false,
+    categoryName:""
 
 }
 
@@ -247,7 +250,18 @@ function appReducer(state = initialState, action){
                 categoryClicked: initialState.categoryClicked
             }
         }
-
+        case SET_CATEGORY_NAME:{
+            return {
+                ...state,
+                categoryName: action.payload
+            }
+        }
+        case CLEAR_CATEGORY_NAME:{
+            return {
+                ...state,
+                categoryName: initialState.categoryName
+            }
+        }
 
         default:
             return state
