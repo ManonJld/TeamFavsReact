@@ -128,8 +128,23 @@
 
 .navTopTeam{
   width: 100%;
-  max-height: 34px;
-  background-color: #1b1e21;
+  max-height: 50px;
   padding: 5px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
+.myBreadcrumb{
+  margin-right: 10px;
+  width: 200px;
+}
+
+.searchIcon{
+  margin-left: 10px;
+  color: black;
+}
+
+.textForm{
+  width: 250px
+}

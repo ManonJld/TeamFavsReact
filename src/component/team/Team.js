@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react';
 import BookmarksContainer from "./BookmarksContainer";
 import Aside from "./Aside"
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import {faClock} from "@fortawesome/free-regular-svg-icons";
 
 function Team(props){
     const {
@@ -22,6 +24,7 @@ function Team(props){
     }, [clearCategoryClicked, clearCategoryName])
 
 
+
     return (
         <React.Fragment>
             <div className="container-fluid">
@@ -31,14 +34,16 @@ function Team(props){
                     </div>
                     <div className="main">
                         <div className="navTopTeam">
-                            {/*<nav aria-label="breadcrumb">*/}
-                            {/*    <ol className="breadcrumb">*/}
-                            {/*        <li className="breadcrumb-item"><a href="#">{teamName}</a></li>*/}
-                            {/*        {categoryName? <li className="breadcrumb-item active" aria-current="page">{categoryName}</li> : null}*/}
+                            <div className="myBreadcrumb">
+                                {teamName} {categoryName? " / "+categoryName : null}
+                            </div>
 
-                            {/*    </ol>*/}
-                            {/*</nav>*/}
-                            {teamName} {categoryName? " / "+categoryName : null}
+                            <input type="text" className="form-control textForm"/>
+                            <FontAwesomeIcon icon={faSearch} className="searchIcon"/>
+
+
+
+
                         </div>
                         <BookmarksContainer/>
                     </div>

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import BookmarkCard from "./BookmarkCard";
 import Loader from "../../_helpers/Loader";
 import ModalNewBookmark from "../modals/ModalNewBookmark";
