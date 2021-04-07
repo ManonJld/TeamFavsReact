@@ -28,6 +28,8 @@ import {
     LOGOUT_SUCCESS,
     CHANGE_INPUT_NEW_BOOKMARK,
     CLEAR_CATEGORY_ID,
+    CATEGORY_CLICKED,
+    CLEAR_CATEGORY_CLICKED
 
 } from "../action/types"
 
@@ -53,7 +55,7 @@ const initialState = {
         url:"",
         category:""
     },
-
+    categoryClicked:false,
 
 }
 
@@ -231,6 +233,18 @@ function appReducer(state = initialState, action){
             return{
                 ...state,
                 categoryId: initialState.categoryId
+            }
+        }
+        case CATEGORY_CLICKED:{
+            return {
+                ...state,
+                categoryClicked: true
+            }
+        }
+        case CLEAR_CATEGORY_CLICKED:{
+            return {
+                ...state,
+                categoryClicked: initialState.categoryClicked
             }
         }
 

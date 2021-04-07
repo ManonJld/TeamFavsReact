@@ -1,11 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import BookmarksContainer from "./BookmarksContainer";
 import Aside from "./Aside"
 
+
 function Team(props){
     const {
-        teamId
+        teamId,
+        clearCategoryClicked,
+
     } = props;
+
+    useEffect(() =>{
+
+        return () => {
+            clearCategoryClicked()
+        };
+    }, [clearCategoryClicked])
 
 
     return (

@@ -8,7 +8,7 @@ import {clearCategories, clearCategoryId, getBookmarks, getCategories, setCatego
 const mapStateToProps = state => ({
     categories: state.appReducer.categories,
     isLoadingCate: state.appReducer.isLoading.categories,
-    categoryId: state.appReducer.categoryId
+    categoryId: state.appReducer.categoryId,
 })
 
 //envoyer des fonctions dans les props

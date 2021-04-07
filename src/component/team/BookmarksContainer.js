@@ -8,7 +8,9 @@ import {clearBookmarks, getBookmarks, clearCategoryId} from "../../action/appAct
 const mapStateToProps = state => ({
     isLoadingBookmark: state.appReducer.isLoading.bookmarks,
     bookmarks: state.appReducer.bookmarks,
-    categoryId: state.appReducer.categoryId
+    categoryId: state.appReducer.categoryId,
+    categories: state.appReducer.categories,
+    categoryClicked: state.appReducer.categoryClicked
 })
 
 //envoyer des fonctions dans les props

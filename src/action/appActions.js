@@ -28,7 +28,10 @@ import {
     POST_NEWBOOKMARK_SUCCESS,
     POST_NEWBOOKMARK_FAILURE,
     CHANGE_INPUT_NEW_BOOKMARK,
-    CLEAR_CATEGORY_ID, SET_ALL_BOOKMARKS_BY_TEAM
+    CLEAR_CATEGORY_ID,
+    SET_ALL_BOOKMARKS_BY_TEAM,
+    CATEGORY_CLICKED,
+    CLEAR_CATEGORY_CLICKED
 } from "../action/types"
 import {returnErrors} from "./errorActions";
 
@@ -94,12 +97,23 @@ export function getBookmarks(id){
         axios
             .get(process.env.REACT_APP_API_URL + "/categories/" + id + "/bookmarks")
             .then(response => response.data)
-            .then(data => dispatch({type: GET_BOOKMARKS_SUCCESS, payload:data['hydra:member']}))
+            .then(data => {
+                dispatch(categoryClicked())
+                dispatch({type: GET_BOOKMARKS_SUCCESS, payload: data['hydra:member']})
+            })
             .catch(error => {
                 dispatch(returnErrors(error.response.data))
                 dispatch({type: GET_BOOKMARKS_FAILURE})
             })
     }
+}
+
+export function categoryClicked(){
+    return {type: CATEGORY_CLICKED}
+}
+
+export function clearCategoryClicked(){
+    return {type: CLEAR_CATEGORY_CLICKED}
 }
 
 export function clearBookmarks(){

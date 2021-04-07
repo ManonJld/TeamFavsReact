@@ -29,7 +29,7 @@ function App(props) {
               <NavbarWithRouter/>
               {/*  <Example/>*/}
                   <Switch>
-                      <Route exact path="/" component={HomePage}/>
+                      <Route exact path='/' component={HomePage}/>
                       <Route exact path='/login' component={LoginPage}/>
                       <PrivateRoute exact path='/mon-compte' component={MyAccountPage}/>
                       <PrivateRoute path='/team/:teamId' component={TeamPage}/>

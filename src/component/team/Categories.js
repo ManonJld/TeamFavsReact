@@ -37,13 +37,13 @@ function Categories(props){
     return (
             <div className="categories">
                 <ul className="text-center">
-                    <li className="linkCate" onClick={handleClick}>Derniers ajouts {clock}</li>
+                    {categories.length > 0 ? (<li className="linkCate" onClick={handleClick}>Derniers ajouts {clock}</li>): null}
                     {categories.length > 0 ? (
-                        categories.map((cate, key )=> (
+                        (categories.map((cate, key )=> (
 
                             <li key={key} onClick={() => {handleEvent(cate.id)}} className="linkCate">{cate.name}</li>
 
-                        ))
+                        )))
                     ) : null
                     }
                 </ul>
