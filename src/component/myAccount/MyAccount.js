@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import jwtDecode from "jwt-decode";
 import {Link} from "react-router-dom";
-import ModalNewTeam from "../modals/ModalNewTeam";
 import Loader from "../../_helpers/Loader";
 
 function MyAccount(props) {
@@ -11,23 +10,22 @@ function MyAccount(props) {
         isLoadingTeams,
         teams,
         getTeams,
-        clearTeams,
         setTeamName,
         teamId,
-        setTeamId
+        setTeamId,
+        firstname,
+        lastname,
+        picture
     } = props;
 
-    let [tokenData, setTokenData] = useState("");
 
 
     useEffect( () =>{
         if(token !== null){
-            setTokenData(jwtDecode(token));
             getTeams()
         }
-        // return () => clearTeams()
 
-    }, [token, getTeams, clearTeams])
+    }, [token, getTeams])
 
 
     if(isLoadingTeams){
@@ -45,9 +43,9 @@ function MyAccount(props) {
             <div className="container contentAccount">
                 <div className="row">
                     <div className="user">
-                        <img src="https://o-ceane.ch/wp-content/uploads/2016/07/profile-icon-png-912-500x500.png" alt="profile pic" width="100%"/>
-                        {tokenData==="" ? null : (
-                            <h1>{tokenData.firstname} {tokenData.lastname}</h1>
+                        <img src={picture} alt="profile pic" width="100%"/>
+                        {token==="" ? null : (
+                            <h1>{firstname} {lastname}</h1>
                         )
                         }
                     </div>
@@ -56,9 +54,7 @@ function MyAccount(props) {
                         <ul>
                             {teams.length > 0 ? (
                                 teams.map((team, key )=> (
-
-                                    <li className="teamBtn" key={key} onClick={() => handleEvent(team.id, team.name)}><Link to={"/team/" + team.id}>{team.name}</Link></li>
-
+                                    <li key={key} onClick={() => handleEvent(team.id, team.name)}><Link to={"/team/" + team.id} className="teamBtn">{team.name}</Link></li>
                                 ))
                             ) : null
                             }

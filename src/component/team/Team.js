@@ -3,7 +3,6 @@ import BookmarksContainer from "./BookmarksContainer";
 import Aside from "./Aside"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import {faClock} from "@fortawesome/free-regular-svg-icons";
 
 function Team(props){
     const {
