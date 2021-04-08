@@ -50,7 +50,7 @@ function ModalNewBookmark(props){
                         placeholder="Entrez un nom"
                         maxLength="40"
                         minLength="3"
-                        pattern="^[a-z 0-9_-]{3,40}$"
+                        pattern="^[A-z 0-9_-]{3,40}$"
                     />
                 </div>
                 <div className="form-group">
