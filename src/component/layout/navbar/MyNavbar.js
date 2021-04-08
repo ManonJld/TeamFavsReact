@@ -4,9 +4,10 @@ import {Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem} from "reacts
 import NavbarItem from "./NavbarItem";
 import {logout} from "../../../action/authActions";
 import {connect} from "react-redux";
+import ModalNewTeam from "../../modals/ModalNewTeam";
 
 
-const NavbarNew = (props) =>
+const MyNavbar = (props) =>
 {
     const { isAuthenticated } = props;
 
@@ -34,12 +35,15 @@ const NavbarNew = (props) =>
                     <Nav className="ml-auto align-bottom" navbar>
                         {(!isAuthenticated && (
                             <>
-                                <NavbarItem link="/créer-un-compte" title="Créer un compte"/>
+                                <NavbarItem link="/creer-un-compte" title="Créer un compte"/>
                                 <NavbarItem link="/login" color="btn-myBlue" title="Se connecter"/>
                             </>
                         )) || (
                             <>
-                                <NavbarItem link="/mon-compte" color="btn-myBlue" title="Mon compte" />
+                                {/*<NavbarItem link="/mon-compte" color="btn-myBlue" title="Mon compte" />*/}
+                                <NavItem>
+                                    <ModalNewTeam/>
+                                </NavItem>
                                 <NavItem>
                                     <a className="btn btn-myBlue my-1 mx-2" onClick={handleLogout}>Déconnexion</a>
                                 </NavItem>
@@ -63,4 +67,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(NavbarNew);
+)(MyNavbar);

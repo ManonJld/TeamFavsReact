@@ -27,7 +27,7 @@ function ModalNewTeam(props){
         <ModalComponent
             buttonLabel="Créer une team"
             title="Créer une team"
-            classname="nav-link btn-myBlue my-2"
+            classname="btn btn-myBlue my-1 mx-2"
         >
 
 

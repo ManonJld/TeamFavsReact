@@ -42,24 +42,29 @@ function MyAccount(props) {
 
     return(
         <React.Fragment>
-            <div className="container">
+            <div className="container contentAccount">
+                <div className="row">
+                    <div className="user">
+                        <img src="https://o-ceane.ch/wp-content/uploads/2016/07/profile-icon-png-912-500x500.png" alt="profile pic" width="100%"/>
+                        {tokenData==="" ? null : (
+                            <h1>{tokenData.firstname} {tokenData.lastname}</h1>
+                        )
+                        }
+                    </div>
+                    <div className="teamList">
+                        <h2>Mes Teams</h2>
+                        <ul>
+                            {teams.length > 0 ? (
+                                teams.map((team, key )=> (
 
-                {tokenData==="" ? null : (
-                    <h1>Bienvenue {tokenData.firstname} {tokenData.lastname}</h1>
-                )
-                }
-                <ModalNewTeam/>
-                <ul>
-                    {teams.length > 0 ? (
-                        teams.map((team, key )=> (
+                                    <li className="teamBtn" key={key} onClick={() => handleEvent(team.id, team.name)}><Link to={"/team/" + team.id}>{team.name}</Link></li>
 
-                            <li key={key} onClick={() => handleEvent(team.id, team.name)}>{team.name} <Link to={"/team/" + team.id}> Voir, id: {team.id}</Link></li>
-
-                        ))
-                    ) : null
-                    }
-                </ul>
-
+                                ))
+                            ) : null
+                            }
+                        </ul>
+                    </div>
+                </div>
             </div>
         </React.Fragment>
     )

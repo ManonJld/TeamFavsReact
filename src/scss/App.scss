@@ -1,5 +1,6 @@
 @import "variables";
 @import 'page/team.scss';
+@import 'page/myAccount.scss';
 
 
 
@@ -22,6 +23,11 @@
 
 h1{
   font: normal 2.5rem "Roboto";
+  color: $myBlack;
+}
+
+h2{
+  font: normal 2rem "Roboto";
   color: $myBlack;
 }
 
