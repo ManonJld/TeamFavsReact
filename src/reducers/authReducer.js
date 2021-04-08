@@ -45,7 +45,7 @@ function authReducer(state = initialState, action){
                 isAuthenticated: true,
                 isLoading: false,
                 loginInfo: {username: "", password: ""},
-                user:  jwtDecode(tokenJwt)
+                user:  jwtDecode(tokenJwt),
             };
         case LOGIN_FAIL:
         case REGISTER_FAIL:

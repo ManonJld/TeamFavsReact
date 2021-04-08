@@ -15,7 +15,8 @@ function MyAccount(props) {
         setTeamId,
         firstname,
         lastname,
-        picture
+        picture,
+        userId
     } = props;
 
 
@@ -38,6 +39,12 @@ function MyAccount(props) {
         console.log(teamId)
     }
 
+    const listTeamsCreatedByCurrentUser = teams.filter(team => team.user["@id"] === "/api/users/"+userId)
+    const listTeamsNotCreatedByCurrentUser = teams.filter(team => team.user["@id"] !== "/api/users/"+userId)
+
+    console.log(listTeamsCreatedByCurrentUser)
+    console.log(listTeamsNotCreatedByCurrentUser)
+
     return(
         <React.Fragment>
             <div className="container contentAccount">
@@ -50,10 +57,19 @@ function MyAccount(props) {
                         }
                     </div>
                     <div className="teamList">
-                        <h2>Mes Teams</h2>
+                        <h2>Mes Teams as admin</h2>
                         <ul>
-                            {teams.length > 0 ? (
-                                teams.map((team, key )=> (
+                            {listTeamsCreatedByCurrentUser.length > 0 ? (
+                                listTeamsCreatedByCurrentUser.map((team, key )=> (
+                                    <li key={key} onClick={() => handleEvent(team.id, team.name)}><Link to={"/team/" + team.id} className="teamBtn">{team.name}</Link></li>
+                                ))
+                            ) : null
+                            }
+                        </ul>
+                        <h2>Mes Teams as user</h2>
+                        <ul>
+                            {listTeamsNotCreatedByCurrentUser.length > 0 ? (
+                                listTeamsNotCreatedByCurrentUser.map((team, key )=> (
                                     <li key={key} onClick={() => handleEvent(team.id, team.name)}><Link to={"/team/" + team.id} className="teamBtn">{team.name}</Link></li>
                                 ))
                             ) : null

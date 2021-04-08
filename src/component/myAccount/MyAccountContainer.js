@@ -13,6 +13,7 @@ const mapStateToProps = state => ({
     firstname: state.authReducer.user.firstname,
     lastname: state.authReducer.user.lastname,
     picture: state.authReducer.user.picture,
+    userId: state.authReducer.user.id
 })
 
 //envoyer des fonctions dans les props
