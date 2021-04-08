@@ -71,3 +71,10 @@ li{
     color: $myGreen
   }
 }
+
+input{
+  &:active, &:focus, &:current, &:enabled{
+    border-color: black;
+    box-shadow: black;
+  }
+}

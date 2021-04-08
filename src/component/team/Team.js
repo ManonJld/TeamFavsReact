@@ -36,13 +36,13 @@ function Team(props){
                             <div className="myBreadcrumb">
                                 {teamName} {categoryName? " / "+categoryName : null}
                             </div>
-
-                            <input type="text" className="form-control textForm"/>
-                            <FontAwesomeIcon icon={faSearch} className="searchIcon"/>
-
-
-
-
+                            <div className="searchbar">
+                                <input type="text" className="form-control textForm"/>
+                                <FontAwesomeIcon icon={faSearch} className="searchIcon"/>
+                            </div>
+                        </div>
+                        <div className="filters">
+                            <span>Dates desc</span>
                         </div>
                         <BookmarksContainer/>
                     </div>
