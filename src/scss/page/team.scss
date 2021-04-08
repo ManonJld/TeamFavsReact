@@ -120,7 +120,8 @@
   text-overflow: ellipsis;
 }
 
-.details{
+.detailBookmark{
+  color:$myBlue;
   &:hover{
     cursor: pointer;
   }
@@ -148,3 +149,4 @@
 .textForm{
   width: 250px
 }
+

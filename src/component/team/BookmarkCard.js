@@ -1,5 +1,6 @@
 import React from 'react';
 import ModalDetailsBookmark from "../modals/ModalDetailsBookmark";
+import { faBars, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
 
 function BookmarkCard(props){

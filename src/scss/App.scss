@@ -10,15 +10,34 @@
   border-color: $myBlue;
   font: normal 1rem "Montserrat";
   text-decoration: none;
-  &:hover, &:active, &:focus{
+  &:hover, &:active, &:focus, &:checked{
     background-color: $myBlueDarker;
     border-color: $myBlueDarker;
+    box-shadow: none;
     &:focus, .focus{
       font-weight: bold ;
       color: white;
+      box-shadow: none;
     }
   }
+}
 
+.btn-myOrange{
+  color: #fff;
+  background-color: $myOrange;
+  border-color: $myOrange;
+  font: normal 1rem "Montserrat";
+  text-decoration: none;
+  &:hover, &:active, &:focus, &:checked{
+    background-color: $myOrangeDarker;
+    border-color: $myOrangeDarker;
+    box-shadow: none;
+    &:focus, .focus{
+      font-weight: bold ;
+      color: white;
+      box-shadow: none;
+    }
+  }
 }
 
 h1{

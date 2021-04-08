@@ -1,7 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import jwtDecode from "jwt-decode";
+import React, {useEffect} from 'react';
 import {Link} from "react-router-dom";
 import Loader from "../../_helpers/Loader";
+import ModalNewTeam from "../modals/ModalNewTeam";
+import ModalManageTeam from "../modals/ModalManageTeam";
+import ModalQuitTeam from "../modals/ModalQuitTeam";
 
 function MyAccount(props) {
 
@@ -61,16 +63,16 @@ function MyAccount(props) {
                         <ul>
                             {listTeamsCreatedByCurrentUser.length > 0 ? (
                                 listTeamsCreatedByCurrentUser.map((team, key )=> (
-                                    <li key={key} onClick={() => handleEvent(team.id, team.name)}><Link to={"/team/" + team.id} className="teamBtn">{team.name}</Link></li>
+                                    <li className="manageTeam" key={key} onClick={() => handleEvent(team.id, team.name)}><Link to={"/team/" + team.id}>{team.name}</Link><ModalManageTeam team={team}/></li>
                                 ))
-                            ) : null
+                            ) : (<ModalNewTeam/>)
                             }
                         </ul>
                         <h2>Mes Teams as user</h2>
                         <ul>
                             {listTeamsNotCreatedByCurrentUser.length > 0 ? (
                                 listTeamsNotCreatedByCurrentUser.map((team, key )=> (
-                                    <li key={key} onClick={() => handleEvent(team.id, team.name)}><Link to={"/team/" + team.id} className="teamBtn">{team.name}</Link></li>
+                                    <li className="manageTeam" key={key} onClick={() => handleEvent(team.id, team.name)}><Link to={"/team/" + team.id}>{team.name}</Link><ModalQuitTeam team={team}/></li>
                                 ))
                             ) : null
                             }
