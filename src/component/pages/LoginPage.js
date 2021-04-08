@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginContainer from "../login/LoginContainer";
 
-// function LoginPage({history})
+
 function LoginPage({history}) {
 
     console.log(window.localStorage)

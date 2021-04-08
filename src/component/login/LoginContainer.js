@@ -1,7 +1,6 @@
 import {connect} from 'react-redux'
 import Login from './Login';
 import{
-    // loadUser,
     changeInputLogin,
     loginRequest,
 } from "../../action/authActions";
@@ -21,7 +20,6 @@ const mapStateToProps = state => ({
 
 //envoyer des fonctions dans les props
 const mapDispatchToProps = dispatch => ({
-    // loadUser: () => dispatch(loadUser()),
     loginRequest: () => dispatch(loginRequest()),
     changeInputLogin: (event) => (
         dispatch(changeInputLogin(event))

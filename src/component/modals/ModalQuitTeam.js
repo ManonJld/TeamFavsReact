@@ -1,7 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
 import ModalComponent from "./ModalComponent";
-import ModalManageMembers from "./ModalManageMembers";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
 
 

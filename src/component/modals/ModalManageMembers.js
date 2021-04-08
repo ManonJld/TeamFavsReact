@@ -9,9 +9,6 @@ function ModalManageMembers(props){
 
     } = props;
 
-
-
-
     return(
         <ModalComponent
             buttonLabel="Gérer les membres"

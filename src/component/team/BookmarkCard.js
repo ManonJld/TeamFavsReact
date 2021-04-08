@@ -1,14 +1,14 @@
 import React from 'react';
 import ModalDetailsBookmark from "../modals/ModalDetailsBookmark";
-// import moment from 'moment';
-// import momentFR from 'moment/src/locale/fr'
+const moment = require('moment');
+require('moment/locale/fr');
 
+moment.locale('fr');
 
 function BookmarkCard(props){
     const {bookmark} = props;
 
-    //défini que le format des dates est en français
-    // moment.locale('fr',momentFR );
+
     return (
 
         <div className="card bookmark">
@@ -24,8 +24,7 @@ function BookmarkCard(props){
                 </div>
 
                 <div className="card-text">
-                    <cite className="cite">crée le {new Date (bookmark.createdAt).toLocaleTimeString()}</cite><br/>
-                    {/*<cite className="cite">crée le {moment(bookmark.createdAt).format('LL')}</cite><br/>*/}
+                    <cite className="cite">crée le {moment(bookmark.createdAt).format('LL')}</cite><br/>
                     <a target="_blank" href={bookmark.url}>Aller sur le site</a>
                 </div>
             </div>

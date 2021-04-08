@@ -20,14 +20,10 @@ function Login(props) {
         try {
             props.loginRequest()
             props.history.replace("/mon-compte")
-
-
         } catch (error) {
             props.returnErrors()
             console.log(errorMsg)
         }
-        // console.log("error" + {error})
-
     }
     console.log(window.localStorage)
 
@@ -46,11 +42,9 @@ function Login(props) {
                         name="username"
                         id="username"
                         type="email"
-                        // className={"form-control" + (errorMsg && " is-invalid")}
                         className="form-control"
                         placeholder="Adresse email de connexion"
                     />
-                    {/*{errorMsg && <p className="invalid-feedback">errorMsg</p> }*/}
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Mot de passe</label>

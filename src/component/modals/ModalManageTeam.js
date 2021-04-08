@@ -12,8 +12,6 @@ function ModalManageTeam(props){
 
 
 
-
-
     return(
         <ModalComponent
             buttonLabel="Gérer la team"

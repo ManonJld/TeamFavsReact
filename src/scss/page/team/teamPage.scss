@@ -1,5 +1,6 @@
 @import "bookmarkCard";
 
+//elements in aside
 .aside{
   background-color: $myGreen;
   position: sticky;
@@ -23,7 +24,7 @@
 
 }
 
-.toggler{
+.bars{
   display: none;
 }
 
@@ -39,6 +40,53 @@
   }
 }
 
+.myAccount{
+  display: none;
+}
+
+.mySecondDropdown{
+  position: relative;
+  text-align: center;
+}
+
+.mySecondDropdownChild{
+  display: none;
+}
+
+.navTopTeam{
+  width: 100%;
+  max-height: 50px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plus{
+  color: $myBlue;
+  font-size: 30px;
+}
+
+.userName{
+  text-align: center;
+  font: normal 1.2rem "Montserrat"
+}
+
+.visible{
+  display: block;
+}
+
+
+
+//elements in main
+.filters{
+  width: 100%;
+  max-height: 50px;
+  padding: 5px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
 
 .main{
   margin: 0;
@@ -51,76 +99,6 @@
   width: 75%;
   height: 100vh;
   overflow: auto;
-
-}
-
-
-@media screen and (max-width: 768px){
-  .aside{
-    width: 100%;
-    position: relative;
-    height: auto;
-    min-height: 70px;
-  }
-  //.categories{
-  //  display: none;
-  //}
-  .main{
-    width: 100%;
-  }
-  .userPicture{
-    display: none;
-  }
-  .toggler{
-    display: block;
-    color: black;
-    font-size: 30px;
-  }
-
-  .myDropdownChild{
-    display: none;
-  }
-}
-
-.userName{
-  text-align: center;
-  font: normal 1.2rem "Montserrat"
-}
-
-
-
-.myAccount{
-  display: none;
-}
-
-.plus{
-  color: $myBlue;
-  font-size: 30px;
-}
-
-
-
-.mySecondDropdown{
-  position: relative;
-  text-align: center;
-}
-
-.mySecondDropdownChild{
-  display: none;
-}
-
-.visible{
-  display: block;
-}
-
-
-.navTopTeam{
-  width: 100%;
-  max-height: 50px;
-  padding: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .myBreadcrumb{
@@ -138,11 +116,44 @@
   align-items: center;
 }
 
-.filters{
-  width: 100%;
-  max-height: 50px;
-  padding: 5px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+
+
+//all elements in small screen
+@media screen and (max-width: 768px){
+  .aside{
+    width: 100%;
+    position: relative;
+    height: auto;
+    min-height: 70px;
+  }
+  //.categories{
+  //  display: none;
+  //}
+  .main{
+    width: 100%;
+  }
+  .userPicture{
+    display: none;
+  }
+  .bars{
+    display: block;
+    color: black;
+    font-size: 30px;
+  }
+  .myDropdownChild{
+    display: none;
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
