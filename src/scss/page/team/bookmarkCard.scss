@@ -1,0 +1,26 @@
+.bookmark{
+
+  height: auto;
+  max-height: 250px;
+  width: auto;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detailBookmark{
+  color:$myBlue;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.bookmarkTitle{
+  a {
+    text-decoration: none;
+    color: black;
+    &:hover{
+      color: black;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {connect} from "react-redux";
 import ModalComponent from "./ModalComponent";
-import { faEdit } from '@fortawesome/free-regular-svg-icons'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 
 
 function ModalDetailsBookmark(props){
@@ -16,7 +16,7 @@ function ModalDetailsBookmark(props){
 
     return(
         <ModalComponent
-            iconAwesome={faEdit}
+            iconAwesome={faInfoCircle}
             classnameIcon={"detailBookmark"}
             title={bookmark.name}
             classname="nav-link btn-myBlue my-2"

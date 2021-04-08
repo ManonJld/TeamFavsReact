@@ -1,3 +1,5 @@
+@import "bookmarkCard";
+
 .aside{
   background-color: $myGreen;
   position: sticky;
@@ -110,22 +112,6 @@
   display: block;
 }
 
-.bookmark{
-
-  height: auto;
-  max-height: 250px;
-  width: auto;
-  max-width: 300px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.detailBookmark{
-  color:$myBlue;
-  &:hover{
-    cursor: pointer;
-  }
-}
 
 .navTopTeam{
   width: 100%;
