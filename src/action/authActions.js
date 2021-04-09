@@ -8,14 +8,36 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT_SUCCESS,
-    // REGISTER_SUCCESS,
-    // REGISTER_FAIL,
+    REGISTER_SUCCESS,
+    REGISTER_FAIL,
     CHANGE_INPUT_LOGIN,
-    // SETUP_PENDING,
+    CHANGE_INPUT_REGISTER,
     SETUP_SUCCESS,
     SETUP_FAILURE
 } from "../action/types"
 
+export function registerRequest(){
+    return (dispatch, getState) => {
+        const state = getState();
+        const register = state.authReducer.registerInfo
+        console.log(register)
+        axios
+            .post(process.env.REACT_APP_API_URL + "/users", register)
+            .then(response => response.data)
+            .then(data => {//je stocke mon token dans le local storage
+                dispatch({type: REGISTER_SUCCESS, payload: data})
+                //On previent axios qu'on a maintenant un header par défaut sur toutes nos futures requetes http
+                setAxiosToken(data.token)})
+            .catch(err => {
+                // dispatch(returnErrors(err.response.data, err.response.status));
+                console.log(err);
+                dispatch({
+                    type: REGISTER_FAIL
+                });
+
+            });
+    }
+}
 
 export function loginRequest(){
     return (dispatch, getState) => {
@@ -102,5 +124,9 @@ export function logout()
 
 export function changeInputLogin(event){
     return {type: CHANGE_INPUT_LOGIN, payload: event};
+}
+
+export function changeInputRegister(event){
+    return {type: CHANGE_INPUT_REGISTER, payload: event};
 }
 

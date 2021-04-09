@@ -9,6 +9,7 @@ import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
     CHANGE_INPUT_LOGIN,
+    CHANGE_INPUT_REGISTER,
     SETUP_PENDING,
     SETUP_SUCCESS,
     SETUP_FAILURE
@@ -24,6 +25,13 @@ const initialState = {
         username:"",
         password:""
     },
+    registerInfo:{
+        firstName:"",
+        lastName:"",
+        email:"",
+        password:"",
+        profilPicture:""
+    }
 };
 
 function authReducer(state = initialState, action){
@@ -44,7 +52,8 @@ function authReducer(state = initialState, action){
                 authToken: action.payload.token,
                 isAuthenticated: true,
                 isLoading: false,
-                loginInfo: {username: "", password: ""},
+                loginInfo: initialState.loginInfo,
+                registerInfo: initialState.registerInfo,
                 user:  jwtDecode(tokenJwt),
             };
         case LOGIN_FAIL:
@@ -52,40 +61,52 @@ function authReducer(state = initialState, action){
         case LOGOUT_SUCCESS:
         case AUTH_ERROR:
             localStorage.removeItem('authToken');
-            return{
+            return {
                 ...state,
                 authToken: null,
                 user: null,
                 isAuthenticated: false,
                 isLoading: false,
-            }
-        case CHANGE_INPUT_LOGIN:
-            const { name, value } = action.payload.target;
+            };
+        case CHANGE_INPUT_LOGIN: {
+            const {name, value} = action.payload.target;
             return {
 
                 ...state,
                 loginInfo: {...state.loginInfo, [name]: value}
             };
-        case SETUP_PENDING:
-            return{
+        }
+        case CHANGE_INPUT_REGISTER: {
+            const {name, value} = action.payload.target;
+            return {
+
+                ...state,
+                registerInfo: {...state.registerInfo, [name]: value}
+            };
+        }
+        case SETUP_PENDING: {
+            return {
                 ...state,
                 isAuthenticated: true,
                 isLoading: true,
             };
-        case SETUP_SUCCESS:
+        }
+        case SETUP_SUCCESS: {
             const tokenJwt2 = localStorage.getItem('authToken');
-            return{
+            return {
                 ...state,
                 isAuthenticated: true,
                 isLoading: false,
                 user: jwtDecode(tokenJwt2)
             }
-        case SETUP_FAILURE:
-            return{
+        }
+        case SETUP_FAILURE: {
+            return {
                 ...state,
                 isAuthenticated: false,
                 isLoading: false,
             }
+        }
         default:
             return state
     }

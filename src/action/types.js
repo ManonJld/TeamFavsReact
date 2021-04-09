@@ -12,6 +12,7 @@ export const SETUP_PENDING = "SETUP_PENDING";
 export const SETUP_SUCCESS = "SETUP_SUCCESS";
 export const SETUP_FAILURE = "SETUP_FAILURE";
 export const CHANGE_INPUT_LOGIN = "CHANGE_INPUT_LOGIN";
+export const CHANGE_INPUT_REGISTER = "CHANGE_INPUT_REGISTER";
 
 //appActions, appReducer
 export const GET_TEAMS_PENDING = "GET_TEAMS_PENDING";

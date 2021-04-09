@@ -10,7 +10,7 @@ import PrivateRoute from "./_helpers/PrivateRoute";
 import NavbarNew from "./component/layout/navbar/MyNavbar";
 import NotFound from "./component/pages/NotFound";
 import HomePage from "./component/pages/HomePage";
-import CreateAccountPage from "./component/pages/CreateAccountPage";
+import RegisterPage from "./component/pages/RegisterPage";
 
 function App(props) {
 
@@ -34,7 +34,7 @@ function App(props) {
                       <Route exact path='/login' component={LoginPage}/>
                       <PrivateRoute exact path='/mon-compte' component={MyAccountPage}/>
                       <PrivateRoute path='/team/:teamId' component={TeamPage}/>
-                      <Route exact path='/creer-un-compte' component={CreateAccountPage}/>
+                      <Route exact path='/creer-un-compte' component={RegisterPage}/>
                       <Route component={NotFound}/>
                   </Switch>
           </React.Fragment>
