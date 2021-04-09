@@ -13,26 +13,27 @@ function Aside(props){
     } = props;
 
     const [isActive, setIsActive ] = useState(false);
-    const [togglerIsActive, setTogglerIsActive ] = useState(true);
+    const [barsIsActive, setBarsIsActive ] = useState(true);
 
 
     const addClass = () => {
         setIsActive(!isActive)
     }
 
-    const setToggler = () => {
-        setTogglerIsActive(!togglerIsActive)
+    const setBars = () => {
+        setBarsIsActive(!barsIsActive)
     }
 
+    console.log(barsIsActive)
 
-    const bars = <FontAwesomeIcon className="bars" onClick={setToggler} icon={faBars}/>
+    const bars = <FontAwesomeIcon className="bars" onClick={setBars} icon={faBars}/>
     const plus = <FontAwesomeIcon className="plus" onClick={addClass} icon={faPlusCircle}/>
 
     return (
         <React.Fragment>
+            {bars}
             <div className="myDropdown">
-                {bars}
-                <div className={togglerIsActive? "myDropdownChild visible" :  "myDropdownChild"}>
+                <div className={barsIsActive? "myDropdownChild visible" :  "myDropdownChild"}>
                     <UserContainer/>
                     <div className="mySecondDropdown">
                         {plus}

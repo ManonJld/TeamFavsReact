@@ -43,6 +43,7 @@ function Bookmarks(props){
     // sinon il va à la fin de la liste et n'est pas trié correctement
     //obligé de le mettre dans un if, sinon la variable sortedBookmark ne se vide pas
     //et garde en mémoire les bookmark de l'ancienne catégorie visitée
+
     if (categories.length > 0 && categoryClicked){
         if (bookmarks.length > 0 ) {
             let sortedBookmarks = ([].concat(bookmarks)
@@ -54,7 +55,7 @@ function Bookmarks(props){
             )
         } else {
             return(
-                <div className="d-flex flex-column align-items-center">
+                <div className="d-flex flex-column align-items-center createContent">
                     <p>Aucun favoris dans cette catégorie pour le moment</p>
                     <ModalNewBookmark/>
                 </div>
@@ -65,7 +66,7 @@ function Bookmarks(props){
         }
     } else if (categories.length <= 0){
         return(
-            <div className="d-flex flex-column align-items-center">
+            <div className="d-flex flex-column align-items-center createContent">
                 <p>Aucune catégorie dans cette team pour le moment</p>
                 <ModalNewCategory/>
             </div>
@@ -76,6 +77,7 @@ function Bookmarks(props){
 
     return (
         <div className="container-fluid">
+
         </div>
     )
 }

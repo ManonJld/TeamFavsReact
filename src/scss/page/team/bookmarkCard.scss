@@ -1,11 +1,64 @@
-.bookmark{
+.bookmarkCardContainer{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
-  height: auto;
-  max-height: 250px;
-  width: auto;
+.bookmark {
+
+  height: 200px;
+  width: 31%;
+  margin-right: 3%;
+  margin-left: 3%;
   max-width: 300px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.bookmark:nth-child(3n+0){
+  margin-left: 1%;
+}
+
+@media screen and (max-width: 1482px){
+  .bookmark {
+    height: 200px;
+    width: 33%;
+    margin-right: 1%;
+    margin-left: 1%;
+    max-width: 300px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+  }
+
+}
+
+@media screen and (max-width: 1300px){
+  .bookmark {
+    width: 45%;
+    margin-right: 1%;
+    margin-left: 1%;
+
+
+  }
+
+}
+
+@media screen and (max-width: 576px){
+  .bookmark {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .bookmark:nth-child(3n+0){
+    margin-right: auto;
+    margin-left: auto;
+  }
+
 }
 
 .detailBookmark{

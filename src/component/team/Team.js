@@ -44,7 +44,9 @@ function Team(props){
                         <div className="filters">
                             <span>Dates desc</span>
                         </div>
-                        <BookmarksContainer/>
+                        <div className="bookmarkCardContainer">
+                            <BookmarksContainer/>
+                        </div>
                     </div>
                 </div>
             </div>
