@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import BookmarksContainer from "./BookmarksContainer";
 import Aside from "./Aside"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'
 
 function Team(props){
     const {
@@ -42,7 +42,12 @@ function Team(props){
                             </div>
                         </div>
                         <div className="filters">
-                            <span>Dates desc</span>
+                            <div>Trier par : </div>
+                            <div className="btn btn-myBlue mx-2">Date <FontAwesomeIcon icon={faArrowUp}/></div>
+                            <div className="btn btn-myBlue mx-2">Date <FontAwesomeIcon icon={faArrowDown}/></div>
+                            <div className="btn btn-myBlue mx-2">Alphabétique <FontAwesomeIcon icon={faArrowUp}/></div>
+                            <div className="btn btn-myBlue mx-2">Alphabétique <FontAwesomeIcon icon={faArrowDown}/></div>
+
                         </div>
                         <div className="bookmarkCardContainer">
                             <BookmarksContainer/>
