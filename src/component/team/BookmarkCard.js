@@ -1,5 +1,6 @@
 import React from 'react';
 import ModalDetailsBookmark from "../modals/ModalDetailsBookmark";
+import image from '../../assets/undraw_Images_re_0kll.png'
 const moment = require('moment');
 require('moment/locale/fr');
 
@@ -9,10 +10,11 @@ function BookmarkCard(props){
     const {bookmark} = props;
 
 
+
     return (
 
         <div className="card bookmark">
-            <img src="..." className="card-img-top" alt="..."/>
+            {bookmark.image ? (<img src={bookmark.image} className="img-bkm-card" alt={bookmark.name}/>) : (<img src={image} className="img-bkm-card" alt={bookmark.name}/>)}
             <div className="card-body">
                 <div className="row card-title">
                     <div className="col-10">

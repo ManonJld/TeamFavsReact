@@ -55,7 +55,9 @@ const initialState = {
     newBookmark:{
         name:"",
         url:"",
-        category:""
+        category:"",
+        image:"",
+        description:""
     },
     categoryClicked:false,
     categoryName:""

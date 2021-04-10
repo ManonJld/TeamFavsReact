@@ -73,7 +73,24 @@ function ModalNewBookmark(props){
                         {categoriesOption}
                     </select>
                 </div>
-                <button type="submit"> Valider </button>
+                <div className="form-group">
+                    <label htmlFor="image">Image</label>
+                    <input
+                        value={newBookmark.image}
+                        onChange={event => changeInputNewBookmark(event)}
+                        name="image"
+                        id="image"
+                        type="text"
+                        className="form-control"
+                        placeholder="Entrez une url d'image"
+                        pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)"
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="description">Description</label>
+                    <textarea id="description" name="description" className="form-control" rows="3" value={newBookmark.description} onChange={event => changeInputNewBookmark(event)}>{newBookmark.description}</textarea>
+                </div>
+                <button className="btn btn-myBlue" type="submit"> Valider </button>
             </form>
         </ModalComponent>
     )

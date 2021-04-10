@@ -6,16 +6,23 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+.img-bkm-card{
+  align-self: center;
+  margin-top: 2px;
+  height: 45%;
+  width: auto;
+}
 
 .bookmark {
-
-  height: 200px;
+  height: auto;
+  //height: 300px;
   width: 31%;
-  margin-right: 3%;
-  margin-left: 3%;
+  margin: 10px 3%;
+  //margin-right: 3%;
+  //margin-left: 3%;
   max-width: 300px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  //margin-bottom: 10px;
+  //margin-top: 10px;
 }
 
 .bookmark:nth-child(3n+0){
