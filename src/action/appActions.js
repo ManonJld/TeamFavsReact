@@ -33,7 +33,12 @@ import {
     CATEGORY_CLICKED,
     CLEAR_CATEGORY_CLICKED,
     SET_CATEGORY_NAME,
-    CLEAR_CATEGORY_NAME
+    CLEAR_CATEGORY_NAME,
+    CHANGE_INPUT_EDIT_BOOKMARK,
+    SET_EDIT_BOOKMARK,
+    PUT_BOOKMARK_PENDING,
+    PUT_BOOKMARK_SUCCESS,
+    PUT_BOOKMARK_FAILURE
 } from "../action/types"
 import {returnErrors} from "./errorActions";
 
@@ -146,6 +151,16 @@ export function changeInputNewBookmark(event){
     console.log(event.target)
     return {type: CHANGE_INPUT_NEW_BOOKMARK, payload: event}
 }
+
+export function changeInputEditBookmark(event){
+    console.log(event.target)
+    return {type: CHANGE_INPUT_EDIT_BOOKMARK, payload: event}
+}
+
+export function setEditBookmark(value){
+    return {type: SET_EDIT_BOOKMARK, payload: value}
+}
+
 export function postTeam(){
     return(dispatch, getState) =>{
         const newTeam = getState().appReducer.newTeam;
@@ -190,5 +205,23 @@ export function postBookmark(){
                 console.log(err);
                 dispatch({type:POST_NEWBOOKMARK_FAILURE})
             })
+    }
+}
+
+export function putBookmark(){
+    return(dispatch, getState) => {
+        const bookmark = getState().appReducer.editBookmark;
+        delete bookmark.category;
+        delete bookmark.user;
+        dispatch({type: PUT_BOOKMARK_PENDING});
+        axios
+            .put(process.env.REACT_APP_API_URL + "/bookmarks/" + bookmark.id, bookmark)
+            .then(response =>response.data)
+            .then(data => dispatch({type: PUT_BOOKMARK_SUCCESS, payload: data}))
+            .catch(err => {
+                console.log(err);
+                dispatch({type: PUT_BOOKMARK_FAILURE})
+            })
+
     }
 }

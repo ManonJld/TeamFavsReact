@@ -27,11 +27,16 @@ import {
     POST_NEWBOOKMARK_FAILURE,
     LOGOUT_SUCCESS,
     CHANGE_INPUT_NEW_BOOKMARK,
+    CHANGE_INPUT_EDIT_BOOKMARK,
     CLEAR_CATEGORY_ID,
     CATEGORY_CLICKED,
     CLEAR_CATEGORY_CLICKED,
     SET_CATEGORY_NAME,
-    CLEAR_CATEGORY_NAME
+    CLEAR_CATEGORY_NAME,
+    SET_EDIT_BOOKMARK,
+    PUT_BOOKMARK_PENDING,
+    PUT_BOOKMARK_SUCCESS,
+    PUT_BOOKMARK_FAILURE
 
 } from "../action/types"
 
@@ -44,7 +49,8 @@ const initialState = {
         bookmarks: false,
         newTeam: false,
         newCategory: false,
-        newBookmark: false
+        newBookmark: false,
+        editBookmark: false
     },
     teamName:"",
     bookmarks: [],
@@ -60,7 +66,9 @@ const initialState = {
         description:""
     },
     categoryClicked:false,
-    categoryName:""
+    categoryName:"",
+    editBookmark: {},
+
 
 }
 
@@ -234,6 +242,19 @@ function appReducer(state = initialState, action){
                 newBookmark: {...state.newBookmark, [name]: value }
             }
         }
+        case CHANGE_INPUT_EDIT_BOOKMARK:{
+            const { name, value } = action.payload.target;
+            return {
+                ...state,
+                editBookmark: {...state.editBookmark, [name]: value }
+            }
+        }
+        case SET_EDIT_BOOKMARK:{
+            return {
+                ...state,
+                editBookmark: {...action.payload}
+            }
+        }
         case CLEAR_CATEGORY_ID:{
             return{
                 ...state,
@@ -262,6 +283,26 @@ function appReducer(state = initialState, action){
             return {
                 ...state,
                 categoryName: initialState.categoryName
+            }
+        }
+
+        case PUT_BOOKMARK_PENDING:{
+            return {
+                ...state,
+                isLoading: {...state.isLoading, editBookmark: true}
+            }
+        }
+        case PUT_BOOKMARK_SUCCESS:{
+            return{
+                ...state,
+                isLoading: {...state.isLoading, editBookmark: initialState.editBookmark},
+                bookmarks: [...state.bookmarks, action.payload],
+            }
+        }
+        case PUT_BOOKMARK_FAILURE:{
+            return {
+                ...state,
+                isLoading: {...state.isLoading, editBookmark: initialState.editBookmark}
             }
         }
 

@@ -12,12 +12,14 @@ const ModalComponent = (props) => {
         classname,
         footer,
         iconAwesome,
-        classnameIcon
+        classnameIcon,
     } = props;
 
     const [modal, setModal] = useState(false);
 
-    const toggle = () => setModal(!modal);
+    const toggle = () => {
+        setModal(!modal);
+    }
 
 
     return (
