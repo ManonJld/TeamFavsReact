@@ -1,7 +1,6 @@
 import jwtDecode from "jwt-decode";
 
 import {
-    AUTH_ERROR,
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
@@ -31,6 +30,10 @@ const initialState = {
         email:"",
         password:"",
         profilPicture:""
+    },
+    errors:{
+        registering: null,
+        login: null
     }
 };
 
@@ -57,9 +60,23 @@ function authReducer(state = initialState, action){
                 user:  jwtDecode(tokenJwt),
             };
         case LOGIN_FAIL:
+            return {
+                ...state,
+                authToken: null,
+                user: null,
+                isAuthenticated: false,
+                isLoading: false,
+            };
         case REGISTER_FAIL:
+            return {
+                ...state,
+                authToken: null,
+                user: null,
+                isAuthenticated: false,
+                isLoading: false,
+                errors: {...state.errors, registering: action.payload}
+            };
         case LOGOUT_SUCCESS:
-        case AUTH_ERROR:
             localStorage.removeItem('authToken');
             return {
                 ...state,

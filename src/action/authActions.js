@@ -1,9 +1,7 @@
 import axios from "axios";
-import {returnErrors} from "./errorActions";
 import jwtDecode from "jwt-decode";
 
 import {
-    // AUTH_ERROR,
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
@@ -13,7 +11,7 @@ import {
     CHANGE_INPUT_LOGIN,
     CHANGE_INPUT_REGISTER,
     SETUP_SUCCESS,
-    SETUP_FAILURE
+    SETUP_FAILURE,
 } from "../action/types"
 
 export function registerRequest(){
@@ -28,12 +26,8 @@ export function registerRequest(){
                 dispatch({type: REGISTER_SUCCESS, payload: data})
                 //On previent axios qu'on a maintenant un header par défaut sur toutes nos futures requetes http
                 setAxiosToken(data.token)})
-            .catch(err => {
-                // dispatch(returnErrors(err.response.data, err.response.status));
-                console.log(err);
-                dispatch({
-                    type: REGISTER_FAIL
-                });
+            .catch(error => {
+                dispatch({type: REGISTER_FAIL, payload: error.response.data});
 
             });
     }
@@ -52,12 +46,8 @@ export function loginRequest(){
                 dispatch({type: LOGIN_SUCCESS, payload: data})
                 //On previent axios qu'on a maintenant un header par défaut sur toutes nos futures requetes http
                 setAxiosToken(data.token)})
-            .catch(err => {
-                // dispatch(returnErrors(err.response.data, err.response.status));
-                console.log(err);
-                dispatch({
-                    type: LOGIN_FAIL
-                });
+            .catch(error => {
+                dispatch({type: LOGIN_FAIL, payload: error.response.data});
             });
         }
 }

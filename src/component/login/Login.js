@@ -3,10 +3,8 @@ import React from 'react';
 
 function Login(props) {
     const {
-        email,
         password,
         changeInputLogin,
-        errorMsg,
         username,
         isAuthenticated
     } = props;
@@ -21,8 +19,7 @@ function Login(props) {
             props.loginRequest()
             props.history.replace("/mon-compte")
         } catch (error) {
-            props.returnErrors()
-            console.log(errorMsg)
+            console.log(error)
         }
     }
     console.log(window.localStorage)

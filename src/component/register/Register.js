@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 
 function Register(props) {
@@ -9,25 +9,40 @@ function Register(props) {
         lastname,
         picture,
         registerRequest,
-        changeInputRegister
+        changeInputRegister,
+        errors
 
     } = props;
 
+    // const [errorsTable, setErrorsTable] = useState({})
 
     const handleSubmit = event => {
         event.preventDefault();
         try {
             registerRequest()
-            props.history.replace("/mon-compte")
+            // props.history.replace("/mon-compte")
         } catch (error) {
             console.log(error)
+            // setErrorsTable(
+            // error.violations.forEach(violation => {
+            //     [violation.propertyPath] = violation.message
+            // }))
         }
     }
 
+    const errorsTable = {};
+    if (errors) {
+        errors.violations.map((violation) => (
+            errorsTable[violation.propertyPath] = violation.message
+            ))
+    }
+
+
+    console.log(errorsTable)
 
     return (
         <div className='container'>
-            <h1 className='roboto'>Welcome!!!</h1>
+            <h1 className='roboto'>Créer votre compte</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="email">Adresse email</label>
@@ -39,9 +54,11 @@ function Register(props) {
                         name="email"
                         id="email"
                         type="email"
-                        className="form-control"
+                        className={"form-control " + (errorsTable.email && " is-invalid")}
                         placeholder="Adresse email de connexion"
                     />
+                    {errorsTable && <p className="invalid-feedback">{errorsTable.email}</p>}
+
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Mot de passe</label>
@@ -51,9 +68,10 @@ function Register(props) {
                         name="password"
                         id="password"
                         type="password"
-                        className="form-control"
+                        className={"form-control " + (errorsTable.password && " is-invalid")}
                         placeholder="Mot de passe"
                     />
+                    {errorsTable && <p className="invalid-feedback">{errorsTable.password}</p>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="firstName">Prénom</label>
@@ -63,12 +81,13 @@ function Register(props) {
                         name="firstName"
                         id="firstName"
                         type="text"
-                        className="form-control"
+                        className={"form-control " + (errorsTable.firstName && " is-invalid")}
                         placeholder="Prénom"
                         maxLength="40"
                         minLength="3"
                         pattern="^[A-z _-]{3,40}$"
                     />
+                    {errorsTable && <p className="invalid-feedback">{errorsTable.firstName}</p>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="lastName">Nom</label>
@@ -78,12 +97,13 @@ function Register(props) {
                         name="lastName"
                         id="lastName"
                         type="text"
-                        className="form-control"
+                        className={"form-control " + (errorsTable.lastName ? " is-invalid" : null)}
                         placeholder="Nom"
                         maxLength="40"
                         minLength="3"
                         pattern="^[A-z _-]{3,40}$"
                     />
+                    {errorsTable && <p className="invalid-feedback">{errorsTable.lastName}</p>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="profilPicture">Photo de profil</label>

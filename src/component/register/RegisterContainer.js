@@ -8,15 +8,13 @@ import{
 
 
 //envoyer des données dans les props
-//authReducer and errorReducer comes from the file reducer.js
 const mapStateToProps = state => ({
-
-    // error: state.errorReducer.error,
     email: state.authReducer.registerInfo.email,
     password: state.authReducer.registerInfo.password,
     firstname: state.authReducer.registerInfo.firstName,
     lastname: state.authReducer.registerInfo.lastName,
-    picture: state.authReducer.registerInfo.profilPicture
+    picture: state.authReducer.registerInfo.profilPicture,
+    errors: state.authReducer.errors.registering
 })
 
 //envoyer des fonctions dans les props

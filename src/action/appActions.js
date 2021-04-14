@@ -39,8 +39,7 @@ import {
     PUT_BOOKMARK_PENDING,
     PUT_BOOKMARK_SUCCESS,
     PUT_BOOKMARK_FAILURE
-} from "../action/types"
-import {returnErrors} from "./errorActions";
+} from "../action/types";
 
 export function getTeams(){
     return (dispatch) => {
@@ -50,8 +49,7 @@ export function getTeams(){
             .then(response => response.data)
             .then(data => dispatch({type: GET_TEAMS_SUCCESS, payload: data['hydra:member']}))
             .catch(error => {
-                dispatch(returnErrors(error.response.data))
-                dispatch({type: GET_TEAMS_FAILURE})
+                dispatch({type: GET_TEAMS_FAILURE, payload: error.response.data})
             });
     };
 }
@@ -85,8 +83,7 @@ export function getCategories(id){
             .then(response => response.data)
             .then(data => dispatch({type: GET_CATEGORIES_SUCCESS, payload: data['hydra:member']}))
             .catch(error => {
-                dispatch(returnErrors(error.response.data))
-                dispatch({type: GET_CATEGORIES_FAILURE})
+                dispatch({type: GET_CATEGORIES_FAILURE, payload: error.response.data})
             })
     }
 }
@@ -110,8 +107,7 @@ export function getBookmarks(id){
                 dispatch({type: GET_BOOKMARKS_SUCCESS, payload: data['hydra:member']})
             })
             .catch(error => {
-                dispatch(returnErrors(error.response.data))
-                dispatch({type: GET_BOOKMARKS_FAILURE})
+                dispatch({type: GET_BOOKMARKS_FAILURE, payload: error.response.data})
             })
     }
 }
@@ -169,9 +165,8 @@ export function postTeam(){
             .post(process.env.REACT_APP_API_URL + "/teams", {name: newTeam})
             .then(response =>response.data)
             .then(data => dispatch({type: POST_NEWTEAM_SUCCESS, payload: data}))
-            .catch(err=> {
-                console.log(err);
-                dispatch({type:POST_NEWTEAM_FAILURE})
+            .catch(error=> {
+                dispatch({type:POST_NEWTEAM_FAILURE, payload: error.response.data})
             })
     }
 }
@@ -185,9 +180,8 @@ export function postCategory(){
             .post(process.env.REACT_APP_API_URL + "/categories", {name: newCategory, team:"api/teams/" + teamId})
             .then(response =>response.data)
             .then(data => dispatch({type: POST_NEWCATEGORY_SUCCESS, payload: data}))
-            .catch(err=> {
-                console.log(err);
-                dispatch({type:POST_NEWCATEGORY_FAILURE})
+            .catch(error=> {
+                dispatch({type:POST_NEWCATEGORY_FAILURE, payload: error.response.data})
             })
     }
 }
@@ -201,9 +195,8 @@ export function postBookmark(){
             .post(process.env.REACT_APP_API_URL + "/bookmarks", newBookmark)
             .then(response =>response.data)
             .then(data => dispatch({type: POST_NEWBOOKMARK_SUCCESS, payload: data}))
-            .catch(err=> {
-                console.log(err);
-                dispatch({type:POST_NEWBOOKMARK_FAILURE})
+            .catch(error=> {
+                dispatch({type:POST_NEWBOOKMARK_FAILURE, payload: error.response.data})
             })
     }
 }
@@ -218,9 +211,8 @@ export function putBookmark(){
             .put(process.env.REACT_APP_API_URL + "/bookmarks/" + bookmark.id, bookmark)
             .then(response =>response.data)
             .then(data => dispatch({type: PUT_BOOKMARK_SUCCESS, payload: data}))
-            .catch(err => {
-                console.log(err);
-                dispatch({type: PUT_BOOKMARK_FAILURE})
+            .catch(error => {
+                dispatch({type: PUT_BOOKMARK_FAILURE, payload: error.response.data})
             })
 
     }
