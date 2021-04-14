@@ -38,7 +38,7 @@ function Register(props) {
                         value={email}
                         name="email"
                         id="email"
-                        type="text"
+                        type="email"
                         className="form-control"
                         placeholder="Adresse email de connexion"
                     />
@@ -65,6 +65,9 @@ function Register(props) {
                         type="text"
                         className="form-control"
                         placeholder="Prénom"
+                        maxLength="40"
+                        minLength="3"
+                        pattern="^[A-z _-]{3,40}$"
                     />
                 </div>
                 <div className="form-group">
@@ -77,6 +80,9 @@ function Register(props) {
                         type="text"
                         className="form-control"
                         placeholder="Nom"
+                        maxLength="40"
+                        minLength="3"
+                        pattern="^[A-z _-]{3,40}$"
                     />
                 </div>
                 <div className="form-group">

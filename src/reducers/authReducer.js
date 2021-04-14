@@ -49,7 +49,7 @@ function authReducer(state = initialState, action){
             localStorage.setItem('authToken', tokenJwt)
             return{
                 ...state,
-                authToken: action.payload.token,
+                authToken: tokenJwt,
                 isAuthenticated: true,
                 isLoading: false,
                 loginInfo: initialState.loginInfo,
