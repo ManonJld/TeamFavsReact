@@ -68,6 +68,12 @@ const initialState = {
     categoryClicked:false,
     categoryName:"",
     editBookmark: {},
+    errors: {
+        postTeam:null,
+        postCategory: null,
+        postBookmark: null,
+        putBookmark: null
+    }
 
 
 }
@@ -189,7 +195,8 @@ function appReducer(state = initialState, action){
         case POST_NEWTEAM_FAILURE:{
             return{
                 ...state,
-                isLoading: {...state.isLoading, newTeam: false}
+                isLoading: {...state.isLoading, newTeam: false},
+                errors: {...state.errors, postTeam: action.payload}
             };
         }
         case POST_NEWCATEGORY_PENDING:{
@@ -209,7 +216,8 @@ function appReducer(state = initialState, action){
         case POST_NEWCATEGORY_FAILURE:{
             return {
                 ...state,
-                isLoading: {...state.isLoading, newCategory: false}
+                isLoading: {...state.isLoading, newCategory: false},
+                errors: {...state.errors, postCategory: action.payload}
             }
         }
         case POST_NEWBOOKMARK_PENDING:{
@@ -230,6 +238,7 @@ function appReducer(state = initialState, action){
             return{
                 ...state,
                 isLoading: {...state.isLoading, newBookmark: false },
+                errors: {...state.errors, postBookmark: action.payload}
             }
         }
         case LOGOUT_SUCCESS:{
@@ -302,7 +311,8 @@ function appReducer(state = initialState, action){
         case PUT_BOOKMARK_FAILURE:{
             return {
                 ...state,
-                isLoading: {...state.isLoading, editBookmark: initialState.editBookmark}
+                isLoading: {...state.isLoading, editBookmark: initialState.editBookmark},
+                errors: {...state.errors, putBookmark: action.payload}
             }
         }
 

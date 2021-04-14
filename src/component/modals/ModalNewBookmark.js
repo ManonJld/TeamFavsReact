@@ -11,6 +11,7 @@ function ModalNewBookmark(props){
         newBookmark,
         categories,
         changeInputNewBookmark,
+        errors
     } = props;
 
     const handleSubmit = event => {
@@ -26,7 +27,13 @@ function ModalNewBookmark(props){
         <option key={category.id} value={category['@id']}>{category.name}</option>
     ))
 
-
+    const errorsTable = {};
+    //s'il y a des erreurs, je les mets dans un nouveau tableau avec les property path pour ensuite les afficher sous les inputs
+    if (errors) {
+        errors.violations.map((violation) => (
+            errorsTable[violation.propertyPath] = violation.message
+        ))
+    }
 
     return(
         <ModalComponent
@@ -46,12 +53,13 @@ function ModalNewBookmark(props){
                         name="name"
                         id="name"
                         type="text"
-                        className="form-control"
+                        className={"form-control " + (errorsTable.name && " is-invalid")}
                         placeholder="Entrez un nom"
                         maxLength="40"
                         minLength="3"
                         pattern="^[A-z 0-9_-]{3,40}$"
                     />
+                    {errorsTable && <p className="invalid-feedback">{errorsTable.name}</p>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="url">Url du favoris</label>
@@ -61,17 +69,19 @@ function ModalNewBookmark(props){
                         name="url"
                         id="url"
                         type="text"
-                        className="form-control"
+                        className={"form-control " + (errorsTable.url && " is-invalid")}
                         placeholder="Entrez une url"
                         pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)"
                     />
+                    {errorsTable && <p className="invalid-feedback">{errorsTable.url}</p>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="category">Sélectionner une catégorie</label>
-                    <select className="form-control" id="category" name="category" value={newBookmark.category} onChange={event => changeInputNewBookmark(event)}>
+                    <select className={"form-control " + (errorsTable.category && " is-invalid")} id="category" name="category" value={newBookmark.category} onChange={event => changeInputNewBookmark(event)}>
                         <option value="">Veuillez choisir une catégorie</option>
                         {categoriesOption}
                     </select>
+                    {errorsTable && <p className="invalid-feedback">{errorsTable.category}</p>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="image">Image</label>
@@ -98,7 +108,8 @@ function ModalNewBookmark(props){
 
 const mapStateToProps = state => ({
     newBookmark: state.appReducer.newBookmark,
-    categories: state.appReducer.categories
+    categories: state.appReducer.categories,
+    errors: state.appReducer.errors.postBookmark
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -107,7 +107,8 @@ export function getBookmarks(id){
                 dispatch({type: GET_BOOKMARKS_SUCCESS, payload: data['hydra:member']})
             })
             .catch(error => {
-                dispatch({type: GET_BOOKMARKS_FAILURE, payload: error.response.data})
+                console.log(error)
+                dispatch({type: GET_BOOKMARKS_FAILURE})
             })
     }
 }
