@@ -66,6 +66,7 @@ function authReducer(state = initialState, action){
                 user: null,
                 isAuthenticated: false,
                 isLoading: false,
+                errors: {...state.errors, login: action.payload}
             };
         case REGISTER_FAIL:
             return {

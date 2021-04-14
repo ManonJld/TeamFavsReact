@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 
 function Register(props) {
@@ -14,23 +14,22 @@ function Register(props) {
 
     } = props;
 
-    // const [errorsTable, setErrorsTable] = useState({})
+
 
     const handleSubmit = event => {
         event.preventDefault();
         try {
             registerRequest()
+            //todo : voir comment faire
             // props.history.replace("/mon-compte")
         } catch (error) {
             console.log(error)
-            // setErrorsTable(
-            // error.violations.forEach(violation => {
-            //     [violation.propertyPath] = violation.message
-            // }))
+            //je ne fais pas le map de mes erreurs ici car elle ne seraient pas dans le state et ne s'afficheraient pas
         }
     }
 
     const errorsTable = {};
+    //s'il y a des erreurs, je les mets dans un nouveau tableau avec les property path pour ensuite les afficher sous les inputs
     if (errors) {
         errors.violations.map((violation) => (
             errorsTable[violation.propertyPath] = violation.message
@@ -58,7 +57,6 @@ function Register(props) {
                         placeholder="Adresse email de connexion"
                     />
                     {errorsTable && <p className="invalid-feedback">{errorsTable.email}</p>}
-
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Mot de passe</label>

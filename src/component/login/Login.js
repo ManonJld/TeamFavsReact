@@ -6,7 +6,8 @@ function Login(props) {
         password,
         changeInputLogin,
         username,
-        isAuthenticated
+        isAuthenticated,
+        errors
     } = props;
 
     if (isAuthenticated){
@@ -20,8 +21,11 @@ function Login(props) {
             props.history.replace("/mon-compte")
         } catch (error) {
             console.log(error)
+
         }
     }
+
+
     console.log(window.localStorage)
 
 
@@ -38,9 +42,10 @@ function Login(props) {
                         name="username"
                         id="username"
                         type="email"
-                        className="form-control"
+                        className={"form-control " + (errors && " is-invalid")}
                         placeholder="Adresse email de connexion"
                     />
+                    {errors && <p className="invalid-feedback">La combinaison email / mot de passe est invalide</p>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Mot de passe</label>
@@ -50,7 +55,7 @@ function Login(props) {
                         name="password"
                         id="password"
                         type="password"
-                        className="form-control"
+                        className={"form-control " + (errors && " is-invalid")}
                         placeholder="Mot de passe"
                     />
                 </div>

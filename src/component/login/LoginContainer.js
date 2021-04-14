@@ -12,6 +12,7 @@ const mapStateToProps = state => ({
     isAuthenticated: state.authReducer.isAuthenticated,
     username: state.authReducer.loginInfo.username,
     password: state.authReducer.loginInfo.password,
+    errors: state.authReducer.errors.login
 })
 
 //envoyer des fonctions dans les props
