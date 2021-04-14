@@ -30,7 +30,6 @@ function Login(props) {
 
     return (
         <div className='container'>
-            <h1 className='roboto'>Welcome!!!{email}</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="username">Adresse email</label>

@@ -23,7 +23,7 @@ function ModalEditBookmark(props){
     }
 
 
-
+    //le filtre permet de ne pas montrer la catégorie du bookmark dans la liste
     const categoriesOption = categories
         .filter(category => category['@id'] !== editBookmark.category['@id'])
         .map((category) => (

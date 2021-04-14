@@ -23,7 +23,7 @@ const ModalComponent = (props) => {
 
 
     return (
-        <div>
+        <>
             {buttonLabel? <Button className={classname} onClick={toggle}>{buttonLabel}</Button> : <FontAwesomeIcon className={classnameIcon} onClick={toggle} icon={iconAwesome}/>}
 
             <Modal isOpen={modal} toggle={toggle} className="modal-dialog">
@@ -40,7 +40,7 @@ const ModalComponent = (props) => {
                     </ModalFooter>
                 ) : null}
             </Modal>
-        </div>
+        </>
     );
 }
 

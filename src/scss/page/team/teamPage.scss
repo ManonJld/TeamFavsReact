@@ -28,6 +28,10 @@
   display: none;
 }
 
+.dropdownTeams{
+  width: 70%;
+}
+
 .linkCate{
   color: white;
   text-decoration: none;
@@ -64,7 +68,9 @@
 }
 
 .visible{
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 
