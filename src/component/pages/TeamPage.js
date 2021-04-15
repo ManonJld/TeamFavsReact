@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import TeamContainer from "../team/TeamContainer";
 
 
 const TeamPage = (props) => {
+
+    useEffect(() => {
+        const { match: { params } } = props;
+    })
 
     return(
         <div>

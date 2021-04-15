@@ -49,7 +49,8 @@ function Aside(props){
     )
 }
 const mapStateToProps = state => ({
-    teamId: state.appReducer.teamId
+    //ne pas utiliser le teamId du state car je veux celui qui vient des props
+    // teamId: state.appReducer.teamId
 })
 
 

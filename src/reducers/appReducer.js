@@ -37,7 +37,8 @@ import {
     PUT_BOOKMARK_PENDING,
     PUT_BOOKMARK_SUCCESS,
     PUT_BOOKMARK_FAILURE,
-    EMPTY_ERRORS
+    EMPTY_ERRORS,
+    SETUP_SUCCESS, SETUP_PENDING
 
 } from "../action/types"
 
@@ -330,6 +331,11 @@ function appReducer(state = initialState, action){
                 ...state,
                 errors: initialState.errors
             }
+        }
+
+        case SETUP_PENDING:
+        case SETUP_SUCCESS:{
+            return {...state}
         }
 
         default:
