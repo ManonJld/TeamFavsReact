@@ -38,7 +38,9 @@ import {
     PUT_BOOKMARK_SUCCESS,
     PUT_BOOKMARK_FAILURE,
     EMPTY_ERRORS,
-    SETUP_SUCCESS, SETUP_PENDING
+    SETUP_SUCCESS,
+    SETUP_PENDING,
+    SET_CURRENT_TEAM_ID
 
 } from "../action/types"
 
@@ -57,6 +59,7 @@ const initialState = {
     teamName:"",
     bookmarks: [],
     teamId:"",
+    currentTeamId:"",
     categoryId:"",
     newTeam:"",
     newCategory:"",
@@ -336,6 +339,12 @@ function appReducer(state = initialState, action){
         case SETUP_PENDING:
         case SETUP_SUCCESS:{
             return {...state}
+        }
+        case SET_CURRENT_TEAM_ID:{
+            return {
+                ...state,
+                currentTeamId: action.payload
+            }
         }
 
         default:

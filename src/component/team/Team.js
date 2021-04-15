@@ -10,18 +10,28 @@ function Team(props){
         clearCategoryClicked,
         teamName,
         categoryName,
-        clearCategoryName
-
+        clearCategoryName,
+        getTeams,
+        teams,
+        setTeamId,
+        setTeamName
     } = props;
 
-    useEffect(() =>{
-
+    useEffect(() => {
+        setTeamId(parseInt(teamId, 10));
+        getTeams();
         return () => {
             clearCategoryClicked()
             clearCategoryName()
         };
-    }, [clearCategoryClicked, clearCategoryName])
+    }, [clearCategoryClicked, clearCategoryName, getTeams, teamId, setTeamId])
 
+
+
+
+    if (teams.length>0) {
+        setTeamName(teams.filter(team => team.id == teamId)[0].name)
+    }
 
 
     return (
@@ -29,7 +39,8 @@ function Team(props){
             <div className="container-fluid">
                 <div className="row">
                     <div className="aside">
-                        <Aside teamId={teamId}/>
+                        {/*<Aside teamId={teamId}/>*/}
+                        <Aside/>
                     </div>
                     <div className="main">
                         <div className="navTopTeam">

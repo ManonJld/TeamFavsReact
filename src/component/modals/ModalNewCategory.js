@@ -47,7 +47,7 @@ function ModalNewCategory(props){
                         pattern="^[A-z 0-9_-]{3,40}$"
                     />
                 </div>
-                <button type="submit"> Valider </button>
+                <button className="btn btn-myBlue" type="submit"> Valider </button>
             </form>
         </ModalComponent>
     )

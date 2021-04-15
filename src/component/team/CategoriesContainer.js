@@ -16,6 +16,7 @@ const mapStateToProps = state => ({
     categories: state.appReducer.categories,
     isLoadingCate: state.appReducer.isLoading.categories,
     categoryId: state.appReducer.categoryId,
+    teamId: state.appReducer.teamId
 })
 
 //envoyer des fonctions dans les props

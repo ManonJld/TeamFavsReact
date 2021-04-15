@@ -36,7 +36,7 @@ function MyAccount(props) {
     }
 
     const handleEvent = (id, name) => {
-        setTeamId(id);
+        // setTeamId(id);
         setTeamName(name);
         console.log(teamId)
     }

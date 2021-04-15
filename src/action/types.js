@@ -52,6 +52,8 @@ export const PUT_BOOKMARK_SUCCESS = "PUT_BOOKMARK_SUCCESS";
 export const PUT_BOOKMARK_FAILURE = "PUT_BOOKMARK_FAILURE";
 export const SET_EDIT_BOOKMARK = "SET_EDIT_BOOKMARK";
 export const EMPTY_ERRORS = "EMPTY_ERRORS";
+export const SET_CURRENT_TEAM_ID = "SET_CURRENT_TEAM_ID";
+
 
 
 //todo : GET_TEAM_CONTENT + CLEAR_TEAM_CONTENT mettre le get dans la page mon-compte? et le clear dans le composant Team?

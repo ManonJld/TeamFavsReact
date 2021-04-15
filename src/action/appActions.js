@@ -39,7 +39,9 @@ import {
     PUT_BOOKMARK_PENDING,
     PUT_BOOKMARK_SUCCESS,
     PUT_BOOKMARK_FAILURE,
-    EMPTY_ERRORS
+    EMPTY_ERRORS,
+    CURRENT_TEAM_ID,
+    SET_CURRENT_TEAM_ID
 } from "../action/types";
 
 export function getTeams(){
@@ -225,4 +227,8 @@ export function putBookmark(){
 
 export function emptyErrors(){
     return {type: EMPTY_ERRORS}
+}
+
+export function setCurrentTeamId(id){
+    return {type: SET_CURRENT_TEAM_ID, payload: id}
 }

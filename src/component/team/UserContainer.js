@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import User from "./User";
-import {changeInputApp, clearBookmarks, getBookmarks} from "../../action/appActions";
+import {changeInputApp, clearBookmarks, getBookmarks, setCurrentTeamId} from "../../action/appActions";
 
 
 //envoyer des données dans les props
@@ -11,7 +11,8 @@ const mapStateToProps = state => ({
     picture: state.authReducer.user.picture,
     teams: state.appReducer.teams,
     teamName: state.appReducer.teamName,
-    teamId: state.appReducer.teamId
+    teamId: state.appReducer.teamId,
+    currentTeamId: state.appReducer.currentTeamId
 
 })
 
@@ -19,7 +20,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     clearBookmarks : () => dispatch(clearBookmarks()),
     getBookmarks: (categoryId) => dispatch(getBookmarks(categoryId)),
-    changeInputApp: (event) => dispatch(changeInputApp(event))
+    changeInputApp: (event) => dispatch(changeInputApp(event)),
+    setCurrentTeamId: (id) => dispatch(setCurrentTeamId(id))
 })
 
 export default connect(
