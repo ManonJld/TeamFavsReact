@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import ModalEditBookmark from "./ModalEditBookmark";
 import {setEditBookmark} from "../../action/appActions";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
@@ -42,29 +42,13 @@ function ModalDetailsBookmark(props){
 
 
                 <ModalFooter>
-                    <a target="_blank" href={bookmark.url}>{bookmark.url}</a>
+                    <a rel="noreferrer" target="_blank" href={bookmark.url}>{bookmark.url}</a>
                 </ModalFooter>
 
             </Modal>
         </div>
     )
 
-    // return(
-    //     <ModalComponent
-    //         iconAwesome={faInfoCircle}
-    //         classnameIcon={"detailBookmark"}
-    //         title={bookmark.name}
-    //         classname="nav-link btn-myBlue my-2"
-    //         footer={footer}
-    //     >
-    //         <div>
-    //             {bookmark.description}
-    //             <p>Crée par {bookmark.user.shortName}</p>
-    //         </div>
-    //         <ModalEditBookmark/>
-    //
-    //     </ModalComponent>
-    // )
 }
 
 

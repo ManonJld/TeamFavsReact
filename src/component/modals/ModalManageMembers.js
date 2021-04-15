@@ -5,9 +5,9 @@ import ModalComponent from "./ModalComponent";
 
 function ModalManageMembers(props){
 
-    const {
-
-    } = props;
+    // const {
+    //
+    // } = props;
 
     return(
         <ModalComponent

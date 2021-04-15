@@ -36,7 +36,8 @@ import {
     SET_EDIT_BOOKMARK,
     PUT_BOOKMARK_PENDING,
     PUT_BOOKMARK_SUCCESS,
-    PUT_BOOKMARK_FAILURE
+    PUT_BOOKMARK_FAILURE,
+    EMPTY_ERRORS
 
 } from "../action/types"
 
@@ -181,7 +182,8 @@ function appReducer(state = initialState, action){
         case POST_NEWTEAM_PENDING:{
             return {
                 ...state,
-                isLoading: {...state.isLoading, newTeam: true}
+                isLoading: {...state.isLoading, newTeam: true},
+                errors: initialState.errors
             };
         }
         case POST_NEWTEAM_SUCCESS:{
@@ -189,7 +191,8 @@ function appReducer(state = initialState, action){
                 ...state,
                 isLoading: {...state.isLoading, newTeam: false},
                 teams: [...state.teams, action.payload],
-                newTeam: initialState.newTeam
+                newTeam: initialState.newTeam,
+                errors: initialState.errors
             };
         }
         case POST_NEWTEAM_FAILURE:{
@@ -202,7 +205,8 @@ function appReducer(state = initialState, action){
         case POST_NEWCATEGORY_PENDING:{
             return{
                 ...state,
-                isLoading: {...state.isLoading, newCategory: true}
+                isLoading: {...state.isLoading, newCategory: true},
+                errors: initialState.errors
             }
         }
         case POST_NEWCATEGORY_SUCCESS:{
@@ -210,7 +214,8 @@ function appReducer(state = initialState, action){
                 ...state,
                 isLoading: {...state.isLoading, newCategory: false},
                 newCategory: initialState.newCategory,
-                categories: [...state.categories, action.payload]
+                categories: [...state.categories, action.payload],
+                errors: initialState.errors
             }
         }
         case POST_NEWCATEGORY_FAILURE:{
@@ -223,7 +228,8 @@ function appReducer(state = initialState, action){
         case POST_NEWBOOKMARK_PENDING:{
             return {
                 ...state,
-                isLoading: {...state.isLoading, newBookmark: true }
+                isLoading: {...state.isLoading, newBookmark: true },
+                errors: initialState.errors
             }
         }
         case POST_NEWBOOKMARK_SUCCESS:{
@@ -231,7 +237,8 @@ function appReducer(state = initialState, action){
                 ...state,
                 isLoading: {...state.isLoading, newBookmark: false },
                 bookmarks: [...state.bookmarks, action.payload],
-                newBookmark: initialState.newBookmark
+                newBookmark: initialState.newBookmark,
+                errors: initialState.errors
             }
         }
         case POST_NEWBOOKMARK_FAILURE:{
@@ -298,7 +305,8 @@ function appReducer(state = initialState, action){
         case PUT_BOOKMARK_PENDING:{
             return {
                 ...state,
-                isLoading: {...state.isLoading, editBookmark: true}
+                isLoading: {...state.isLoading, editBookmark: true},
+                errors: initialState.errors
             }
         }
         case PUT_BOOKMARK_SUCCESS:{
@@ -306,6 +314,7 @@ function appReducer(state = initialState, action){
                 ...state,
                 isLoading: {...state.isLoading, editBookmark: initialState.editBookmark},
                 bookmarks: [...state.bookmarks, action.payload],
+                errors: initialState.errors
             }
         }
         case PUT_BOOKMARK_FAILURE:{
@@ -313,6 +322,13 @@ function appReducer(state = initialState, action){
                 ...state,
                 isLoading: {...state.isLoading, editBookmark: initialState.editBookmark},
                 errors: {...state.errors, putBookmark: action.payload}
+            }
+        }
+
+        case EMPTY_ERRORS:{
+            return {
+                ...state,
+                errors: initialState.errors
             }
         }
 

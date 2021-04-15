@@ -45,7 +45,7 @@ const MyNavbar = (props) =>
                                     <ModalNewTeam/>
                                 </NavItem>
                                 <NavItem>
-                                    <a className="btn btn-myBlue my-1 mx-2" onClick={handleLogout}>Déconnexion</a>
+                                    <button className="btn btn-myBlue my-1 mx-2" onClick={handleLogout}>Déconnexion</button>
                                 </NavItem>
                             </>
                         )}

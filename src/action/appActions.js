@@ -29,7 +29,7 @@ import {
     POST_NEWBOOKMARK_FAILURE,
     CHANGE_INPUT_NEW_BOOKMARK,
     CLEAR_CATEGORY_ID,
-    SET_ALL_BOOKMARKS_BY_TEAM,
+    // SET_ALL_BOOKMARKS_BY_TEAM,
     CATEGORY_CLICKED,
     CLEAR_CATEGORY_CLICKED,
     SET_CATEGORY_NAME,
@@ -38,7 +38,8 @@ import {
     SET_EDIT_BOOKMARK,
     PUT_BOOKMARK_PENDING,
     PUT_BOOKMARK_SUCCESS,
-    PUT_BOOKMARK_FAILURE
+    PUT_BOOKMARK_FAILURE,
+    EMPTY_ERRORS
 } from "../action/types";
 
 export function getTeams(){
@@ -54,9 +55,12 @@ export function getTeams(){
     };
 }
 
+
+
 export function clearTeams(){
     return {type: CLEAR_TEAMS}
 }
+
 export function setTeamId(value){
     console.log(value)
     return {type: SET_TEAM_ID, payload: value};
@@ -217,4 +221,8 @@ export function putBookmark(){
             })
 
     }
+}
+
+export function emptyErrors(){
+    return {type: EMPTY_ERRORS}
 }

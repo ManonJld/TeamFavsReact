@@ -11,8 +11,9 @@ function ModalNewBookmark(props){
         newBookmark,
         categories,
         changeInputNewBookmark,
-        errors
+        errors,
     } = props;
+
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -27,12 +28,19 @@ function ModalNewBookmark(props){
         <option key={category.id} value={category['@id']}>{category.name}</option>
     ))
 
-    const errorsTable = {};
+    let errorsTable = {};
     //s'il y a des erreurs, je les mets dans un nouveau tableau avec les property path pour ensuite les afficher sous les inputs
     if (errors) {
-        errors.violations.map((violation) => (
-            errorsTable[violation.propertyPath] = violation.message
-        ))
+
+        if (errors.violation) {
+            errors.violations.map((violation) => (
+                errorsTable[violation.propertyPath] = violation.message
+            ))
+        } else {
+            errorsTable['category'] = "Veuillez choisir une catégorie"
+        }
+    } else {
+        errorsTable = {}
     }
 
     return(
@@ -81,7 +89,7 @@ function ModalNewBookmark(props){
                         <option value="">Veuillez choisir une catégorie</option>
                         {categoriesOption}
                     </select>
-                    {errorsTable && <p className="invalid-feedback">{errorsTable.category}</p>}
+                    {errorsTable.category && <p className="invalid-feedback">Veuillez renseigner une catégorie</p>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="image">Image</label>
