@@ -47,7 +47,6 @@ function authReducer(state = initialState, action){
             }
         }
         case LOGIN_SUCCESS:
-        case REGISTER_SUCCESS:
             const tokenJwt = action.payload.token
             localStorage.setItem('authToken', tokenJwt)
             return{
@@ -56,8 +55,13 @@ function authReducer(state = initialState, action){
                 isAuthenticated: true,
                 isLoading: false,
                 loginInfo: initialState.loginInfo,
-                registerInfo: initialState.registerInfo,
                 user:  jwtDecode(tokenJwt),
+            };
+        case REGISTER_SUCCESS:
+            return{
+                ...state,
+                isLoading: false,
+                registerInfo: initialState.registerInfo,
             };
         case LOGIN_FAIL:
             return {

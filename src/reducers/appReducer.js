@@ -40,7 +40,8 @@ import {
     EMPTY_ERRORS,
     SETUP_SUCCESS,
     SETUP_PENDING,
-    SET_CURRENT_TEAM_ID
+    SET_CURRENT_TEAM_ID,
+    SET_CURRENT_CATEGORY_ID
 
 } from "../action/types"
 
@@ -61,6 +62,7 @@ const initialState = {
     teamId:"",
     currentTeamId:"",
     categoryId:"",
+    currentCategoryId:"",
     newTeam:"",
     newCategory:"",
     newBookmark:{
@@ -346,7 +348,12 @@ function appReducer(state = initialState, action){
                 currentTeamId: action.payload
             }
         }
-
+        case SET_CURRENT_CATEGORY_ID:{
+            return {
+                ...state,
+                currentCategoryId: action.payload
+            }
+        }
         default:
             return state
     }

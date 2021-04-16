@@ -11,7 +11,8 @@ function ModalDetailsBookmark(props){
 
     const {
         bookmark,
-        setEditBookmark
+        setEditBookmark,
+        user
     } = props;
 
 
@@ -36,7 +37,8 @@ function ModalDetailsBookmark(props){
                             {bookmark.description}
                             <p>Crée par {bookmark.user.shortName}</p>
                         </div>
-                        <ModalEditBookmark/>
+                        {bookmark.user.id === user.id ? <ModalEditBookmark/> : null}
+
                     </ModalBody>
 
 
@@ -53,7 +55,7 @@ function ModalDetailsBookmark(props){
 
 
 const mapStateToProps = state => ({
-
+    user: state.authReducer.user
 })
 
 const mapDispatchToProps = dispatch => ({

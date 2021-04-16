@@ -1,7 +1,12 @@
 import React from "react";
 import {connect} from "react-redux";
 import ModalComponent from "./ModalComponent";
-import {changeInputEditBookmark, putBookmark, setEditBookmark} from "../../action/appActions";
+import {
+    changeInputEditBookmark,
+    getBookmarks,
+    putBookmark,
+    setEditBookmark
+} from "../../action/appActions";
 
 
 function ModalEditBookmark(props){
@@ -11,12 +16,15 @@ function ModalEditBookmark(props){
         putBookmark,
         categories,
         changeInputEditBookmark,
+        getBookmarks,
+        currentCategoryId
     } = props;
 
     const handleSubmit = event => {
         event.preventDefault();
         try {
-            putBookmark()
+            putBookmark();
+            getBookmarks(currentCategoryId)
         } catch (error) {
             console.log(error)
         }
@@ -103,7 +111,8 @@ function ModalEditBookmark(props){
 
 const mapStateToProps = state => ({
     editBookmark: state.appReducer.editBookmark,
-    categories: state.appReducer.categories
+    categories: state.appReducer.categories,
+    currentCategoryId: state.appReducer.currentCategoryId
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -111,7 +120,8 @@ const mapDispatchToProps = dispatch => ({
     changeInputEditBookmark: (event) => (
         dispatch(changeInputEditBookmark(event))
     ),
-    putBookmark: () => dispatch(putBookmark())
+    putBookmark: () => dispatch(putBookmark()),
+    getBookmarks: (id) =>dispatch(getBookmarks(id))
 })
 
 export default connect(

@@ -40,8 +40,8 @@ import {
     PUT_BOOKMARK_SUCCESS,
     PUT_BOOKMARK_FAILURE,
     EMPTY_ERRORS,
-    CURRENT_TEAM_ID,
-    SET_CURRENT_TEAM_ID
+    SET_CURRENT_TEAM_ID,
+    SET_CURRENT_CATEGORY_ID
 } from "../action/types";
 
 export function getTeams(){
@@ -231,4 +231,8 @@ export function emptyErrors(){
 
 export function setCurrentTeamId(id){
     return {type: SET_CURRENT_TEAM_ID, payload: id}
+}
+
+export function setCurrentCategoryId(id){
+    return {type: SET_CURRENT_CATEGORY_ID, payload: id}
 }

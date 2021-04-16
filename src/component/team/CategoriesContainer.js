@@ -6,7 +6,7 @@ import {
     getBookmarks,
     getCategories,
     setCategoryId,
-    setCategoryName
+    setCategoryName, setCurrentCategoryId
 } from "../../action/appActions";
 
 
@@ -26,7 +26,8 @@ const mapDispatchToProps = dispatch => ({
     setCategoryId: (id) => dispatch(setCategoryId(id)),
     getBookmarks: (id) => dispatch(getBookmarks(id)),
     clearCategoryId: () => dispatch(clearCategoryId()),
-    setCategoryName: (id) => dispatch(setCategoryName(id))
+    setCategoryName: (id) => dispatch(setCategoryName(id)),
+    setCurrentCategoryId: (id) => dispatch(setCurrentCategoryId(id))
 })
 
 export default connect(
