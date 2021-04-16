@@ -53,11 +53,9 @@ function Team(props){
                             </div>
                         </div>
                         <div className="filters">
-                            <div>Trier par : </div>
+                            <div>Trier par </div>
                             <div className="btn btn-myBlue mx-2">Date <FontAwesomeIcon icon={faArrowUp}/></div>
-                            <div className="btn btn-myBlue mx-2">Date <FontAwesomeIcon icon={faArrowDown}/></div>
                             <div className="btn btn-myBlue mx-2">Nom <FontAwesomeIcon icon={faArrowUp}/></div>
-                            <div className="btn btn-myBlue mx-2">Nom <FontAwesomeIcon icon={faArrowDown}/></div>
 
                         </div>
                         <div className="bookmarkCardContainer">
