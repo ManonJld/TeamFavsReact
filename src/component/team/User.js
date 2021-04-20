@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
+import image from "../../assets/undraw_female_avatar_w3jk.png";
 
 function User(props){
     const {
@@ -11,7 +12,9 @@ function User(props){
         teamId,
         changeInputApp,
         currentTeamId,
-        setCurrentTeamId
+        setCurrentTeamId,
+        clearBookmarks,
+        clearCategoryClicked
     } = props;
 
 
@@ -26,10 +29,14 @@ function User(props){
 
     return (
         <>
-            <img className="userPicture" src={picture} alt="profile pic" width="200px"/>
+            {picture ? (<img src={picture} className="userPicture" alt="photo de profil" width="200px"/>) : (<img src={image} className="userPicture" alt="pas encore de photo de profil" width="200px"/>)}
             <Link to="/mon-compte" ><p className="userName">{firstname + " " + lastname}</p></Link>
             <div className="form-group dropdownTeams">
-                <select className="form-control" id="teamId" name="teamId" value={teamId} onChange={event => changeInputApp(event)}>
+                <select className="form-control" id="teamId" name="teamId" value={teamId} onChange={event => {
+                    changeInputApp(event);
+                    clearBookmarks();
+                    clearCategoryClicked();
+                }}>
                     <option value={currentTeamId}>{teamName}</option>
                     {teamsOption}
                 </select>

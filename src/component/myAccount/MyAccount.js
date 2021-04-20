@@ -4,6 +4,7 @@ import Loader from "../../_helpers/Loader";
 import ModalNewTeam from "../modals/ModalNewTeam";
 import ModalManageTeam from "../modals/ModalManageTeam";
 import ModalQuitTeam from "../modals/ModalQuitTeam";
+import image from '../../assets/undraw_female_avatar_w3jk.png';
 
 function MyAccount(props) {
 
@@ -52,14 +53,14 @@ function MyAccount(props) {
             <div className="container contentAccount">
                 <div className="row">
                     <div className="user">
-                        <img src={picture} alt="profile pic" width="100%"/>
+                        {picture ? (<img src={picture} alt="photo de profil" width="100%"/>) : (<img src={image} alt="pas encore de photo de profil" width="100%"/>)}
                         {token==="" ? null : (
                             <h1>{firstname} {lastname}</h1>
                         )
                         }
                     </div>
                     <div className="teamList">
-                        <h2>Mes Teams as admin</h2>
+                        <h2>Administration des Teams</h2>
                         <ul>
                             {listTeamsCreatedByCurrentUser.length > 0 ? (
                                 listTeamsCreatedByCurrentUser.map((team, key )=> (
@@ -68,7 +69,7 @@ function MyAccount(props) {
                             ) : (<ModalNewTeam/>)
                             }
                         </ul>
-                        <h2>Mes Teams as user</h2>
+                        <h2>Mes autres Teams</h2>
                         <ul>
                             {listTeamsNotCreatedByCurrentUser.length > 0 ? (
                                 listTeamsNotCreatedByCurrentUser.map((team, key )=> (
