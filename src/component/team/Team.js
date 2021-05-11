@@ -2,11 +2,13 @@ import React, {useEffect} from 'react';
 import BookmarksContainer from "./BookmarksContainer";
 import Aside from "./Aside"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import {Route, useHistory} from "react-router-dom";
+import NotFound from "../pages/NotFound";
 
 function Team(props){
     const {
-        teamId,
+        teamIdUrl,
         clearCategoryClicked,
         teamName,
         categoryName,
@@ -18,19 +20,30 @@ function Team(props){
     } = props;
 
     useEffect(() => {
-        setTeamId(parseInt(teamId, 10));
+        setTeamId(parseInt(teamIdUrl, 10));
         getTeams();
         return () => {
             clearCategoryClicked()
             clearCategoryName()
         };
-    }, [clearCategoryClicked, clearCategoryName, getTeams, teamId, setTeamId])
+    }, [clearCategoryClicked, clearCategoryName, getTeams, teamIdUrl, setTeamId])
 
 
+    let history = useHistory();
 
-
+    //vérifier si l'id de la team passé en paramètre de l'url est bien existante pour l'utilisateur en cours, sinon redirection vers page 404
     if (teams.length>0) {
-        setTeamName(teams.filter(team => team.id == teamId)[0].name)
+        const isFound = (element) => {
+            return (element.id == teamIdUrl)
+        }
+        let testId = teams.some(isFound)
+        console.log(testId);
+        if(testId) {
+            setTeamName(teams.filter(team => team.id == teamIdUrl)[0].name)
+        } else {
+            return(<Route component={NotFound}/>)
+        }
+
     }
 
 

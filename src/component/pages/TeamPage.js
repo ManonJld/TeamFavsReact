@@ -10,7 +10,7 @@ const TeamPage = (props) => {
 
     return(
         <div>
-            <TeamContainer teamId={props.match.params.teamId}/>
+            <TeamContainer teamIdUrl={props.match.params.teamIdUrl}/>
         </div>
     )
 }

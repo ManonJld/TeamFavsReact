@@ -33,7 +33,7 @@ function App(props) {
                       <Route exact path='/' component={HomePage}/>
                       <Route exact path='/login' component={LoginPage}/>
                       <PrivateRoute exact path='/mon-compte' component={MyAccountPage}/>
-                      <PrivateRoute path='/team/:teamId' component={TeamPage}/>
+                      <PrivateRoute path='/team/:teamIdUrl' component={TeamPage}/>
                       <Route exact path='/creer-un-compte' component={RegisterPage}/>
                       <Route component={NotFound}/>
                   </Switch>
