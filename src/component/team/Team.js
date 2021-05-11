@@ -3,7 +3,7 @@ import BookmarksContainer from "./BookmarksContainer";
 import Aside from "./Aside"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
-import {Route, useHistory} from "react-router-dom";
+import {Route} from "react-router-dom";
 import NotFound from "../pages/NotFound";
 
 function Team(props){
@@ -28,8 +28,6 @@ function Team(props){
         };
     }, [clearCategoryClicked, clearCategoryName, getTeams, teamIdUrl, setTeamId])
 
-
-    let history = useHistory();
 
     //vérifier si l'id de la team passé en paramètre de l'url est bien existante pour l'utilisateur en cours, sinon redirection vers page 404
     if (teams.length>0) {
