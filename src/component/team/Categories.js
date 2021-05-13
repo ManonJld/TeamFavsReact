@@ -40,7 +40,7 @@ function Categories(props){
 
     return (
             <div className="categories">
-                <ul className="text-center">
+                <ul>
                     {categories.length > 0 ? (<li className="linkCate" onClick={handleClick}>Derniers ajouts {clock}</li>): null}
                     {categories.length > 0 ? (
                         (categories.map((cate, key )=> (
