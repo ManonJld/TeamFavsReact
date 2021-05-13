@@ -29,7 +29,8 @@ function Team(props){
     }, [clearCategoryClicked, clearCategoryName, getTeams, teamIdUrl, setTeamId])
 
 
-    //vérifier si l'id de la team passé en paramètre de l'url est bien existante pour l'utilisateur en cours, sinon redirection vers page 404
+    //vérifie si l'id de la team passé en paramètre de l'url est bien existante pour l'utilisateur en cours, sinon redirection vers page 404
+    //si id existant, setTeamName pour afficher le breadcrumb qui va bien
     if (teams.length>0) {
         const isFound = (element) => {
             return (element.id == teamIdUrl)

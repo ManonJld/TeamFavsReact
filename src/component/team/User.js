@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import image from "../../assets/undraw_female_avatar_w3jk.png";
 
 function User(props){
@@ -17,6 +17,7 @@ function User(props){
         clearCategoryClicked
     } = props;
 
+    let history = useHistory();
 
     const teamsOption = teams
         .filter(team => team.name !== teamName)
@@ -36,6 +37,8 @@ function User(props){
                     changeInputApp(event);
                     clearBookmarks();
                     clearCategoryClicked();
+                    //Pour envoyer vers la bonne url avec l'id de la team choisie
+                    history.push("/team/" + event.target.value);
                 }}>
                     <option value={currentTeamId}>{teamName}</option>
                     {teamsOption}
