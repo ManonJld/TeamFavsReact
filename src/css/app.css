@@ -74,16 +74,20 @@
   margin-top: 20px;
   margin-bottom: 20px;
   width: 100%;
+  display: -webkit-flex;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
 }
 
 .img-bkm-card {
-  align-self: center;
+  -webkit-align-self: center;
+          align-self: center;
   margin-top: 2px;
-  height: 45%;
-  width: auto;
+  max-height: 45%;
+  max-width: 100%;
 }
 
 .bookmark {
@@ -148,13 +152,17 @@
 
 .aside {
   background-color: #49949E;
+  position: -webkit-sticky;
   position: sticky;
   height: 100vh;
   margin: 0;
   padding: 20px;
+  display: -webkit-flex;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+          align-items: center;
   width: 25%;
   overflow: auto;
 }
@@ -213,9 +221,12 @@
 }
 
 .visible {
+  display: -webkit-flex;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+          align-items: center;
 }
 
 .createContent {
@@ -228,18 +239,24 @@
 .filters {
   width: 100%;
   max-height: 50px;
+  display: -webkit-flex;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+  -webkit-align-items: center;
+          align-items: center;
   padding: 5px;
 }
 
 .main {
   margin: 0;
   padding: 20px;
+  display: -webkit-flex;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: flex-start;
+          align-items: flex-start;
   width: 75%;
   height: 100vh;
   overflow: auto;
@@ -255,9 +272,12 @@
   width: 100%;
   max-height: 50px;
   padding: 5px;
+  display: -webkit-flex;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-align-items: center;
+          align-items: center;
 }
 
 .searchIcon {
@@ -267,8 +287,10 @@
 
 .searchbar {
   width: 250px;
+  display: -webkit-flex;
   display: flex;
-  align-items: center;
+  -webkit-align-items: center;
+          align-items: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -291,9 +313,12 @@
     display: none;
   }
   .bars {
+    display: -webkit-flex;
     display: flex;
-    flex-direction: row;
-    align-self: end;
+    -webkit-flex-direction: row;
+            flex-direction: row;
+    -webkit-align-self: end;
+            align-self: end;
     color: black;
     font-size: 30px;
     cursor: pointer;
@@ -308,9 +333,12 @@
 
 .contentAccount {
   margin-top: 20px;
+  display: -webkit-flex;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-justify-content: center;
+          justify-content: center;
   font: normal 1rem "Montserrat";
   color: black;
 }
@@ -322,7 +350,8 @@
 
 .teamList {
   width: 60%;
-  align-self: center;
+  -webkit-align-self: center;
+          align-self: center;
   line-height: 40px;
 }
 
@@ -344,8 +373,10 @@
 }
 
 .manageTeam {
+  display: -webkit-flex;
   display: flex;
-  align-items: center;
+  -webkit-align-items: center;
+          align-items: center;
 }
 
 .btn-manageTeam {
@@ -450,5 +481,4 @@ input:active, input:focus, input:current, input:enabled {
   border-color: black;
   box-shadow: black;
 }
-
 /*# sourceMappingURL=app.css.map */
