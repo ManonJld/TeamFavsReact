@@ -22,7 +22,11 @@ const MyNavbar = (props) =>
     }
 
     // cacher navbar sur la page Team
-    if(window.location.href.slice(22, 26) === 'team'){
+    // en local :
+    // if(window.location.href.slice(22, 26) === 'team'){
+    //     return null
+    // }
+    if(window.location.href.slice(24, 28) === 'team'){
         return null
     }
 

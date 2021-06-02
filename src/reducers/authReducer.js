@@ -34,7 +34,7 @@ const initialState = {
     errors:{
         registering: null,
         login: null
-    }
+    },
 };
 
 function authReducer(state = initialState, action){

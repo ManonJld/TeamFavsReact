@@ -14,7 +14,8 @@ const mapStateToProps = state => ({
     firstname: state.authReducer.registerInfo.firstName,
     lastname: state.authReducer.registerInfo.lastName,
     picture: state.authReducer.registerInfo.profilPicture,
-    errors: state.authReducer.errors.registering
+    errors: state.authReducer.errors.registering,
+    register: state.authReducer.registerSuccess
 })
 
 //envoyer des fonctions dans les props

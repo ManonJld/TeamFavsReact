@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
+import RegisterSuccess from "./RegisterSuccess";
+import ModalEditBookmark from "../modals/ModalEditBookmark";
 
 
 function Register(props) {
@@ -10,16 +12,16 @@ function Register(props) {
         picture,
         registerRequest,
         changeInputRegister,
-        errors
-
+        errors,
     } = props;
 
-
+    const [registerSuccess, setSuccess] = useState(false);
 
     const handleSubmit = event => {
         event.preventDefault();
         try {
             registerRequest()
+            setSuccess(true);
             //todo : voir comment faire
             // props.history.replace("/mon-compte")
         } catch (error) {
@@ -37,10 +39,9 @@ function Register(props) {
     }
 
 
-    console.log(errorsTable)
-
     return (
         <div className='container'>
+            {registerSuccess ? <RegisterSuccess/> : null}
             <h1 className='roboto'>Créer votre compte</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
