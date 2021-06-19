@@ -26,7 +26,7 @@ const MyNavbar = (props) =>
     // if(window.location.href.slice(22, 26) === 'team'){
     //     return null
     // }
-    if(window.location.href.slice(27, 31) === 'team' || window.location.href.slice(31, 35) === 'team'){
+    if(window.location.href.slice(27, 31) === 'team' || window.location.href.slice(32, 36) === 'team'){
         return null
     }
 
